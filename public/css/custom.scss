@@ -1,0 +1,46 @@
+// File SCSS ini digunakan untuk modifikasi style bawaan Bootstrap.
+// @import "../../../bootstrap-4.5.3-master/scss/functions";
+// @import "../../../bootstrap-4.5.3-master/scss/variables";
+// @import "../../../bootstrap-4.5.3-master/scss/mixins";
+
+$theme-colors: ("primary": #b42b96,
+    "success": #0da04f,
+    "danger": #ff3683);
+
+$input-btn-focus-width:       2px;
+$input-btn-border-width:       1px;
+$btn-padding-x        : 1rem;
+$btn-padding-x-lg     : 1.5rem;
+$btn-padding-y        : .3rem;
+
+$input-border-color   : hsl(210, 11%, 51%);
+$border-radius:               .35rem;
+$border-radius-lg:            .4rem;
+$border-radius-sm:            .3rem;
+$custom-control-indicator-border-color:  hsl(210, 11%, 51%);
+$custom-checkbox-indicator-border-radius: .2rem;
+
+$enable-responsive-font-sizes: true;
+
+$modal-content-border-width: 0px;
+$modal-inner-padding: 1.5rem;
+$modal-backdrop-bg: gray;
+$modal-backdrop-opacity: .5;
+$modal-fade-transform  : scale(0.9);
+$modal-show-transform  : translate3d(0, 10px, 40px);
+$modal-transition      : all (0.2s) ease;
+
+@import "../../../bootstrap-4.5.3-master/scss/bootstrap";
+
+// Custom CSS outside Bootstrap
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+.btn{
+    letter-spacing: .75pt;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: smaller;
+}
