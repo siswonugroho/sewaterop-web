@@ -23,7 +23,8 @@ class Database
         try {
             $this->dbh = new PDO($dsn, $this->user, $this->pass);
         } catch (PDOException $e) {
-            die($e->getMessage());
+            $msg = $e->getMessage();
+            header('location: ' . filter_var(BASEURL . '/errors/nodb/' , FILTER_VALIDATE_URL));
         }
     }
 
