@@ -13,7 +13,6 @@ class Home extends Controller
             $this->view('templates/footer');
         } else {
             header('location: ' . filter_var(BASEURL . '/login' , FILTER_VALIDATE_URL));
-            var_dump(get_class($this));
         }
     }
 }

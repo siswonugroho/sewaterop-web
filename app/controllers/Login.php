@@ -28,18 +28,7 @@ class Login extends Controller
                 'passwordError' => ''
             ];
 
-            // Validasi username
-            if (empty($data['username'])) {
-                $data['usernameError'] = ['Harap masukkan username.', 'is-invalid'];;
-            }
-
-            // Validasi password
-            if (empty($data['password'])) {
-                $data['passwordError'] = ['Harap masukkan password.', 'is-invalid'];;
-            }
-
             // Jika tidak ada error, login
-            if (empty($data['usernameError']) && empty($data['passwordError'])) {
                 $userLoggedIn = $this->userModel->goLogin($data['username'], $data['password']);
                 if ($userLoggedIn) {
                     $this->createUserSession($userLoggedIn);                    
@@ -48,7 +37,6 @@ class Login extends Controller
                     $data['passwordError'] = 'Username atau password salah';
                     Flasher::setFlash($data['passwordError'], 'danger', 'x-circle');
                 }
-            }
 
             unset($data['username'], $data['password']);
         }
