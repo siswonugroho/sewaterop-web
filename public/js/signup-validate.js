@@ -67,18 +67,18 @@ async function isUsernameAlreadyExists() {
             },
             body: `username=${inputs.username.value}`
         });
-        if (response.ok) {
-            const responseText = await response.text();
-            if (responseText == 1) {
-                inputs.username.classList.add('is-invalid');
-                inputs.username.nextElementSibling.innerText = "Username ini sudah terdaftar.";
-            } else inputs.username.classList.replace('is-invalid', 'is-valid');
-        } else {
-            inputs.username.nextElementSibling.innerText = "Tidak dapat memeriksa ketersediaan username";
+        if (!response.ok) {
+            throw Error();
         }
+        const responseText = await response.text();
+        if (responseText == 1) {
+            inputs.username.classList.add('is-invalid');
+            inputs.username.nextElementSibling.innerText = "Username ini sudah terdaftar.";
+        } else if (responseText == 0) inputs.username.classList.replace('is-invalid', 'is-valid');
+        else throw Error();
     } catch (error) {
-        inputs.username.classList.add('is-invalid');
-        inputs.username.nextElementSibling.innerText = "Tidak dapat memeriksa ketersediaan username";
+        inputs.username.classList.replace('is-valid', 'is-invalid');
+        inputs.username.nextElementSibling.innerText = "Tidak dapat memeriksa ketersediaan username.";
     }
 }
 

@@ -38,7 +38,7 @@ class User_model
         $this->db->execute();
 
         // Cek apakah username sudah terdaftar
-        if ($this->db->rowCount() > 0) return true;
-        else return false;
+        if ($this->db->rowCount() > 0) return 1;
+        else return 0;
     }
 }
