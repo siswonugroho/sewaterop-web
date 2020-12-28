@@ -1,11 +1,14 @@
-<div class="container">
+<div class="container mt-3">
     <h1 class="display-3">Demo component Bootstrap</h1>
 
     <div class="card shadow-sm border-0 my-4">
         <div class="card-body">
             <?php
             Flasher::setFlash('Ini pesan alert default', 'primary');
+            Flasher::showFlash();
             Flasher::setFlash('Ini pesan alert hijau', 'success');
+            Flasher::showFlash();
+            Flasher::setFlash('Ini pesan alert merah', 'danger');
             Flasher::showFlash();
             ?>
         </div>
@@ -16,6 +19,7 @@
             <button class="btn btn-primary">Tombol</button>
             <button class="btn btn-secondary">Tombol</button>
             <button class="btn btn-success">Tombol</button>
+            <button class="btn btn-warning">Tombol</button>
             <button class="btn btn-danger">Tombol</button>
             <button class="btn btn-dark">Tombol</button>
             <button class="btn btn-light">Tombol</button>
@@ -27,6 +31,7 @@
             <button class="btn btn-lg btn-primary">Tombol</button>
             <button class="btn btn-lg btn-outline-secondary">Tombol</button>
             <button class="btn btn-lg btn-outline-success">Tombol</button>
+            <button class="btn btn-lg btn-outline-warning">Tombol</button>
             <button class="btn btn-danger">Tombol</button>
             <button class="btn btn-dark">Tombol</button>
             <button class="btn btn-light">Tombol</button>
