@@ -1,5 +1,5 @@
-<div class="container mt-3">
-    <h1 class="display-3">Demo component Bootstrap</h1>
+<div class="container">
+    <h1 class="display-3">Demo Bootstrap Component</h1>
 
     <div class="card shadow-sm border-0 my-4">
         <div class="card-body">
