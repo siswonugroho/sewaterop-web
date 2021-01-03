@@ -1,24 +1,25 @@
-<?php 
-ob_start("minifier"); 
-function minifier($code) { 
-    $search = array( 
-          
+<?php
+ob_start("minifier");
+function minifier($code)
+{
+    $search = array(
+
         // Remove whitespaces after tags 
-        '/\>[^\S ]+/s', 
-          
+        '/\>[^\S ]+/s',
+
         // Remove whitespaces before tags 
-        '/[^\S ]+\</s', 
-          
+        '/[^\S ]+\</s',
+
         // Remove multiple whitespace sequences 
-        '/(\s)+/s', 
-          
+        '/(\s)+/s',
+
         // Removes comments 
         '/<!--(.|\s)*?-->/'
-    ); 
-    $replace = array('>', '<', '\\1'); 
-    $code = preg_replace($search, $replace, $code); 
-    return $code; 
-} 
+    );
+    $replace = array('>', '<', '\\1');
+    $code = preg_replace($search, $replace, $code);
+    return $code;
+}
 ?>
 
 <!DOCTYPE html>
@@ -32,3 +33,5 @@ function minifier($code) {
     <link rel="stylesheet" href="<?= BASEURL; ?>/css/bootstrap-custom.css">
 </head>
 
+<body>
+    <main class="row m-0">
