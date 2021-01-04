@@ -8,7 +8,7 @@ class Home extends Controller
             $data['judul'] = 'Home';
             $data['nav-link'] = 'Home';
             $this->view('templates/header', $data);
-            $this->view('templates/navbar', $data);
+            $this->view('templates/navs', $data);
             $this->view('home/index', $data);
             $this->view('templates/footer');
         } else {
