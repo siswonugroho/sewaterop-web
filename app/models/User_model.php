@@ -11,7 +11,8 @@ class User_model
 
     public function register($data)
     {
-        $this->db->query('INSERT INTO users (username, password) VALUES (:username, :password)');
+        $this->db->query('INSERT INTO admin (nama_admin, username, password) VALUES (:nama_admin, :username, :password)');
+        $this->db->bind(':nama_admin', $data['nama_admin']);
         $this->db->bind(':username', $data['username']);
         $this->db->bind(':password', $data['password']);
 
@@ -21,7 +22,7 @@ class User_model
 
     public function goLogin($username, $password)
     {
-        $this->db->query('SELECT * FROM users WHERE username = :username');
+        $this->db->query('SELECT * FROM admin WHERE username = :username');
         $this->db->bind(':username', $username);
         $row = $this->db->single();
 
@@ -33,7 +34,7 @@ class User_model
 
     public function isUsernameAlreadyExists($username)
     {
-        $this->db->query('SELECT username FROM users WHERE username = :username');
+        $this->db->query('SELECT username FROM admin WHERE username = :username');
         $this->db->bind(':username', $username);
         $this->db->execute();
 
