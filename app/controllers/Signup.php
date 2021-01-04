@@ -36,7 +36,6 @@ class Signup extends Controller
         }
 
         $this->view('templates/header', $data);
-        $this->view('templates/navbar');
         $this->view('signup/index', $data);
         $this->view('templates/footer');
     }
@@ -47,7 +46,6 @@ class Signup extends Controller
             'judul' => 'Akun berhasil dibuat'
         ];
         $this->view('templates/header', $data);
-        $this->view('templates/navbar');
         $this->view('signup/success', $data);
         $this->view('templates/footer');
     }

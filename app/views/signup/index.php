@@ -1,4 +1,5 @@
 <div class="container d-flex flex-column align-items-center justify-content-around">
+<img src="<?= BASEURL ?>/img/sewaterop-logo.svg" alt="Logo sewaterop" height="64">
     <h1 class="text-primary my-5">Buat Akun Baru</h1>
     <?php Flasher::showFlash(); ?>
     <form action="<?= BASEURL ?>/signup" method="post" novalidate>

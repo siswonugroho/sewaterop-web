@@ -29,36 +29,37 @@
                 </svg>
                 Riwayat
             </a>
+            <a href="<?= BASEURL; ?>/logout" class="btn btn-dark">Logout</a>
         </div>
     </aside>
     <nav class="navbar bg-light p-0 border-top fixed-bottom d-block d-md-none navbar-expand" data-title="<?= $data['nav-link'] ?>">
         <div class="nav nav-justified">
-                <a class="nav-link text-secondary d-flex flex-column align-items-center">
-                    <svg class="bi mx-auto" width="24" height="24" fill="currentColor">
+                <a class="nav-link text-secondary d-flex flex-column p-1 align-items-center">
+                    <svg class="bi mx-auto" width="18" height="18" fill="currentColor">
                         <use xlink:href="<?= BASEURL; ?>/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#house" />
                     </svg>
                     <small class="text-center">Home</small>
                 </a>
-                <a class="nav-link text-secondary d-flex flex-column align-items-center">
-                    <svg class="bi mx-auto" width="24" height="24" fill="currentColor">
+                <a class="nav-link text-secondary d-flex flex-column p-1 align-items-center">
+                    <svg class="bi mx-auto" width="18" height="18" fill="currentColor">
                         <use xlink:href="<?= BASEURL; ?>/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#card-list" />
                     </svg>
                     <small class="text-center">Sewaan</small>
                 </a>
-                <a class="nav-link text-secondary d-flex flex-column align-items-center">
-                    <svg class="bi mx-auto" width="24" height="24" fill="currentColor">
+                <a class="nav-link text-secondary d-flex flex-column p-1 align-items-center">
+                    <svg class="bi mx-auto" width="18" height="18" fill="currentColor">
                         <use xlink:href="<?= BASEURL; ?>/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#archive" />
                     </svg>
                     <small class="text-center">Barang</small>
                 </a>
-                <a class="nav-link text-secondary d-flex flex-column align-items-center">
-                    <svg class="bi mx-auto" width="24" height="24" fill="currentColor">
+                <a class="nav-link text-secondary d-flex flex-column p-1 align-items-center">
+                    <svg class="bi mx-auto" width="18" height="18" fill="currentColor">
                         <use xlink:href="<?= BASEURL; ?>/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#clock-history" />
                     </svg>
                     <small class="text-center">Riwayat</small>
                 </a>
-                <a class="nav-link text-secondary d-flex flex-column align-items-center">
-                    <svg class="bi mx-auto" width="24" height="24" fill="currentColor">
+                <a class="nav-link text-secondary d-flex flex-column p-1 align-items-center">
+                    <svg class="bi mx-auto" width="18" height="18" fill="currentColor">
                         <use xlink:href="<?= BASEURL; ?>/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#person-circle" />
                     </svg>
                     <small class="text-center">Akun</small>

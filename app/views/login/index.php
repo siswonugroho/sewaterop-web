@@ -1,4 +1,5 @@
-<div class="container d-flex flex-column align-items-center justify-content-around">
+<div class="container d-flex flex-column align-items-center justify-content-around min-vh-100">
+    <img src="<?= BASEURL ?>/img/sewaterop-logo.svg" alt="Logo sewaterop" height="64">
     <h1 class="text-primary my-5">Login</h1>
     <?php Flasher::showFlash(); ?>
     <form action="<?= BASEURL ?>/login" method="post" novalidate>

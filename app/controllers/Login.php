@@ -43,7 +43,6 @@ class Login extends Controller
 
 
             $this->view('templates/header', $data);
-            $this->view('templates/navbar');
             $this->view('login/index', $data);
             $this->view('templates/footer');
     }
