@@ -1,10 +1,22 @@
 const forms = document.forms[0];
 const inputs = {
+    "nama_admin": document.querySelector("input#nama_admin"),
     "username": document.querySelector("input#username"),
     "password": document.querySelector("input#password"),
     "repassword": document.querySelector("input#repassword"),
 }
 
+
+inputs.nama_admin.addEventListener('input', function () {
+    if (inputs.nama_admin.validity.valid) {
+        inputs.nama_admin.classList.remove('is-invalid');
+    } else {
+        if (inputs.nama_admin.validity.valueMissing) {
+            inputs.nama_admin.nextElementSibling.innerText = "Harap masukkan nama";
+        }
+        inputs.nama_admin.classList.add('is-invalid');
+    }
+});
 
 inputs.username.addEventListener('input', function () {
     if (inputs.username.validity.valid) {

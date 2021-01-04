@@ -11,6 +11,7 @@ class Signup extends Controller
     {
         $data = [
             'judul' => 'Buat Akun',
+            'nama_admin' => '',
             'username' => '',
             'password' => '',
             'repassword' => ''
@@ -21,9 +22,10 @@ class Signup extends Controller
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
             $data = [
                 'judul' => 'Buat Akun',
-                'username' => trim($_POST['username']),
-                'password' => trim($_POST['password']),
-                'repassword' => trim($_POST['repassword']),
+                'nama_admin' => strip_tags($_POST['nama_admin']),
+                'username' => strip_tags($_POST['username']),
+                'password' => strip_tags($_POST['password']),
+                'repassword' => strip_tags($_POST['repassword']),
             ];
             // Hash password
             $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
