@@ -24,4 +24,8 @@ SELECT pemesan.nama_pemesan, pemesan.alamat, pemesan.telepon, pesanan.id_pesanan
 6. Menampilkan paket yang tersedia
 SELECT paket.id_paket, paket.nama_paket, isi_paket.jumlah_barang, barang.nama_barang FROM paket JOIN isi_paket ON isi_paket.id_paket = paket.id_paket JOIN barang ON barang.id_barang = isi_paket.id_barang
 
-7. 
+7. Menampilkan riwayat transaksi
+SELECT transaksi.id_pesanan, pemesan.nama_pemesan,pesanan.tgl_mulai, pesanan.tgl_selesai, transaksi.total_biaya, transaksi.status
+FROM transaksi
+JOIN pesanan ON pesanan.id_pesanan = transaksi.id_pesanan
+JOIN pemesan ON pemesan.id_pemesan = pesanan.id_pemesan
