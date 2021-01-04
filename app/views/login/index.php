@@ -18,4 +18,4 @@
     </form>
     <p class="my-5">Belum punya akun? <a href="<?= BASEURL ?>/signup" class="text-primary">Daftar sekarang.</a></p>
 </div>
-<script src="<?= BASEURL; ?>/js/login-validate.js"></script>
+<script src="<?= BASEURL; ?>/js/login-validate.min.js"></script>
