@@ -29,6 +29,8 @@
                 </svg>
                 Riwayat
             </a>
+            <hr>
+            <p>Pengguna saat ini: <br> <?= $_SESSION['nama_admin'] ?></p>
             <a href="<?= BASEURL; ?>/logout" class="btn btn-dark">Logout</a>
         </div>
     </aside>
