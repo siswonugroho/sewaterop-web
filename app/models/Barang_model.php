@@ -76,4 +76,12 @@ class Barang_model
         $this->db->execute();
         return $this->db->rowCount();
     }
+
+    public function getImageById($id)
+    {
+        $this->db->query("SELECT foto_barang FROM $this->table WHERE id_barang = :id_barang");
+        $this->db->bind('id_barang', $id);
+        $this->db->execute();
+        return $this->db->single();
+    }
 }

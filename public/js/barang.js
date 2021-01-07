@@ -4,16 +4,11 @@ document.addEventListener('DOMContentLoaded', function (event) {
     const listBarangLoading = listBarangContainer.querySelector("span#loading-list");
     const listGroupElement = listBarangContainer.querySelector("div.list-group");
     const dialogDataElement = document.querySelectorAll(".selected-data");
-    const searchBox = document.querySelectorAll("input[type=search]");
 
     function countDataBarang(listParent) {
         const angkaText = document.querySelector("#total-barang");
         angkaText.innerText = listParent.children.length.toString();
     }
-
-
-
-
 
     async function getListBarang() {
         try {
@@ -36,6 +31,8 @@ document.addEventListener('DOMContentLoaded', function (event) {
             const listBarang = new List('list-barang', {
                 valueNames: ['nama', 'harga', 'stok']
             });
+            listBarang.sort('nama', { order: "asc" });
+
         } catch (error) {
             listBarangContainer.innerHTML = `
             <div class="d-none flex-column text-center align-items-center my-5" id="no-data">
@@ -54,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
             <div class="list-group-item">
                 <div class="row">
                     <figure class="p-0 my-0 mx-2">
-                        <img src="resources/img/databarang/${barang.foto_barang}" class="img-thumbnail rounded-sm" alt="foto barang" onerror="this.onerror = null; this.src = 'resources/img/noimg.png'" style="object-fit: cover; height: 100px; width: 100px;">
+                        <img src="resources/img/databarang/${barang.foto_barang}" class="rounded-sm" alt="foto barang" onerror="this.onerror = null; this.src = 'resources/img/noimg.png'" style="object-fit: cover; height: 100px; width: 100px;">
                     </figure>
                     <div class="col-sm my-3 my-sm-0">
                         <span class="d-flex w-100 justify-content-between">
