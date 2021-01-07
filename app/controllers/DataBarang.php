@@ -3,6 +3,8 @@
 class DataBarang extends Controller
 {
 
+    private $imgPath = 'resources/img/databarang/';
+
     public function index()
     {
         if (Session::isLoggedIn()) {
@@ -40,13 +42,13 @@ class DataBarang extends Controller
             $submittedData = [
                 'id_barang' => $_POST['id_barang'],
                 'nama_barang' => $_POST['nama_barang'],
-                'foto_barang' => $this->checkAndUploadImage($_FILES['foto_barang']),
+                'foto_barang' => ImageUploader::checkAndUploadImage($_FILES['foto_barang'], $this->imgPath),
                 'harga' => $_POST['harga'],
                 'stok' => $_POST['stok']
             ];
 
             if ($this->model('Barang_model')->tambahDataBarang($submittedData) > 0) {
-                Flasher::setFlash('Barang berhasil ditambahkan', 'success');
+                Flasher::setFlash('Barang berhasil ditambahkan', 'success', 'check-circle');
                 header('location:' . filter_var(BASEURL . '/databarang', FILTER_VALIDATE_URL));
                 exit;
             } else {
@@ -75,12 +77,12 @@ class DataBarang extends Controller
             if($_FILES['foto_barang']['error'] === 4) {
                 $submittedData['foto_barang'] = $submittedData['foto_barang_lama'];
             } else {
-                $submittedData['foto_barang'] = $this->checkAndUploadImage($_FILES['foto_barang']);
-                if (file_exists('resources/img/databarang/' . $submittedData['foto_barang_lama'])) unlink('resources/img/databarang/' . $submittedData['foto_barang_lama']);
+                $submittedData['foto_barang'] = ImageUploader::checkAndUploadImage($_FILES['foto_barang'], $this->imgPath);
+                if (file_exists($this->imgPath . $submittedData['foto_barang_lama'])) unlink($this->imgPath . $submittedData['foto_barang_lama']);
             }
 
             if ($this->model('Barang_model')->editDataBarang($submittedData) > 0) {
-                Flasher::setFlash('Data barang berhasil diperbarui', 'success');
+                Flasher::setFlash('Data barang berhasil diperbarui', 'success', 'check-circle');
                 header('location:' . filter_var(BASEURL . '/databarang', FILTER_VALIDATE_URL));
                 exit;
             } else {
@@ -94,8 +96,10 @@ class DataBarang extends Controller
 
     public function hapus($id)
     {
+        $imgFile = $this->model('Barang_model')->getImageById($id);
+        if (file_exists($this->imgPath . $imgFile['foto_barang'])) unlink($this->imgPath . $imgFile['foto_barang']);
         if ($this->model('Barang_model')->hapusDataBarang($id) > 0) {
-            Flasher::setFlash('Data barang berhasil dihapus', 'success');
+            Flasher::setFlash('Data barang berhasil dihapus', 'success', 'check-circle');
             header('location:' . filter_var(BASEURL . '/databarang', FILTER_VALIDATE_URL));
             exit;
         } else {
@@ -103,33 +107,6 @@ class DataBarang extends Controller
             header('location:' . filter_var(BASEURL . '/databarang', FILTER_VALIDATE_URL));
             exit;
         }
-    }
-
-    private function checkAndUploadImage($foto)
-    {
-        $namaFile = $foto['name'];
-        $tipeFile = $foto['type'];
-        $tipeFileValid = ['image/jpeg', 'image/jpg', 'image/png'];
-
-        // cek apakah tipe file yg diupload berupa file gambar
-        if (!in_array($tipeFile, $tipeFileValid)) return false;
-
-        // ubah nama file menjadi random
-        $ekstensiFile = explode('.', $namaFile);
-        $ekstensiFile = strtolower(end($ekstensiFile));
-        $namaFileBaru = uniqid();
-        $namaFileBaru .= '.';
-        $namaFileBaru .= $ekstensiFile;
-        
-        $this->uploadImage($_FILES['foto_barang']['tmp_name'], $namaFileBaru);
-
-        return $namaFileBaru;
-    }
-
-    private function uploadImage($tmpFile, $namaFoto)
-    {
-        $tmpFile = $tmpFile;
-        move_uploaded_file($tmpFile, 'resources/img/databarang/' . $namaFoto);
     }
 
     public function pageEdit($id)
