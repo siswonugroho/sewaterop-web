@@ -36,8 +36,12 @@
                 Riwayat
             </a>
             <hr>
-            <p>Pengguna saat ini: <br> <?= $_SESSION['nama_admin'] ?></p>
-            <a href="<?= BASEURL; ?>/logout" class="btn btn-dark">Logout</a>
+            <div class="mx-2">
+                <p>Pengguna saat ini: <br>
+                    <strong><?= $_SESSION['nama_admin'] ?></strong></p>
+                <a href="<?= BASEURL; ?>/logout" class="btn btn-dark">Logout</a>
+            </div>
+
         </div>
     </aside>
     <nav class="navbar bg-light p-0 border-top fixed-bottom d-block d-md-none navbar-expand" data-title="<?= $data['nav-link'] ?>">
@@ -82,11 +86,19 @@
                 </svg>
                 <small class="text-center">Riwayat</small>
             </a>
-            <a class="nav-link text-secondary d-flex flex-column p-1 align-items-center">
-                <svg class="bi mx-auto" width="18" height="18" fill="currentColor">
-                    <use xlink:href="<?= BASEURL; ?>/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#person-circle" />
-                </svg>
-                <small class="text-center">Akun</small>
-            </a>
+            <div class="dropup">
+                <a class="nav-link text-secondary d-flex flex-column p-1 align-items-center" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
+                    <svg class="bi mx-auto" width="18" height="18" fill="currentColor">
+                        <use xlink:href="<?= BASEURL; ?>/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#person-circle" />
+                    </svg>
+                    <small class="text-center">Pengguna</small>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right p-3 shadow" style="width: 16em;">
+                    <p>Pengguna saat ini: <br>
+                        <strong><?= $_SESSION['nama_admin'] ?></strong></p>
+                    <a href="<?= BASEURL; ?>/logout" class="btn btn-dark">Logout</a>
+                </div>
+            </div>
+
         </div>
     </nav>
