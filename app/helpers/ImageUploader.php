@@ -31,8 +31,13 @@ class ImageUploader
     {
         $imageSize = getimagesize($source);
         if ($imageSize['mime'] == 'image/jpeg') $image = imagecreatefromjpeg($source);
-        else if ($imageSize['mime'] == 'image/png') $image = imagecreatefrompng($source);
-        imagejpeg($image, $path, $quality);
+        else if ($imageSize['mime'] == 'image/png') {
+            $image = imagecreatefrompng($source);
+            imagepalettetotruecolor($image);
+            imagealphablending($image, true);
+            imagesavealpha($image, true);
+        }
+        imagewebp($image, $path, $quality);
         imagedestroy($image);
     }
 }
