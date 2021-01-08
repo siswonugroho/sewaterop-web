@@ -20,10 +20,10 @@ document.addEventListener('DOMContentLoaded', function (event) {
                 },
                 cache: "default"
             });
+            listBarangLoading.classList.add("d-none");
             if (!response.ok) throw Error();
             const responseJson = await response.json();
             if (!responseJson) throw Error();
-            listBarangLoading.classList.add("d-none");
             renderListBarang(responseJson);
             countDataBarang(listGroupElement);
             if (Object.keys(responseJson).length !== 0) {
