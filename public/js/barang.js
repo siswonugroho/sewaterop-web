@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function (event) {
     const listBarangContainer = document.querySelector("div#list-barang-container");
-    const listBarangEmptyText = listBarangContainer.querySelector("div#no-data");
     const listBarangLoading = listBarangContainer.querySelector("span#loading-list");
+    const listBarangEmptyMessage = listBarangContainer.querySelector(".list-barang-empty-message");
     const listGroupElement = listBarangContainer.querySelector("div.list-group");
     const dialogDataElement = document.querySelectorAll(".selected-data");
 
@@ -20,26 +20,31 @@ document.addEventListener('DOMContentLoaded', function (event) {
                 },
                 cache: "default"
             });
+            listBarangLoading.classList.add("d-none");
             if (!response.ok) throw Error();
             const responseJson = await response.json();
             if (!responseJson) throw Error();
-            else if (Object.keys(responseJson).length === 0) listBarangEmptyText.classList.replace("d-none", "d-flex");
-            else listBarangEmptyText.classList.replace("d-flex", "d-none");
-            listBarangLoading.classList.add("d-none");
             renderListBarang(responseJson);
             countDataBarang(listGroupElement);
-            const listBarang = new List('list-barang', {
-                valueNames: ['nama', 'harga', 'stok']
-            });
-            listBarang.sort('nama', { order: "asc" });
+            if (Object.keys(responseJson).length !== 0) {
+                listBarangEmptyMessage.classList.replace("d-flex", "d-none");
+                const listBarang = new List('list-barang', {
+                    valueNames: ['nama', 'harga', 'stok']
+                });
+                listBarang.sort('nama', { order: "asc" });
+            } else {
+                listBarangEmptyMessage.classList.replace("d-none","d-flex");
+                listBarangEmptyMessage.children[0].querySelector("use").setAttribute("xlink:href", `${BASEURL}/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#emoji-frown`);
+                listBarangEmptyMessage.children[1].textContent = "Tidak ada barang disini.";
+                listBarangEmptyMessage.children[2].textContent = "Tambahkan informasi barang yang Anda sewakan dengan mengklik Tambah.";
+            }
 
         } catch (error) {
-            listBarangContainer.innerHTML = `
-            <div class="d-none flex-column text-center align-items-center my-5" id="no-data">
-                <p class="display-4 text-secondary">Gagal mengambil data barang</p>
-                <p class="lead text-secondary font-weight-normal">Coba lagi nanti atau refresh halaman ini.</p>
-            </div>
-            `;
+            listBarangEmptyMessage.classList.replace("d-none", "d-flex");
+            listBarangEmptyMessage.children[0].querySelector("use").setAttribute("xlink:href", `${BASEURL}/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#x-circle`);
+            listBarangEmptyMessage.children[1].textContent = "Gagal memuat daftar barang.";
+            listBarangEmptyMessage.children[2].textContent = "Coba lagi nanti atau refresh halaman ini.";
+            console.error(error);
         }
     }
 
@@ -51,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
             <div class="list-group-item">
                 <div class="row">
                     <figure class="p-0 my-0 mx-2">
-                        <img src="resources/img/databarang/${barang.foto_barang}" class="rounded-sm" alt="foto barang" onerror="this.onerror = null; this.src = 'resources/img/noimg.png'" style="object-fit: cover; height: 100px; width: 100px;">
+                        <img src="${BASEURL}/resources/img/databarang/${barang.foto_barang}" class="rounded-sm" alt="foto barang" onerror="this.onerror = null; this.src = '${BASEURL}/resources/img/noimg.png'" style="object-fit: cover; height: 100px; width: 100px;">
                     </figure>
                     <div class="col-sm my-3 my-sm-0">
                         <span class="d-flex w-100 justify-content-between">
@@ -90,6 +95,6 @@ document.addEventListener('DOMContentLoaded', function (event) {
     });
 
     getListBarang();
-    
+
 
 })
