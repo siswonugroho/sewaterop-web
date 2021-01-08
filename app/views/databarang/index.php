@@ -1,9 +1,9 @@
 <section class="col-md mt-3">
     <header class="p-2 bg-white">
         <h2 class="text-center">Daftar Barang</h2>
-        <?php Flasher::showFlash(); ?>
     </header>
     <main id="list-barang">
+        <?php Flasher::showFlash(); ?>
         <span class="d-flex py-3 mx-auto sticky-top bg-white">
             <a class="btn btn-primary mr-3 d-none d-md-flex align-items-center" href="<?= BASEURL ?>/databarang/pagetambah">
                 <svg class="bi mr-2" width="24" height="24" fill="currentColor">
@@ -21,6 +21,7 @@
                 </div>
                 <input type="search" class="search form-control border-left-0 bg-light" placeholder="Cari barang" aria-label="Barang">
             </div>
+
         </span>
 
         <div class="d-flex justify-content-between">
@@ -49,22 +50,25 @@
         </div>
 
         <div id="list-barang-container">
-            <div class="d-none flex-column text-center align-items-center my-5" id="no-data">
-                <p class="display-4 text-secondary">Tidak ada barang</p>
-                <p class="lead text-secondary font-weight-normal">Tambahkan barang baru dengan mengklik tombol Tambah</p>
-            </div>
 
             <span class="row my-5" id="loading-list">
                 <div class="spinner-border text-primary mx-auto" role="status">
                     <span class="sr-only">Loading...</span>
                 </div>
             </span>
+            <div class="d-flex flex-column text-secondary text-center align-items-center my-5 list-barang-empty-message" id="no-data">
+                <svg class="bi my-3" width="36" height="36" fill="currentColor">
+                    <use xlink:href="<?= BASEURL; ?>/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#plus" />
+                </svg>
+                <p class="h4"></p>
+                <p class="font-weight-normal"></p>
+            </div>
 
             <div class="list-group list">
 
             </div>
 
-            <div class="blank" style="height: 20vh;"></div>
+            <div class="white-space" style="height: 20vh;"></div>
         </div>
 
         <button class="btn btn-primary position-fixed rounded-pill shadow-sm p-2 d-block d-md-none" style="right: 3vw; bottom: 60px; z-index: 1;" onclick="window.location.href = `${BASEURL}/databarang/pagetambah`">
@@ -76,7 +80,7 @@
     </main>
 </section>
 
-<div class="modal fade" id="dialogHapus" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="hapusTitle" aria-hidden="true">
+<div class="modal fade" id="dialogHapus" data-keyboard="false" tabindex="-1" aria-labelledby="hapusTitle" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content shadow-lg">
             <div class="modal-header bg-transparent border-0">
@@ -95,3 +99,4 @@
 
 <script src="<?= BASEURL ?>/js/list.min.js"></script>
 <script src="<?= BASEURL ?>/js/barang.min.js"></script>
+<script src="<?= BASEURL; ?>/js/formatRupiah.min.js"></script>
