@@ -34,7 +34,7 @@
                         </svg>
                         <p class="d-none d-sm-inline">Urutkan</p>
                     </a>
-                    <div class="dropdown-menu dropdown-menu-right shadow">
+                    <div class="dropdown-menu dropdown-menu-right anim-fade shadow">
                         <button class="dropdown-item sort" data-sort="nama" type="button">Nama</button>
                         <button class="dropdown-item sort" data-sort="harga" type="button">Harga</button>
                         <button class="dropdown-item sort" data-sort="stok" type="button">Stok</button>
@@ -58,7 +58,7 @@
             </span>
             <div class="d-flex flex-column text-secondary text-center align-items-center my-5 list-barang-empty-message" id="no-data">
                 <svg class="bi my-3" width="36" height="36" fill="currentColor">
-                    <use xlink:href="<?= BASEURL; ?>/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#plus" />
+                    <use xlink:href="" />
                 </svg>
                 <p class="h4"></p>
                 <p class="font-weight-normal"></p>
