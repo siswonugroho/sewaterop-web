@@ -1,0 +1,1 @@
+let BASEURL = 'http://localhost/sewaterop/public'

@@ -21,14 +21,16 @@ $border-radius-sm:            .3rem;
 $custom-control-indicator-border-color:  hsl(210, 11%, 51%);
 $custom-checkbox-indicator-border-radius: .2rem;
 
+$box-shadow-sm:               0 .125rem .25rem rgba(0, 0, 0, 0.226); 
+
 $enable-responsive-font-sizes: true;
 
 $modal-content-border-width: 0px;
 $modal-inner-padding: 1.5rem;
-$modal-backdrop-bg: gray;
+$modal-backdrop-bg: rgb(95, 95, 95);
 $modal-backdrop-opacity: .5;
-$modal-fade-transform  : scale(0.9);
-$modal-show-transform  : translate3d(0, 10px, 40px);
+$modal-fade-transform  : scale(1.1);
+$modal-show-transform  : translate3d(0, 20px, -30px);
 $modal-transition      : all (0.2s) ease;
 
 @import "../../../bootstrap-4.5.3-master/scss/bootstrap";

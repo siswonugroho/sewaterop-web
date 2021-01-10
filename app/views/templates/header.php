@@ -31,6 +31,7 @@ function minifier($code)
     <title><?= $data['judul']; ?> - SewaTerop</title>
     <link rel="icon" href="<?= BASEURL; ?>/img/favicon.svg" sizes="any" type="image/svg+xml">
     <link rel="stylesheet" href="<?= BASEURL; ?>/css/bootstrap-custom.css">
+    <link rel="stylesheet" href="<?= BASEURL; ?>/css/additional.min.css">
 </head>
 
 <body>
