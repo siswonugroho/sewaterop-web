@@ -81,7 +81,7 @@
 </section>
 
 <div class="modal fade" id="dialogHapus" data-keyboard="false" tabindex="-1" aria-labelledby="hapusTitle" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content shadow-lg">
             <div class="modal-header bg-transparent border-0">
                 <h5 class="modal-title" id="hapusTitle">Konfirmasi Hapus</h5>
