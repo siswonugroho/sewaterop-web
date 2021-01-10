@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
         dataBarang.forEach(barang => {
             listGroupElement.insertAdjacentHTML("beforeend", `
             <div class="list-group-item">
-                <div class="row">
+                <div class="row anim-fade">
                     <figure class="p-0 my-0 mx-2">
                         <img src="${BASEURL}/resources/img/databarang/${barang.foto_barang}" class="rounded-sm" alt="foto barang" onerror="this.onerror = null; this.src = '${BASEURL}/resources/img/noimg.png'" style="object-fit: cover; height: 100px; width: 100px;">
                     </figure>
@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
                                         <use xlink:href="${BASEURL}/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#three-dots" />
                                     </svg>
                                 </button>
-                                <div class="dropdown-menu dropdown-menu-right shadow">
+                                <div class="dropdown-menu dropdown-menu-right anim-fade shadow">
                                     <a href="${BASEURL}/databarang/pageedit/${barang.id_barang}" class="dropdown-item">Edit</a>
                                     <a href="" class="dropdown-item text-danger" data-toggle="modal" data-target="#dialogHapus" data-id-barang="${barang.id_barang}" data-nama-barang="${barang.nama_barang}">Hapus</a>
                                 </div>
