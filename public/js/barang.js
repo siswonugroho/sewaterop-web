@@ -40,6 +40,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
             }
 
         } catch (error) {
+            listBarangLoading.classList.add("d-none");
             listBarangEmptyMessage.classList.replace("d-none", "d-flex");
             listBarangEmptyMessage.children[0].querySelector("use").setAttribute("xlink:href", `${BASEURL}/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#x-circle`);
             listBarangEmptyMessage.children[1].textContent = "Gagal memuat daftar barang.";

@@ -41,6 +41,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
             }
 
         } catch (error) {
+            listPaketLoading.classList.add("d-none");
             listPaketEmptyMessage.classList.replace("d-none", "d-flex");
             listPaketEmptyMessage.children[0].querySelector("use").setAttribute("xlink:href", `${BASEURL}/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#x-circle`);
             listPaketEmptyMessage.children[1].textContent = "Gagal memuat daftar paket.";
