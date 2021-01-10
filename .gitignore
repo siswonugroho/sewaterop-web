@@ -1,5 +1,6 @@
 /siterop.sql
 /public/js/lib/validator.js/**
+/resources/img/**
 /validator.js-master.zip
 /app/views/templates/navbar.php
 ngrok.exe
