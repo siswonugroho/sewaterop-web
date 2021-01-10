@@ -23,7 +23,7 @@
                 </svg>
                 Barang
             </a>
-            <a class="nav-link text-secondary py-2" id="barang-link" href="<?= BASEURL ?>/databarang">
+            <a class="nav-link text-secondary py-2" id="barang-link" href="<?= BASEURL ?>/datapaketsewa">
                 <svg class="bi mr-3" width="24" height="24" fill="currentColor">
                     <use xlink:href="<?= BASEURL; ?>/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#gift" />
                 </svg>
@@ -44,7 +44,7 @@
 
         </div>
     </aside>
-    <nav class="navbar bg-light p-0 border-top fixed-bottom d-block d-md-none navbar-expand" data-title="<?= $data['nav-link'] ?>">
+    <nav class="navbar bg-light p-0 border-top shadow-sm fixed-bottom d-block d-md-none navbar-expand" data-title="<?= $data['nav-link'] ?>">
         <div class="nav justify-content-around">
             <a class="nav-link text-secondary d-flex flex-column p-1 align-items-center" href="<?= BASEURL ?>/home">
                 <svg class="bi mx-auto" width="18" height="18" fill="currentColor">
@@ -65,14 +65,14 @@
                     </svg>
                     <small class="text-center">Barang</small>
                 </a>
-                <div class="dropdown-menu shadow dropdown-menu-center">
+                <div class="dropdown-menu anim-fade shadow dropdown-menu-center">
                     <a class="dropdown-item" href="<?= BASEURL ?>/databarang">
                         <svg class="bi mr-2" width="18" height="18" fill="currentColor">
                             <use xlink:href="<?= BASEURL; ?>/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#archive" />
                         </svg>
                         Daftar Barang
                     </a>
-                    <a class="dropdown-item" href="#">
+                    <a class="dropdown-item" href="<?= BASEURL ?>/datapaketsewa">
                         <svg class="bi mr-2" width="18" height="18" fill="currentColor">
                             <use xlink:href="<?= BASEURL; ?>/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#gift" />
                         </svg>
@@ -93,7 +93,7 @@
                     </svg>
                     <small class="text-center">Pengguna</small>
                 </a>
-                <div class="dropdown-menu dropdown-menu-right p-3 shadow" style="width: 16em;">
+                <div class="dropdown-menu dropdown-menu-right anim-fade p-3 shadow" style="width: 16em;">
                     <p>Pengguna saat ini: <br>
                         <strong><?= $_SESSION['nama_admin'] ?></strong></p>
                     <a href="<?= BASEURL; ?>/logout" class="btn btn-dark">Logout</a>
