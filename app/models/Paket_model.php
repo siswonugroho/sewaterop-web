@@ -35,6 +35,16 @@ class Paket_model
         return $this->db->resultSet();
     }
 
+    public function getFotoBarang($id)
+    {
+        foreach ($id as $value) {
+            $this->db->query("SELECT foto_barang FROM barang WHERE id_barang=:id_barang");
+            $this->db->bind('id_barang', $value);
+            $this->db->execute();
+        }
+        return $this->db->single();
+    }
+
     public function tambahDataPaket($data)
     {
         $this->db->query("INSERT INTO paket VALUES (:id_paket, :nama_paket, :harga)");
@@ -93,7 +103,7 @@ class Paket_model
         $this->db->query($query);
         $this->db->bind('id_paket', $id);
         $this->db->execute();
-        
+
         $this->db->query("SELECT COUNT(*) FROM $this->table");
         $this->db->execute();
         return $this->db->single();
