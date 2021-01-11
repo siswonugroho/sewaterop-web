@@ -61,6 +61,7 @@ class DataPaketSewa extends Controller
                 $data['formvalue']['id_barang'][] = $value['id_barang'];
                 $data['formvalue']['nama_barang'][] = $value['nama_barang'];
                 $data['formvalue']['jumlah_barang'][] = $value['jumlah_barang'];
+                $data['formvalue']['foto_barang'][] = $this->model("Paket_model")->getFotoBarang($data['formvalue']['id_barang']);
             }
 
             $this->view('templates/header', $data);

@@ -26,12 +26,14 @@
         </div>
         <div class="mt-5">
             <h4>Termasuk dalam paket ini</h4>
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 m-0">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 m-0">
                 <?php foreach ($data['formvalue']['id_barang'] as $key => $value) : ?>
                     <div class="col p-0">
                         <div class="card mx-0 mx-sm-2 my-2 shadow-sm border-0">
-                            <div class="card-body">
-                                <h4 class="display-4"><?= $data['formvalue']['jumlah_barang'][$key] ?></h4>
+                            <img src="<?= BASEURL ?>/resources/img/databarang/<?= $data['formvalue']['foto_barang'][$key]['foto_barang'] ?>" class="rounded-sm card-img" alt="foto barang" onerror="this.onerror = null; this.src = '<?= BASEURL ?>/resources/img/noimg.png'" style="width:100%; height: 30vh; object-fit: cover; ">
+                            <div class="card-img-overlay m-0 text-white" style="background: rgb(47,47,47);
+background: linear-gradient(180deg, rgba(47,47,47,0.5555264342064952) 7%, rgba(126,126,126,0) 100%);">
+                                <h2 class="display-4 font-weight-normal"><?= $data['formvalue']['jumlah_barang'][$key] ?></h2>
                                 <p class="lead font-weight-normal"><?= $data['formvalue']['nama_barang'][$key] ?></p>
                             </div>
                         </div>
