@@ -17,6 +17,12 @@
                 </svg>
                 Sewaan
             </a>
+            <a class="nav-link text-secondary py-2" id="sewaan-link" href="<?= BASEURL ?>/datapenyewa">
+                <svg class="bi mr-3" width="24" height="24" fill="currentColor">
+                    <use xlink:href="<?= BASEURL; ?>/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#person-check" />
+                </svg>
+                Penyewa
+            </a>
             <a class="nav-link text-secondary py-2" id="barang-link" href="<?= BASEURL ?>/databarang">
                 <svg class="bi mr-3" width="24" height="24" fill="currentColor">
                     <use xlink:href="<?= BASEURL; ?>/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#archive" />
@@ -52,12 +58,28 @@
                 </svg>
                 <small class="text-center">Home</small>
             </a>
-            <a class="nav-link text-secondary d-flex flex-column p-1 align-items-center">
-                <svg class="bi mx-auto" width="18" height="18" fill="currentColor">
-                    <use xlink:href="<?= BASEURL; ?>/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#card-list" />
-                </svg>
-                <small class="text-center">Sewaan</small>
-            </a>
+            <div class="dropup">
+                <a class="nav-link text-secondary d-flex flex-column p-1 align-items-center" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
+                    <svg class="bi mx-auto" width="18" height="18" fill="currentColor">
+                        <use xlink:href="<?= BASEURL; ?>/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#archive" />
+                    </svg>
+                    <small class="text-center">Sewaan</small>
+                </a>
+                <div class="dropdown-menu anim-fade shadow dropdown-menu-center">
+                    <a class="dropdown-item" href="#">
+                        <svg class="bi mr-2" width="18" height="18" fill="currentColor">
+                            <use xlink:href="<?= BASEURL; ?>/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#card-list" />
+                        </svg>
+                        Daftar Sewaan
+                    </a>
+                    <a class="dropdown-item" href="<?= BASEURL ?>/datapenyewa">
+                        <svg class="bi mr-2" width="18" height="18" fill="currentColor">
+                            <use xlink:href="<?= BASEURL; ?>/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#person-check" />
+                        </svg>
+                        Daftar Penyewa
+                    </a>
+                </div>
+            </div>
             <div class="dropup">
                 <a class="nav-link text-secondary d-flex flex-column p-1 align-items-center" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
                     <svg class="bi mx-auto" width="18" height="18" fill="currentColor">
