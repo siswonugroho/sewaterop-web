@@ -30,7 +30,7 @@
                 <?php foreach ($data['formvalue']['id_barang'] as $key => $value) : ?>
                     <div class="col p-0">
                         <div class="card mx-0 mx-sm-2 my-2 shadow-sm border-0">
-                            <img src="<?= BASEURL ?>/resources/img/databarang/<?= $data['formvalue']['foto_barang'][$key]['foto_barang'] ?>" class="rounded-sm card-img" alt="foto barang" onerror="this.onerror = null; this.src = '<?= BASEURL ?>/resources/img/noimg.png'" style="width:100%; height: 30vh; object-fit: cover; ">
+                            <img src="<?= BASEURL ?>/resources/img/databarang/<?= $data['formvalue']['foto_barang'][$key]['foto_barang'] ?>" class="rounded-sm card-img" alt="foto barang" onerror="this.onerror = null; this.src = '<?= BASEURL ?>/resources/img/noimg.png'" style="width:100%; height: 25vh; object-fit: cover; ">
                             <div class="card-img-overlay m-0 text-white" style="background: rgb(47,47,47);
 background: linear-gradient(180deg, rgba(47,47,47,0.5555264342064952) 7%, rgba(126,126,126,0) 100%);">
                                 <h2 class="display-4 font-weight-normal"><?= $data['formvalue']['jumlah_barang'][$key] ?></h2>

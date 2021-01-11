@@ -41,7 +41,7 @@
 </section>
 
 <div class="modal fade" id="pilih-barang" tabindex="-1">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <span class="modal-header">
                 <h3 class="modal-title">Pilih barang</h3>
@@ -57,11 +57,17 @@
                 </span>
             </div>
             <div class="modal-footer">
+                <div class="alert alert-danger alert-dismissible fade anim-fade d-none px-3" role="alert">
+                    <svg class="bi text-danger mr-2" width="24" height="24" fill="currentColor">
+                        <use xlink:href="<?= BASEURL ?>/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#x-circle" />
+                    </svg>
+                    Jumlah barang yang dipilih tidak boleh melebihi stok.
+                </div>
                 <div class="form-inline">
                     <label for="pilihJumlah">Jumlah:</label>
                     <input type="number" class="form-control form-control-sm  mx-1" name="jumlah" value="0" id="pilihJumlah">
                 </div>
-                    <a class="btn btn-primary" data-dismiss="modal" id="tambahItem">Tambah</a>
+                <a class="btn btn-primary" data-dismiss="modal" id="tambahItem">Tambah</a>
             </div>
         </div>
     </div>
