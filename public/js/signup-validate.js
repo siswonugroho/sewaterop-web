@@ -72,7 +72,7 @@ forms.addEventListener('submit', function (event) {
 
 async function isUsernameAlreadyExists() {
     try {
-        const response = await fetch(`${BASEURL}/getUsername`, {
+        const response = await fetch(`${BASEURL}/signup/getUsername`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/x-www-form-urlencoded"
