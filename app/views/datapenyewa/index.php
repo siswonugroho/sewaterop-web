@@ -36,6 +36,7 @@
                     </a>
                     <div class="dropdown-menu dropdown-menu-right anim-fade shadow">
                         <button class="dropdown-item sort" data-sort="nama" type="button">Nama</button>
+                        <button class="dropdown-item sort" data-sort="last-added" type="button">Terakhir ditambahkan</button>
                         <button class="dropdown-item sort" data-sort="alamat" type="button">Alamat</button>
                         <button class="dropdown-item sort" data-sort="telepon" type="button">No. telp</button>
                     </div>

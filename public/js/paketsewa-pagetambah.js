@@ -1,10 +1,13 @@
 document.addEventListener('DOMContentLoaded', function (event) {
     const listIsiPaket = document.querySelector('.list-barang');
+    const inputPaketFlag = listIsiPaket.querySelector('#isi-paket-flag');
     const btnOpenModal = document.querySelector('a[data-toggle=modal]');
     const modalDialog = document.querySelector('.modal');
     const modalBody = modalDialog.querySelector('.modal-body');
     const modalFooter = modalBody.nextElementSibling;
     const modalLoading = modalDialog.querySelector('#loading-list');
+    const modalAlertError = modalFooter.querySelector('.alert');
+    const modalInputJumlah = modalFooter.querySelector('input[type=number]');
 
     async function getListBarang() {
         try {
@@ -44,32 +47,28 @@ document.addEventListener('DOMContentLoaded', function (event) {
 
     modalFooter.querySelector('#tambahItem').addEventListener('click', function (e) {
         const radioBarang = modalBody.querySelectorAll('input[type=radio]');
-        const modalInputJumlah = modalFooter.querySelector('input[type=number]');
-        const modalAlertError = modalFooter.querySelector('.alert');
+
         radioBarang.forEach(barang => {
             if (barang.checked) {
-                const stokBarang = barang.nextElementSibling.querySelector('.stok-barang').textContent;
-                if (modalInputJumlah.value > stokBarang) {
+                const stokBarang = parseInt(barang.nextElementSibling.querySelector('.stok-barang').textContent);
+                if (parseInt(modalInputJumlah.value) > stokBarang) {
                     this.setAttribute("data-dismiss", "none");
                     modalAlertError.classList.replace('d-none', 'show');
                 } else {
                     this.setAttribute("data-dismiss", "modal");
                     modalAlertError.classList.replace('show', 'd-none');
                     listIsiPaket.insertAdjacentHTML('beforeend', `<div class="input-group list-item">
-        <input type="number" readonly name="paket[jumlah_barang][]" class="form-control bg-white jumlah" value="${modalInputJumlah.value}">
-        <input type="hidden" name="paket[id_barang][]" class="form-control bg-white jumlah" value="${barang.getAttribute('id')}">
-        <input type="text" readonly name="paket[nama_barang][]" class="form-control bg-white w-50 nama" value="${barang.value}">
-        <div class="input-group-append remove-btn">
-            <a href="javascript:void(0)" class="text-decoration-none input-group-text">
-            <svg class="bi" width="18" height="18" fill="currentColor">
-                <use xlink:href="${BASEURL}/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#x" />
-            </svg>
-            </a>
-        </div>
-    </div>`);
+<input type="number" readonly name="paket[jumlah_barang][]" class="form-control bg-white jumlah" value="${modalInputJumlah.value}">
+<input type="hidden" name="paket[id_barang][]" class="form-control bg-white jumlah" value="${barang.getAttribute('id')}">
+<input type="text" readonly name="paket[nama_barang][]" class="form-control bg-white w-50 nama" value="${barang.value}">
+<div class="input-group-append remove-btn">
+    <a href="javascript:void(0)" class="text-decoration-none input-group-text">&times;</a>
+</div>
+</div>`);
                 }
             }
         });
+        validateListIsiPaket();
         removeBarangFromList();
     });
 
@@ -77,13 +76,29 @@ document.addEventListener('DOMContentLoaded', function (event) {
         listIsiPaket.querySelectorAll('.remove-btn').forEach(btn => {
             btn.addEventListener('click', function () {
                 this.parentElement.remove();
+                validateListIsiPaket();
             });
         });
+        
     }
 
     btnOpenModal.addEventListener('click', function () {
         getListBarang();
     });
 
+    function validateListIsiPaket() {
+        if (listIsiPaket.querySelectorAll('.list-item').length === 0) {
+            inputPaketFlag.value = '';
+        } else {
+            inputPaketFlag.value = 1;
+        }
+    }
+
+    $(modalDialog).on('hidden.bs.modal', function (e) {
+        modalAlertError.classList.replace('show', 'd-none');
+        modalInputJumlah.value = 0;
+    });
+
+    validateListIsiPaket();
     removeBarangFromList();
 });

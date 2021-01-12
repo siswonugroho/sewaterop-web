@@ -8,19 +8,22 @@
         <h2 class="text-center mx-4 my-0 text-truncate">Tambah Penyewa Baru</h2>
     </header>
     <main class="mt-3 mx-2 mx-sm-5">
-        <form action="<?= BASEURL ?>/datapenyewa/tambah" method="post" enctype="multipart/form-data">
+        <form action="<?= BASEURL ?>/datapenyewa/tambah" method="post" enctype="multipart/form-data" novalidate>
             <input type="text" hidden readonly class="form-control" name="id_penyewa" id="id_penyewa" value="<?= $data['id_penyewa'] ?>">
             <div class="form-group">
                 <label for="nama_penyewa">Nama Penyewa</label>
-                <input type="text" class="form-control" name="nama_penyewa" id="nama_penyewa">
+                <input type="text" required class="form-control" name="nama_penyewa" id="nama_penyewa">
+                <div class="invalid-feedback">Harap isi kolom ini</div>
             </div>
             <div class="form-group">
                 <label for="stok">No. Telepon</label>
-                <input type="number" class="form-control" name="telepon" id="telepon">
+                <input type="number" required class="form-control" name="telepon" id="telepon">
+                <div class="invalid-feedback">Harap isi kolom ini</div>
             </div>
             <div class="form-group">
                 <label for="harga">Alamat</label>
-                <textarea rows="4" class="form-control" name="alamat" id="alamat"></textarea>
+                <textarea required rows="4" class="form-control" name="alamat" id="alamat"></textarea>
+                <div class="invalid-feedback">Harap isi kolom ini</div>
             </div>
 
             <button type="submit" class="btn btn-lg btn-primary my-3">
@@ -33,3 +36,4 @@
     </main>
     <div style="height: 15vh;"></div>
 </section>
+<script src="<?= BASEURL ?>/js/formvalidate.min.js"></script>
