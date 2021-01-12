@@ -19,16 +19,20 @@ class DataPaketSewa extends Controller
 
     public function getListPaket()
     {
-        $data = $this->model('Paket_model')->getListPaket();
-        $output = array();
-        foreach ($data as $value) {
-            $output[$value['id_paket']]['id_paket'] = $value['id_paket'];
-            $output[$value['id_paket']]['nama_paket'] = $value['nama_paket'];
-            $output[$value['id_paket']]['harga'] = $value['harga'];
-            $output[$value['id_paket']]['nama_barang'][] = $value['nama_barang'];
-            $output[$value['id_paket']]['jumlah_barang'][] = $value['jumlah_barang'];
+        if (Session::isLoggedIn()) {
+            $data = $this->model('Paket_model')->getListPaket();
+            $output = array();
+            foreach ($data as $value) {
+                $output[$value['id_paket']]['id_paket'] = $value['id_paket'];
+                $output[$value['id_paket']]['nama_paket'] = $value['nama_paket'];
+                $output[$value['id_paket']]['harga'] = $value['harga'];
+                $output[$value['id_paket']]['nama_barang'][] = $value['nama_barang'];
+                $output[$value['id_paket']]['jumlah_barang'][] = $value['jumlah_barang'];
+            }
+            echo json_encode($output);
+        } else {
+            header('location: ' . filter_var(BASEURL . '/login', FILTER_VALIDATE_URL));
         }
-        echo json_encode($output);
     }
 
     public function pagetambah()
@@ -78,7 +82,6 @@ class DataPaketSewa extends Controller
         if ($_SERVER['REQUEST_METHOD'] == 'POST' && Session::isLoggedIn()) {
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
-
             $submittedData = [
                 'id_paket' => $_POST['paket']['id_paket'],
                 'nama_paket' => $_POST['paket']['nama_paket'],
@@ -107,11 +110,11 @@ class DataPaketSewa extends Controller
             header('location: ' . filter_var(BASEURL . '/login', FILTER_VALIDATE_URL));
         }
     }
+
     public function edit()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST' && Session::isLoggedIn()) {
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-
 
             $submittedData = [
                 'id_paket' => $_POST['paket']['id_paket'],

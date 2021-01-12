@@ -36,7 +36,7 @@ class DataBarang extends Controller
 
     public function tambah()
     {
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST' && Session::isLoggedIn()) {
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
             $submittedData = [
@@ -56,13 +56,14 @@ class DataBarang extends Controller
                 header('location:' . filter_var(BASEURL . '/databarang', FILTER_VALIDATE_URL));
                 exit;
             }
-
+        } else {
+            header('location: ' . filter_var(BASEURL . '/login', FILTER_VALIDATE_URL));
         }
     }
 
     public function edit()
     {
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST' && Session::isLoggedIn()) {
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
             $submittedData = [
@@ -74,7 +75,7 @@ class DataBarang extends Controller
                 'stok' => $_POST['stok']
             ];
 
-            if($_FILES['foto_barang']['error'] === 4) {
+            if ($_FILES['foto_barang']['error'] === 4) {
                 $submittedData['foto_barang'] = $submittedData['foto_barang_lama'];
             } else {
                 $submittedData['foto_barang'] = ImageUploader::checkAndUploadImage($_FILES['foto_barang'], $this->imgPath);
@@ -90,34 +91,39 @@ class DataBarang extends Controller
                 header('location:' . filter_var(BASEURL . '/databarang', FILTER_VALIDATE_URL));
                 exit;
             }
-
+        } else {
+            header('location: ' . filter_var(BASEURL . '/login', FILTER_VALIDATE_URL));
         }
     }
 
     public function hapus($id)
     {
-        $imgFile = $this->model('Barang_model')->getImageById($id);
-        if (file_exists($this->imgPath . $imgFile['foto_barang'])) unlink($this->imgPath . $imgFile['foto_barang']);
-        if ($this->model('Barang_model')->hapusDataBarang($id) > 0) {
-            Flasher::setFlash('Data barang berhasil dihapus', 'success', 'check-circle');
-            header('location:' . filter_var(BASEURL . '/databarang', FILTER_VALIDATE_URL));
-            exit;
+        if (Session::isLoggedIn()) {
+            $imgFile = $this->model('Barang_model')->getImageById($id);
+            if (file_exists($this->imgPath . $imgFile['foto_barang'])) unlink($this->imgPath . $imgFile['foto_barang']);
+            if ($this->model('Barang_model')->hapusDataBarang($id) > 0) {
+                Flasher::setFlash('Data barang berhasil dihapus', 'success', 'check-circle');
+                header('location:' . filter_var(BASEURL . '/databarang', FILTER_VALIDATE_URL));
+                exit;
+            } else {
+                Flasher::setFlash('Tidak dapat menghapus data barang', 'danger', 'x-circle');
+                header('location:' . filter_var(BASEURL . '/databarang', FILTER_VALIDATE_URL));
+                exit;
+            }
         } else {
-            Flasher::setFlash('Tidak dapat menghapus data barang', 'danger', 'x-circle');
-            header('location:' . filter_var(BASEURL . '/databarang', FILTER_VALIDATE_URL));
-            exit;
+            header('location: ' . filter_var(BASEURL . '/login', FILTER_VALIDATE_URL));
         }
     }
 
     public function pageEdit($id)
     {
         if (Session::isLoggedIn()) {
-            $data['formvalue']= $this->model('Barang_model')->getBarangById($id);
+            $data['formvalue'] = $this->model('Barang_model')->getBarangById($id);
             $data['judul'] = 'Edit Barang';
             $data['nav-link'] = 'Barang';
             $this->view('templates/header', $data);
             $this->view('templates/navs', $data);
-            $this->view('databarang/pageedit',$data);
+            $this->view('databarang/pageedit', $data);
             $this->view('templates/footer');
         } else {
             header('location: ' . filter_var(BASEURL . '/login', FILTER_VALIDATE_URL));
@@ -126,6 +132,10 @@ class DataBarang extends Controller
 
     public function getListBarang()
     {
-        echo json_encode($this->model('Barang_model')->getListBarang());
+        if (Session::isLoggedIn()) {
+            echo json_encode($this->model('Barang_model')->getListBarang());
+        } else {
+            header('location: ' . filter_var(BASEURL . '/login', FILTER_VALIDATE_URL));
+        }
     }
 }

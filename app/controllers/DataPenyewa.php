@@ -34,7 +34,7 @@ class DataPenyewa extends Controller
 
     public function tambah()
     {
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST' && Session::isLoggedIn()) {
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
             $submittedData = [
@@ -53,13 +53,14 @@ class DataPenyewa extends Controller
                 header('location:' . filter_var(BASEURL . '/datapenyewa', FILTER_VALIDATE_URL));
                 exit;
             }
-
+        } else {
+            header('location: ' . filter_var(BASEURL . '/login', FILTER_VALIDATE_URL));
         }
     }
 
     public function edit()
     {
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST' && Session::isLoggedIn()) {
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
             $submittedData = [
@@ -78,32 +79,37 @@ class DataPenyewa extends Controller
                 header('location:' . filter_var(BASEURL . '/datapenyewa', FILTER_VALIDATE_URL));
                 exit;
             }
-
+        } else {
+            header('location: ' . filter_var(BASEURL . '/login', FILTER_VALIDATE_URL));
         }
     }
 
     public function hapus($id)
     {
-        if ($this->model('Penyewa_model')->hapusDataPenyewa($id) > 0) {
-            Flasher::setFlash('Penyewa berhasil dihapus', 'success', 'check-circle');
-            header('location:' . filter_var(BASEURL . '/datapenyewa', FILTER_VALIDATE_URL));
-            exit;
+        if (Session::isLoggedIn()) {
+            if ($this->model('Penyewa_model')->hapusDataPenyewa($id) > 0) {
+                Flasher::setFlash('Penyewa berhasil dihapus', 'success', 'check-circle');
+                header('location:' . filter_var(BASEURL . '/datapenyewa', FILTER_VALIDATE_URL));
+                exit;
+            } else {
+                Flasher::setFlash('Tidak dapat menghapus penyewa', 'danger', 'x-circle');
+                header('location:' . filter_var(BASEURL . '/datapenyewa', FILTER_VALIDATE_URL));
+                exit;
+            }
         } else {
-            Flasher::setFlash('Tidak dapat menghapus penyewa', 'danger', 'x-circle');
-            header('location:' . filter_var(BASEURL . '/datapenyewa', FILTER_VALIDATE_URL));
-            exit;
+            header('location: ' . filter_var(BASEURL . '/login', FILTER_VALIDATE_URL));
         }
     }
 
     public function pageEdit($id)
     {
         if (Session::isLoggedIn()) {
-            $data['formvalue']= $this->model('Penyewa_model')->getPenyewaById($id);
+            $data['formvalue'] = $this->model('Penyewa_model')->getPenyewaById($id);
             $data['judul'] = 'Edit Data Penyewa';
             $data['nav-link'] = 'Penyewa';
             $this->view('templates/header', $data);
             $this->view('templates/navs', $data);
-            $this->view('datapenyewa/pageedit',$data);
+            $this->view('datapenyewa/pageedit', $data);
             $this->view('templates/footer');
         } else {
             header('location: ' . filter_var(BASEURL . '/login', FILTER_VALIDATE_URL));
@@ -112,6 +118,10 @@ class DataPenyewa extends Controller
 
     public function getListPenyewa()
     {
-        echo json_encode($this->model('Penyewa_model')->getListPenyewa());
+        if (Session::isLoggedIn()) {
+            echo json_encode($this->model('Penyewa_model')->getListPenyewa());
+        } else {
+            header('location: ' . filter_var(BASEURL . '/login', FILTER_VALIDATE_URL));
+        }
     }
 }

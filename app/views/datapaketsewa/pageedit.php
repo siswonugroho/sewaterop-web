@@ -35,11 +35,7 @@
                                 <input type="hidden" name="paket[id_barang][]" class="form-control bg-white jumlah" value="<?= $data['formvalue']['id_barang'][$key] ?>">
                                 <input type="text" readonly name="paket[nama_barang][]" class="form-control bg-white w-50 nama" value="<?= $data['formvalue']['nama_barang'][$key] ?>">
                                 <div class="input-group-append remove-btn">
-                                    <a href="javascript:void(0)" class="text-decoration-none input-group-text">
-                                        <svg class="bi" width="20" height="20" fill="currentColor">
-                                            <use xlink:href="<?= BASEURL; ?>/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#x" />
-                                        </svg>
-                                    </a>
+                                    <a href="javascript:void(0)" class="text-decoration-none input-group-text">&times;</a>
                                 </div>
                             </div>
                         <?php endforeach ?>
