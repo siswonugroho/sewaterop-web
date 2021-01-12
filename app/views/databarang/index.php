@@ -36,6 +36,7 @@
                     </a>
                     <div class="dropdown-menu dropdown-menu-right anim-fade shadow">
                         <button class="dropdown-item sort" data-sort="nama" type="button">Nama</button>
+                        <button class="dropdown-item sort" data-sort="last-added" type="button">Terakhir ditambahkan</button>
                         <button class="dropdown-item sort" data-sort="harga" type="button">Harga</button>
                         <button class="dropdown-item sort" data-sort="stok" type="button">Stok</button>
                     </div>
@@ -64,7 +65,7 @@
                 <p class="font-weight-normal"></p>
             </div>
 
-            <div class="list-group list">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 m-0 list">
 
             </div>
 

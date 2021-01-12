@@ -9,22 +9,25 @@
     </header>
     <main class="mt-3 mx-2 mx-sm-5">
 
-        <form action="<?= BASEURL ?>/databarang/edit" method="post" enctype="multipart/form-data">
+        <form action="<?= BASEURL ?>/databarang/edit" method="post" enctype="multipart/form-data" novalidate>
             <div class="row">
                 <div class="col-sm">
                     <input type="text" hidden readonly class="form-control" name="id_barang" id="id_barang" value="<?= $data['formvalue']['id_barang'] ?>">
                     <input type="text" hidden readonly class="form-control" name="foto_barang_lama" value="<?= $data['formvalue']['foto_barang'] ?>">
                     <div class="form-group">
                         <label for="nama_barang">Nama Barang</label>
-                        <input type="text" class="form-control" name="nama_barang" id="nama_barang" value="<?= $data['formvalue']['nama_barang'] ?>">
+                        <input type="text" required class="form-control" name="nama_barang" id="nama_barang" value="<?= $data['formvalue']['nama_barang'] ?>">
+                        <div class="invalid-feedback">Harap isi kolom ini</div>
                     </div>
                     <div class="form-group">
                         <label for="harga">Harga (Rp)</label>
-                        <input type="number" class="form-control" name="harga" id="harga" value="<?= $data['formvalue']['harga'] ?>" placeholder="Misal: 10000">
+                        <input type="number" required class="form-control" name="harga" id="harga" value="<?= $data['formvalue']['harga'] ?>" placeholder="Misal: 10000">
+                        <div class="invalid-feedback">Harap isi kolom ini</div>
                     </div>
                     <div class="form-group">
                         <label for="stok">Stok</label>
-                        <input type="number" class="form-control" name="stok" id="stok" value="<?= $data['formvalue']['stok'] ?>">
+                        <input type="number" required class="form-control" name="stok" id="stok" value="<?= $data['formvalue']['stok'] ?>">
+                        <div class="invalid-feedback">Harap isi kolom ini</div>
                     </div>
                 </div>
                 <div class="col-sm">
@@ -51,5 +54,5 @@
     </main>
     <div style="height: 15vh;"></div>
 </section>
-<script src="<?= BASEURL ?>/js/compressor.min.js"></script>
+<script src="<?= BASEURL ?>/js/formvalidate.min.js"></script>
 <script src="<?= BASEURL ?>/js/file-input.min.js"></script>

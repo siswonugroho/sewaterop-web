@@ -8,22 +8,26 @@
         <h2 class="text-center mx-4 my-0 text-truncate">Tambah Paket Sewa</h2>
     </header>
     <main class="mt-3 mx-2 mx-sm-5">
-        <form action="<?= BASEURL ?>/datapaketsewa/tambah" method="post">
+        <form action="<?= BASEURL ?>/datapaketsewa/tambah" method="post" novalidate>
             <div class="row">
                 <div class="col-sm">
                     <input type="hidden" name="paket[id_paket]" id="id_paket" value="<?= $data['id_paket'] ?>">
                     <div class="form-group">
                         <label for="nama_barang">Nama Paket Sewa</label>
-                        <input type="text" class="form-control" name="paket[nama_paket]" id="nama_paket">
+                        <input type="text" required class="form-control" name="paket[nama_paket]" id="nama_paket">
+                        <div class="invalid-feedback">Harap isi kolom ini</div>
                     </div>
                     <div class="form-group">
                         <label for="harga">Harga (Rp)</label>
-                        <input type="number" class="form-control" name="paket[harga]" id="harga" placeholder="Misal: 10000">
+                        <input type="number" required class="form-control" name="paket[harga]" id="harga" placeholder="Misal: 10000">
+                        <div class="invalid-feedback">Harap isi kolom ini</div>
                     </div>
                 </div>
                 <div class="col-sm">
                     <div class="form-group list-barang">
                         <label for="nama_barang">Isi paket</label>
+                        <input type="text" hidden required id="isi-paket-flag">
+                        <div class="invalid-feedback">Harap tambahkan setidaknya 1 isi paket</div>
                     </div>
                     <a class="btn btn-outline-primary" data-toggle="modal" data-target="#pilih-barang">Tambah barang</a>
                 </div>
@@ -40,8 +44,8 @@
     <div style="height: 15vh;"></div>
 </section>
 
-<div class="modal fade" id="pilih-barang" tabindex="-1">
-    <div class="modal-dialog">
+<div class="modal fade px-0" id="pilih-barang" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
             <span class="modal-header">
                 <h3 class="modal-title">Pilih barang</h3>
@@ -57,14 +61,21 @@
                 </span>
             </div>
             <div class="modal-footer">
+                <div class="alert alert-danger alert-dismissible fade anim-fade d-none px-3" role="alert">
+                    <svg class="bi text-danger mr-2" width="24" height="24" fill="currentColor">
+                        <use xlink:href="<?= BASEURL ?>/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#x-circle" />
+                    </svg>
+                    Jumlah barang yang dipilih tidak boleh melebihi stok.
+                </div>
                 <div class="form-inline">
                     <label for="pilihJumlah">Jumlah:</label>
                     <input type="number" class="form-control form-control-sm  mx-1" name="jumlah" value="0" id="pilihJumlah">
                 </div>
-                    <a class="btn btn-primary" data-dismiss="modal" id="tambahItem">Tambah</a>
+                <a class="btn btn-primary" data-dismiss="modal" id="tambahItem">Tambah</a>
             </div>
         </div>
     </div>
 </div>
 
 <script src="<?= BASEURL ?>/js/paketsewa-pagetambah.min.js"></script>
+<script src="<?= BASEURL ?>/js/formvalidate.min.js"></script>

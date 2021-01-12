@@ -14,11 +14,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
         try {
             listPaketLoading.classList.remove("d-none");
             const response = await fetch(`${BASEURL}/datapaketsewa/getListPaket`, {
-                method: "GET",
-                headers: {
-                    "Content-Type": "application/x-www-form-urlencoded"
-                },
-                cache: "reload"
+                method: "GET"
             });
             listPaketLoading.classList.add("d-none");
             if (!response.ok) throw Error();
@@ -28,24 +24,25 @@ document.addEventListener('DOMContentLoaded', function (event) {
             renderListPaket(responseJson);
             countDataPaket(listGroupElement);
             if (Object.keys(responseJson).length !== 0) {
-                listPaketEmptyMessage.classList.replace("d-flex", "d-none");
+                toggleListEmpty('hide');
                 const listPaket = new List('list-paket', {
-                    valueNames: ['nama', 'harga']
+                    valueNames: ['nama', 'harga', 'last-added']
                 });
-                listPaket.sort('nama', { order: "asc" });
+                listPaket.sort('last-added', { order: "desc" });
+                listPaket.on('searchComplete', function () {
+                    if (listPaket.matchingItems.length === 0) {
+                        toggleListEmpty('show', 'search', 'Hasil pencarian tidak ditemukan', 'Coba masukkan kata kunci lain yang lebih umum.');
+                    } else {
+                        toggleListEmpty('hide');
+                    }
+                });
             } else {
-                listPaketEmptyMessage.classList.replace("d-none", "d-flex");
-                listPaketEmptyMessage.children[0].querySelector("use").setAttribute("xlink:href", `${BASEURL}/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#emoji-frown`);
-                listPaketEmptyMessage.children[1].textContent = "Tidak ada paket sewa disini.";
-                listPaketEmptyMessage.children[2].textContent = " Tambahkan paket sewa baru dengan pilihan barang dan harga yang menarik bagi konsumen Anda sekarang.";
+                toggleListEmpty('show', 'emoji-frown', 'Tidak ada paket sewa disini', 'Tambahkan paket sewa baru dengan pilihan barang dan harga terbaik bagi konsumen Anda sekarang.')
             }
 
         } catch (error) {
             listPaketLoading.classList.add("d-none");
-            listPaketEmptyMessage.classList.replace("d-none", "d-flex");
-            listPaketEmptyMessage.children[0].querySelector("use").setAttribute("xlink:href", `${BASEURL}/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#x-circle`);
-            listPaketEmptyMessage.children[1].textContent = "Gagal memuat daftar paket.";
-            listPaketEmptyMessage.children[2].textContent = "Coba lagi nanti atau refresh halaman ini.";
+            toggleListEmpty('show', 'x-circle', 'Gagal memuat daftar paket sewa', 'Coba lagi nanti atau refresh halaman ini.');
             console.error(error);
         }
     }
@@ -64,6 +61,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
         <div class="card-body">
             <h3 class="nama mb-1">${dataPaket[paket].nama_paket}</h3>
             <p class="small isi_paket text-muted text-truncate">${isi_paket.join(', ')}</p>
+            <p class="d-none last-added">${dataPaket[paket].id_paket}</p>
             <p class="harga lead font-weight-normal mt-3">Rp.${formatRupiah(dataPaket[paket].harga)}</p>
             <div class="d-flex flex-row flex-sm-column mt-4">
                 <a href="${BASEURL}/datapaketsewa/details/viewdetail/${dataPaket[paket].id_paket}" class="btn btn-dark m-1 text-truncate">
@@ -93,6 +91,20 @@ document.addEventListener('DOMContentLoaded', function (event) {
                 });
             });
         });
+    }
+
+    function toggleListEmpty(toggle, iconName = "", messageTitle = "", messageDetail = "") {
+        switch (toggle) {
+            case "show":
+                listPaketEmptyMessage.classList.replace("d-none", "d-flex");
+                listPaketEmptyMessage.children[0].querySelector("use").setAttribute("xlink:href", `${BASEURL}/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#${iconName}`);
+                listPaketEmptyMessage.children[1].textContent = messageTitle;
+                listPaketEmptyMessage.children[2].textContent = messageDetail;
+                break;
+            case "hide":
+                listPaketEmptyMessage.classList.replace("d-flex", "d-none");
+                break;
+        }
     }
 
     document.querySelector("a#btn-refresh").addEventListener('click', function () {

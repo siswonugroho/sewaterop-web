@@ -27,24 +27,25 @@ document.addEventListener('DOMContentLoaded', function (event) {
             renderListPenyewa(responseJson);
             countDataPenyewa(listGroupElement);
             if (Object.keys(responseJson).length !== 0) {
-                listPenyewaEmptyMessage.classList.replace("d-flex", "d-none");
+                toggleListEmpty('hide');
                 const listPenyewa = new List('list-penyewa', {
-                    valueNames: ['nama', 'alamat', 'telepon']
+                    valueNames: ['nama', 'alamat', 'telepon', 'last-added']
                 });
-                listPenyewa.sort('nama', { order: "asc" });
+                listPenyewa.sort('last-added', { order: "desc" });
+                listPenyewa.on('searchComplete', function () {
+                    if (listPenyewa.matchingItems.length === 0) {
+                        toggleListEmpty('show', 'search', 'Hasil pencarian tidak ditemukan', 'Coba masukkan kata kunci lain yang lebih umum.');
+                    } else {
+                        toggleListEmpty('hide');
+                    }
+                });
             } else {
-                listPenyewaEmptyMessage.classList.replace("d-none", "d-flex");
-                listPenyewaEmptyMessage.children[0].querySelector("use").setAttribute("xlink:href", `${BASEURL}/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#emoji-frown`);
-                listPenyewaEmptyMessage.children[1].textContent = "Tidak ada penyewa disini.";
-                listPenyewaEmptyMessage.children[2].textContent = "Tambahkan penyewa baru sebelum membuat pesanan sewa.";
+                toggleListEmpty('show', 'emoji-frown', 'Tidak ada penyewa disini', 'Sebelum membuat pesanan, tambahkan penyewa terlebih dahulu');
             }
 
         } catch (error) {
             listPenyewaLoading.classList.add("d-none");
-            listPenyewaEmptyMessage.classList.replace("d-none", "d-flex");
-            listPenyewaEmptyMessage.children[0].querySelector("use").setAttribute("xlink:href", `${BASEURL}/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#x-circle`);
-            listPenyewaEmptyMessage.children[1].textContent = "Gagal memuat daftar penyewa.";
-            listPenyewaEmptyMessage.children[2].textContent = "Coba lagi nanti atau refresh halaman ini.";
+            toggleListEmpty('show', 'x-circle', 'Gagal memuat daftar penyewa', 'Coba lagi nanti atau refresh halaman ini.');
             console.error(error);
         }
     }
@@ -71,6 +72,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
     </span>
     <p class="text-muted my-0 alamat">${penyewa.alamat}</p>
     <p class="text-muted my-0 telepon">${penyewa.telepon}</p>
+    <p class="d-none last-added">${penyewa.id_pemesan}</p>
 </div>`);
         });
 
@@ -82,6 +84,20 @@ document.addEventListener('DOMContentLoaded', function (event) {
                 });
             });
         });
+    }
+
+    function toggleListEmpty(toggle, iconName = "", messageTitle = "", messageDetail = "") {
+        switch (toggle) {
+            case "show":
+                listPenyewaEmptyMessage.classList.replace("d-none", "d-flex");
+                listPenyewaEmptyMessage.children[0].querySelector("use").setAttribute("xlink:href", `${BASEURL}/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#${iconName}`);
+                listPenyewaEmptyMessage.children[1].textContent = messageTitle;
+                listPenyewaEmptyMessage.children[2].textContent = messageDetail;
+                break;
+            case "hide":
+                listPenyewaEmptyMessage.classList.replace("d-flex", "d-none");
+                break;
+        }
     }
 
     document.querySelector("a#btn-refresh").addEventListener('click', function () {
