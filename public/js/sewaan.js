@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
             if (Object.keys(responseJson).length !== 0) {
                 toggleListEmpty('hide');
                 const listSewaan = new List('list-sewaan', {
-                    valueNames: ['nama', 'barang-sewaan', 'tgl-mulai', 'tgl-selesai', 'last-added']
+                    valueNames: ['nama', 'barang-sewaan', 'tgl', 'last-added']
                 });
                 listSewaan.sort('last-added', { order: "desc" });
                 listSewaan.on('searchComplete', function () {
@@ -78,10 +78,8 @@ document.addEventListener('DOMContentLoaded', function (event) {
         </div>
     </span>
     <p class="text-muted my-0 barang-sewaan">${barangSewaanText}</p>
-    <p class="text-muted my-0">${dt.fromSQL(sewaan.tgl_mulai).setLocale('id').toLocaleString(dt.DATE_MED)} s/d ${dt.fromSQL(sewaan.tgl_selesai).setLocale('id').toLocaleString(dt.DATE_MED)}</p>
+    <p class="text-muted my-0 tgl">${dt.fromSQL(sewaan.tgl_mulai).setLocale('id').toLocaleString(dt.DATE_MED)} s/d ${dt.fromSQL(sewaan.tgl_selesai).setLocale('id').toLocaleString(dt.DATE_MED)}</p>
     <p class="d-none last-added">${sewaan.id_pesanan}</p>
-    <p class="d-none tgl-mulai">${sewaan.tgl_mulai}</p>
-    <p class="d-none tgl-selesai">${sewaan.tgl_selesai}</p>
     <a href="${BASEURL}/datasewaan/details/viewdetail/${sewaan.id_pesanan}" class="text-primary">Detail</a>
 </div>`);
             
