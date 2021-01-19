@@ -35,9 +35,9 @@
                         <img src="" alt="foto barang" class="rounded-sm img-thumbnail" style="object-fit: cover; height: 30vh; width: 30vh;" onerror="this.onerror = null; this.src = '<?= BASEURL ?>/resources/img/noimg.png'" id="preview_foto_barang">
                         <label for="foto_barang" class="btn btn-sm btn-outline-dark my-2">Upload Foto</label>
                         <small id="foto_barang_help" class="form-text text-muted">
-                            Format gambar harus berupa jpg/jpeg/png.
+                            Format gambar harus berupa jpeg/png.
                         </small>
-                        <input type="file" hidden accept="image/jpg,image/jpeg,image/png" class="form-control-file" name="foto_barang" id="foto_barang" aria-describedby="foto_barang_help">
+                        <input type="file" hidden accept="image/jpeg,image/png" class="form-control-file" name="foto_barang" id="foto_barang" aria-describedby="foto_barang_help">
                     </div>
                 </div>
             </div>

@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
         <img src="${BASEURL}/resources/img/databarang/${barang.foto_barang}" class="card-img-top" alt="foto barang" onerror="this.onerror = null; this.src = '${BASEURL}/resources/img/noimg.png'" style="object-fit: cover; height: 10em; width: 100%;">
         <div class="card-body">
             <span class="d-flex w-100 justify-content-between">
-                <h3 class="nama text-truncate">${barang.nama_barang}</h3>
+                <h5 class="nama text-truncate">${barang.nama_barang}</h5>
                 <div class="dropdown p-0">
                     <button class="btn text-primary p-1" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
                         <svg class="bi" width="24" height="24" fill="currentColor">

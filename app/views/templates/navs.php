@@ -11,7 +11,7 @@
                 </svg>
                 Home
             </a>
-            <a class="nav-link text-secondary py-2" id="sewaan-link" href="#pills-profile">
+            <a class="nav-link text-secondary py-2" id="sewaan-link" href="<?= BASEURL ?>/datasewaan">
                 <svg class="bi mr-3" width="24" height="24" fill="currentColor">
                     <use xlink:href="<?= BASEURL; ?>/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#card-list" />
                 </svg>
@@ -66,7 +66,7 @@
                     <small class="text-center">Sewaan</small>
                 </a>
                 <div class="dropdown-menu anim-fade shadow dropdown-menu-center">
-                    <a class="dropdown-item" href="#">
+                    <a class="dropdown-item" href="<?= BASEURL ?>/datasewaan">
                         <svg class="bi mr-2" width="18" height="18" fill="currentColor">
                             <use xlink:href="<?= BASEURL; ?>/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#card-list" />
                         </svg>

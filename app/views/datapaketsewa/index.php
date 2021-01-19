@@ -26,9 +26,9 @@
 
         <div class="d-flex justify-content-between">
             <p>Total <strong id="total-paket">0</strong> paket sewa</p>
-            <span>
-                <div class="btn-group mx-3">
-                    <a type="button" class="text-primary dropdown-toggle text-decoration-none" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
+            <span class="btn-group mb-2">
+                <div class="btn-group">
+                    <a type="button" class="btn btn-sm btn-outline-primary dropdown-toggle text-decoration-none" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
                         <svg class="bi" width="18" height="18" fill="currentColor">
                             <use xlink:href="<?= BASEURL; ?>/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#filter" />
                         </svg>
@@ -40,7 +40,7 @@
                         <button class="dropdown-item sort" data-sort="harga" type="button">Harga</button>
                     </div>
                 </div>
-                <a type="button" class="text-primary" id="btn-refresh">
+                <a type="button" class="btn btn-sm btn-outline-primary" id="btn-refresh">
                     <svg class="bi" width="18" height="18" fill="currentColor">
                         <use xlink:href="<?= BASEURL; ?>/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#arrow-clockwise" />
                     </svg>
@@ -64,7 +64,7 @@
                 <p class="font-weight-normal"></p>
             </div>
 
-            <div class="list list-paket row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 m-0 px-0">
+            <div class="list list-paket row row-cols-1 row-cols-sm-2 row-cols-md-3 m-0 px-0">
 
             </div>
 

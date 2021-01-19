@@ -8,7 +8,7 @@
         <!-- <h2 class="text-center mx-4 my-0 text-truncate">Detail</h2> -->
     </header>
     <main class="mt-3 mx-2 mx-sm-5">
-        <h1 class="display-4 font-weight-normal"><?= $data['formvalue']['nama_paket'] ?></h1>
+        <h2 class="display-4 font-weight-normal"><?= $data['formvalue']['nama_paket'] ?></h2>
         <p class="harga lead font-weight-normal"><?= $data['formvalue']['harga'] ?></p>
         <div class="d-flex">
             <a href="<?= BASEURL ?>/datapaketsewa/details/pageedit/<?= $data['formvalue']['id_paket'] ?>" class="btn btn-lg btn-primary m-1">

@@ -35,6 +35,15 @@ class Barang_model
         return $id_barang;
     }
 
+    public function updateStokBarang($data)
+    {
+        $this->db->query("UPDATE $this->table SET stok = :stok WHERE id_barang = :id_barang");
+        $this->db->bind('stok', $data['stok']);
+        $this->db->bind('id_barang', $data['id_barang']);
+        $this->db->execute();
+        return $this->db->rowCount();
+    }
+
     public function tambahDataBarang($data)
     {
         $query = "INSERT INTO $this->table VALUES (:id_barang, :nama_barang, :foto_barang, :harga, :stok)";

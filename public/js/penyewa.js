@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
             listGroupElement.insertAdjacentHTML("beforeend", `
 <div class="list-group-item anim-fade">
     <span class="d-flex w-100 justify-content-between">
-        <h3 class="nama">${penyewa.nama_pemesan}</h3>
+        <h5 class="nama">${penyewa.nama_pemesan}</h5>
         <div class="dropdown p-0">
             <button class="btn text-primary p-1" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
                 <svg class="bi" width="24" height="24" fill="currentColor">
