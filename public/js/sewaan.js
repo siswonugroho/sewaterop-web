@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
     <p class="text-muted my-0 barang-sewaan">${barangSewaanText}</p>
     <p class="text-muted my-0 tgl">${dt.fromSQL(sewaan.tgl_mulai).setLocale('id').toLocaleString(dt.DATE_MED)} s/d ${dt.fromSQL(sewaan.tgl_selesai).setLocale('id').toLocaleString(dt.DATE_MED)}</p>
     <p class="d-none last-added">${sewaan.id_pesanan}</p>
-    <a href="${BASEURL}/datasewaan/details/viewdetail/${sewaan.id_pesanan}" class="text-primary">Detail</a>
+    <a href="${BASEURL}/datasewaan/details/viewdetail/${sewaan.id_pesanan}" class="btn btn-outline-primary mt-2">Detail</a>
 </div>`);
             
         });

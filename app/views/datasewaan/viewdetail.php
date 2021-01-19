@@ -13,28 +13,28 @@
                 <div class="card m-2 border-0 shadow-sm">
                     <div class="card-body">
                         <div class="row row-cols-1 row-cols-sm-2">
-                            <span class="col font-weight-bold">ID Sewaan</span>
-                            <p class="col"><?= $data['formvalue']['id_pesanan'] ?></p>
+                            <span class="col">ID Sewaan</span>
+                            <p class="col font-weight-bold"><?= $data['formvalue']['id_pesanan'] ?></p>
                         </div>
                         <div class="row row-cols-1 row-cols-sm-2">
-                            <span class="col font-weight-bold">Tanggal mulai sewa</span>
-                            <p class="col tgl-text"><?= $data['formvalue']['tgl_mulai'] ?></p>
+                            <span class="col">Tanggal mulai sewa</span>
+                            <p class="col font-weight-bold tgl-text"><?= $data['formvalue']['tgl_mulai'] ?></p>
                         </div>
                         <div class="row row-cols-1 row-cols-sm-2">
-                            <span class="col font-weight-bold">Tanggal berakhir</span>
-                            <p class="col tgl-text"><?= $data['formvalue']['tgl_selesai'] ?></p>
+                            <span class="col">Tanggal berakhir</span>
+                            <p class="col font-weight-bold tgl-text"><?= $data['formvalue']['tgl_selesai'] ?></p>
                         </div>
                         <div class="row row-cols-1 row-cols-sm-2">
-                            <span class="col font-weight-bold">Nama Penyewa</span>
-                            <p class="col"><?= $data['formvalue']['nama_pemesan'] ?></p>
+                            <span class="col">Nama Penyewa</span>
+                            <p class="col font-weight-bold"><?= $data['formvalue']['nama_pemesan'] ?></p>
                         </div>
                         <div class="row row-cols-1 row-cols-sm-2">
-                            <span class="col font-weight-bold">Alamat Penyewa</span>
-                            <p class="col"><?= $data['formvalue']['alamat'] ?></p>
+                            <span class="col">Alamat Penyewa</span>
+                            <p class="col font-weight-bold"><?= $data['formvalue']['alamat'] ?></p>
                         </div>
                         <div class="row row-cols-1 row-cols-sm-2">
-                            <span class="col font-weight-bold">Telepon</span>
-                            <p class="col"><?= $data['formvalue']['telepon'] ?></p>
+                            <span class="col">Telepon</span>
+                            <p class="col font-weight-bold"><?= $data['formvalue']['telepon'] ?></p>
                         </div>
                         <div class="d-flex flex-sm-column overflow-auto">
                             <a href="<?= BASEURL ?>/datasewaan/details/checkout/<?= $data['formvalue']['id_pesanan'] ?>" class="btn btn-lg btn-success m-1">
@@ -44,7 +44,7 @@
                                 Bayar
                             </a>
                             <div class="btn-group m-1">
-                                <a href="<?= BASEURL ?>/datasewaan/checkout/<?= $data['formvalue']['id_pesanan'] ?>" class="btn btn-outline-dark" title="Edit">
+                                <a href="<?= BASEURL ?>/datasewaan/checkout/<?= $data['formvalue']['id_pesanan'] ?>" class="btn btn-primary" title="Edit">
                                     <svg class="bi mr-2" width="18" height="18" fill="currentColor">
                                         <use xlink:href="<?= BASEURL; ?>/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#pencil" />
                                     </svg>

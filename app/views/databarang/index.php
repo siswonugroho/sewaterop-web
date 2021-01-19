@@ -26,9 +26,9 @@
 
         <div class="d-flex justify-content-between">
             <p>Total <strong id="total-barang">0</strong> barang</p>
-            <span>
-                <div class="btn-group mx-3">
-                    <a type="button" class="text-primary dropdown-toggle text-decoration-none" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
+            <span class="btn-group mb-2">
+                <div class="btn-group">
+                    <a type="button" class="btn btn-sm btn-outline-primary dropdown-toggle text-decoration-none" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
                         <svg class="bi" width="18" height="18" fill="currentColor">
                             <use xlink:href="<?= BASEURL; ?>/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#filter" />
                         </svg>
@@ -41,7 +41,7 @@
                         <button class="dropdown-item sort" data-sort="stok" type="button">Stok</button>
                     </div>
                 </div>
-                <a type="button" class="text-primary" id="btn-refresh">
+                <a type="button" class="btn btn-sm btn-outline-primary" id="btn-refresh">
                     <svg class="bi" width="18" height="18" fill="currentColor">
                         <use xlink:href="<?= BASEURL; ?>/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#arrow-clockwise" />
                     </svg>

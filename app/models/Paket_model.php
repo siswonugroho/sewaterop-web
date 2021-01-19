@@ -13,7 +13,7 @@ class Paket_model
 
     public function getListPaket()
     {
-        $this->db->query("SELECT * FROM $this->table");
+        $this->db->query("SELECT * FROM $this->table WHERE id_paket NOT LIKE 'sw%'");
         return $this->db->resultSet();
     }
 

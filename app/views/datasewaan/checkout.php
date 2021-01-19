@@ -16,40 +16,40 @@
                             <h5>Detail Sewaan</h5>
                         </div>
                         <div class="row row-cols-1 row-cols-sm-2">
-                            <span class="col font-weight-bold">ID Sewaan</span>
-                            <p class="col"><?= $data['formvalue']['id_pesanan'] ?></p>
+                            <span class="col">ID Sewaan</span>
+                            <p class="col font-weight-bold"><?= $data['formvalue']['id_pesanan'] ?></p>
                         </div>
                         <div class="row row-cols-1 row-cols-sm-2">
-                            <span class="col font-weight-bold">Nama Penyewa</span>
-                            <p class="col"><?= $data['formvalue']['nama_pemesan'] ?></p>
+                            <span class="col">Nama Penyewa</span>
+                            <p class="col font-weight-bold"><?= $data['formvalue']['nama_pemesan'] ?></p>
                         </div>
                         <div class="row row-cols-1 row-cols-sm-2">
-                            <span class="col font-weight-bold">Tanggal mulai sewa</span>
-                            <p class="col tgl-text"><?= $data['formvalue']['tgl_mulai'] ?></p>
+                            <span class="col">Tanggal mulai sewa</span>
+                            <p class="col font-weight-bold tgl-text"><?= $data['formvalue']['tgl_mulai'] ?></p>
                         </div>
                         <div class="row row-cols-1 row-cols-sm-2">
-                            <span class="col font-weight-bold">Tanggal berakhir</span>
-                            <p class="col tgl-text"><?= $data['formvalue']['tgl_selesai'] ?></p>
+                            <span class="col">Tanggal berakhir</span>
+                            <p class="col font-weight-bold tgl-text"><?= $data['formvalue']['tgl_selesai'] ?></p>
                         </div>
                         <div class="row row-cols-1 row-cols-sm-2">
-                            <span class="col font-weight-bold">Alamat Penyewa</span>
-                            <p class="col"><?= $data['formvalue']['alamat'] ?></p>
+                            <span class="col">Alamat Penyewa</span>
+                            <p class="col font-weight-bold"><?= $data['formvalue']['alamat'] ?></p>
                         </div>
                         <div class="row row-cols-1 row-cols-sm-2">
-                            <span class="col font-weight-bold">No. telepon</span>
-                            <p class="col"><?= $data['formvalue']['telepon'] ?></p>
+                            <span class="col">No. telepon</span>
+                            <p class="col font-weight-bold"><?= $data['formvalue']['telepon'] ?></p>
                         </div>
                         <div class="row row-cols-1 row-cols-sm-2">
                             <?php if (Formatter::startsWith($data['formvalue']['id_paket'], 'sw')) : ?>
-                                <span class="col font-weight-bold">Barang yang disewa</span>
+                                <span class="col">Barang yang disewa</span>
                                 <ul class="col">
                             <?php else : ?>
-                                <span class="col font-weight-bold">Paket sewa yang dipilih</span>
+                                <span class="col">Paket sewa yang dipilih</span>
                                 <ul class="col">
-                                    <p>Paket <?= $data['formvalue']['nama_paket'] ?>:</p>
+                                    <p class="font-weight-bold">Paket <?= $data['formvalue']['nama_paket'] ?>:</p>
                             <?php endif ?>
                                 <?php foreach ($data['formvalue']['barang_sewaan']['nama_barang'] as $key => $value) : ?>
-                                    <li><?= $data['formvalue']['barang_sewaan']['jumlah_barang'][$key] . ' ' . $data['formvalue']['barang_sewaan']['nama_barang'][$key] . ' @ Rp.' . Formatter::formatRupiah($data['formvalue']['barang_sewaan']['harga'][$key]) ?></li>
+                                    <li class="font-weight-bold"><?= $data['formvalue']['barang_sewaan']['jumlah_barang'][$key] . ' ' . $data['formvalue']['barang_sewaan']['nama_barang'][$key] . ' @ Rp.' . Formatter::formatRupiah($data['formvalue']['barang_sewaan']['harga'][$key]) ?></li>
                                 <?php endforeach ?>
                             </ul>
                         </div>
@@ -63,23 +63,23 @@
                         <form action="<?= BASEURL ?>/datasewaan/selesaikansewa" method="post" novalidate>
                         <input type="hidden" name="id_penyewa" value="<?= $data['formvalue']['id_pesanan'] ?>">
                             <div class="row row-cols-1">
-                                <span class="col font-weight-bold">Total Biaya</span>
-                                <p class="col total-biaya">Rp.<?= Formatter::formatRupiah($data['formvalue']['harga']) ?></p>
+                                <span class="col">Total Biaya</span>
+                                <p class="col font-weight-bold total-biaya">Rp.<?= Formatter::formatRupiah($data['formvalue']['harga']) ?></p>
                                 <input type="hidden" class="total-biaya" name="total_biaya" value="<?= $data['formvalue']['harga'] ?>">
                             </div>
                             <div class="row row-cols-1">
-                                <span class="col font-weight-bold">Kembalian</span>
-                                <p class="col kembalian">Rp.0</p>
+                                <span class="col">Kembalian</span>
+                                <p class="col font-weight-bold kembalian">Rp.0</p>
                                 <input type="hidden" disabled class="kembalian">
                             </div>
                             <div class="form-group">
-                                <label for="total-jumlah_bayar" class="font-weight-bold">Jumlah Bayar (Rp)</label>
+                                <label for="total-jumlah_bayar">Jumlah Bayar (Rp)</label>
                                 <input type="number" required class="form-control" placeholder="mis. 1000000" name="jumlah_bayar" id="jumlah_bayar">
                                 <div class="invalid-feedback">Harap isi kolom ini</div>
                             </div>
                             <div class="row row-cols-1">
-                                <span class="col font-weight-bold">Status</span>
-                                <p class="col status-sewa text-danger">-</p>
+                                <span class="col">Status</span>
+                                <p class="col font-weight-bold status-sewa text-danger">-</p>
                                 <input type="hidden" class="status-sewa" name="status" value="">
                             </div>
                             <small class="text-secondary"">Sebelum mengklik Selesai, pastikan konsumen sudah menyerahkan uang kepada Anda.</small>
