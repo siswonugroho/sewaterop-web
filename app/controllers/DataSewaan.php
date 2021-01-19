@@ -261,7 +261,7 @@ class DataSewaan extends Controller
             die;
 
             if ($this->model('Sewaan_model')->selesaikanSewa($submittedData) > 0) {
-                Flasher::setFlash('Sewaan dan transaksi selesai.', 'success', 'check-circle');
+                Flasher::setFlash('Sewaan dan transaksi selesai <a href="' . BASEURL . '/datariwayat/viewreport/' . $submittedData['id_sewaan'] . '"', 'success', 'check-circle');
                 header('location:' . filter_var(BASEURL . '/datasewaan', FILTER_VALIDATE_URL));
                 exit;
             } else {

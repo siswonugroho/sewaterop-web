@@ -100,11 +100,11 @@ class Sewaan_model
     {
         $this->db->query("UPDATE pesanan SET status = :status WHERE id_pesanan = :id_pesanan");
         $this->db->bind('status', $data['status']);
-        $this->db->bind('id_pesanan', $data['id_penyewa']);
+        $this->db->bind('id_pesanan', $data['id_sewaan']);
         $this->db->execute();
 
         $this->db->query("INSERT INTO transaksi VALUES :id_pesanan, :total_biaya, :jumlah_bayar, :status");
-        $this->db->bind('id_pesanan', $data['id_penyewa']);
+        $this->db->bind('id_pesanan', $data['id_sewaan']);
         $this->db->bind('total_biaya', $data['total_biaya']);
         $this->db->bind('jumlah_bayar', $data['jumlah_bayar']);
         $this->db->bind('status', $data['status']);
