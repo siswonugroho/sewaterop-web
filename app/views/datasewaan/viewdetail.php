@@ -36,27 +36,19 @@
                             <span class="col">Telepon</span>
                             <p class="col font-weight-bold"><?= $data['formvalue']['telepon'] ?></p>
                         </div>
-                        <div class="d-flex flex-sm-column overflow-auto">
-                            <a href="<?= BASEURL ?>/datasewaan/details/checkout/<?= $data['formvalue']['id_pesanan'] ?>" class="btn btn-lg btn-success m-1">
-                                <svg class="bi mr-2 d-none d-sm-inline" width="18" height="18" fill="currentColor">
-                                    <use xlink:href="<?= BASEURL; ?>/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#credit-card" />
+                        <div class="m-1">
+                            <a href="<?= BASEURL ?>/datasewaan/details/pageedit/<?= $data['formvalue']['id_pesanan'] ?>" class="btn btn-outline-primary" title="Edit">
+                                <svg class="bi mr-2" width="18" height="18" fill="currentColor">
+                                    <use xlink:href="<?= BASEURL; ?>/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#pencil" />
                                 </svg>
-                                Bayar
+                                <span>Edit</span>
                             </a>
-                            <div class="btn-group m-1">
-                                <a href="<?= BASEURL ?>/datasewaan/checkout/<?= $data['formvalue']['id_pesanan'] ?>" class="btn btn-primary" title="Edit">
-                                    <svg class="bi mr-2" width="18" height="18" fill="currentColor">
-                                        <use xlink:href="<?= BASEURL; ?>/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#pencil" />
-                                    </svg>
-                                    <span class="d-none d-sm-inline">Edit</span>
-                                </a>
-                                <a class="btn btn-outline-danger" data-toggle="modal" data-target="#dialogHapus" title="Hapus sewa ini">
-                                    <svg class="bi mr-2" width="18" height="18" fill="currentColor">
-                                        <use xlink:href="<?= BASEURL; ?>/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#trash" />
-                                    </svg>
-                                    <span class="d-none d-sm-inline">Hapus</span>
-                                </a>
-                            </div>
+                            <a class="btn btn-outline-danger" data-toggle="modal" data-target="#dialogHapus" title="Hapus sewa ini">
+                                <svg class="bi mr-2" width="18" height="18" fill="currentColor">
+                                    <use xlink:href="<?= BASEURL; ?>/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#trash" />
+                                </svg>
+                                <span>Hapus</span>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -83,9 +75,17 @@
                                 <?= $data['formvalue']['barang_sewaan']['jumlah_barang'][$key] . ' ' . $data['formvalue']['barang_sewaan']['nama_barang'][$key] ?>
                             </li>
                         <?php endforeach ?>
-                        <li class="list-group-item">
-                            <span>Total biaya:</span>
-                            <p class="lead font-weight-normal m-0">Rp. <?= Formatter::formatRupiah($data['formvalue']['harga']) ?></p>
+                        <li class="list-group-item d-flex">
+                            <div class="flex-grow-1">
+                                <span>Total biaya:</span>
+                                <p class="lead font-weight-normal m-0">Rp. <?= Formatter::formatRupiah($data['formvalue']['harga']) ?></p>
+                            </div>
+                            <a href="<?= BASEURL ?>/datasewaan/details/checkout/<?= $data['formvalue']['id_pesanan'] ?>" class="btn btn-success my-3">
+                                <svg class="bi mr-2 d-none d-sm-inline" width="18" height="18" fill="currentColor">
+                                    <use xlink:href="<?= BASEURL; ?>/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#credit-card" />
+                                </svg>
+                                Bayar
+                            </a>
                         </li>
                     </ul>
                 </div>

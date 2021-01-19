@@ -61,7 +61,7 @@
                     <div class="card-body">
                         <h5 class="card-title mb-4">Hitung Biaya</h5>
                         <form action="<?= BASEURL ?>/datasewaan/selesaikansewa" method="post" novalidate>
-                        <input type="hidden" name="id_penyewa" value="<?= $data['formvalue']['id_pesanan'] ?>">
+                        <input type="hidden" name="id_sewaan" value="<?= $data['formvalue']['id_pesanan'] ?>">
                             <div class="row row-cols-1">
                                 <span class="col">Total Biaya</span>
                                 <p class="col font-weight-bold total-biaya">Rp.<?= Formatter::formatRupiah($data['formvalue']['harga']) ?></p>
@@ -70,7 +70,7 @@
                             <div class="row row-cols-1">
                                 <span class="col">Kembalian</span>
                                 <p class="col font-weight-bold kembalian">Rp.0</p>
-                                <input type="hidden" disabled class="kembalian">
+                                <input type="hidden" name="kembalian" class="kembalian">
                             </div>
                             <div class="form-group">
                                 <label for="total-jumlah_bayar">Jumlah Bayar (Rp)</label>
