@@ -48,7 +48,7 @@
                                 <ul class="col">
                                     <p class="font-weight-bold">Paket <?= $data['formvalue']['nama_paket'] ?>:</p>
                             <?php endif ?>
-                                <?php foreach ($data['formvalue']['barang_sewaan']['nama_barang'] as $key => $value) : ?>
+                                <?php foreach ($data['formvalue']['barang_sewaan']['id_barang'] as $key => $value) : ?>
                                     <li class="font-weight-bold"><?= $data['formvalue']['barang_sewaan']['jumlah_barang'][$key] . ' ' . $data['formvalue']['barang_sewaan']['nama_barang'][$key] . ' @ Rp.' . Formatter::formatRupiah($data['formvalue']['barang_sewaan']['harga'][$key]) ?></li>
                                 <?php endforeach ?>
                             </ul>
@@ -62,6 +62,7 @@
                         <h5 class="card-title mb-4">Hitung Biaya</h5>
                         <form action="<?= BASEURL ?>/datasewaan/selesaikansewa" method="post" novalidate>
                         <input type="hidden" name="id_sewaan" value="<?= $data['formvalue']['id_pesanan'] ?>">
+                        <input type="hidden" name="id_paket" value="<?= $data['formvalue']['id_paket'] ?>">
                             <div class="row row-cols-1">
                                 <span class="col">Total Biaya</span>
                                 <p class="col font-weight-bold total-biaya">Rp.<?= Formatter::formatRupiah($data['formvalue']['harga']) ?></p>
@@ -72,15 +73,15 @@
                                 <p class="col font-weight-bold kembalian">Rp.0</p>
                                 <input type="hidden" name="kembalian" class="kembalian">
                             </div>
+                            <div class="row row-cols-1">
+                                <span class="col">Status</span>
+                                <p class="col font-weight-bold status-sewa text-danger">-</p>
+                                <input type="hidden" class="status-sewa" name="status_pembayaran" value="">
+                            </div>
                             <div class="form-group">
                                 <label for="total-jumlah_bayar">Jumlah Bayar (Rp)</label>
                                 <input type="number" required class="form-control" placeholder="mis. 1000000" name="jumlah_bayar" id="jumlah_bayar">
                                 <div class="invalid-feedback">Harap isi kolom ini</div>
-                            </div>
-                            <div class="row row-cols-1">
-                                <span class="col">Status</span>
-                                <p class="col font-weight-bold status-sewa text-danger">-</p>
-                                <input type="hidden" class="status-sewa" name="status" value="">
                             </div>
                             <small class="text-secondary"">Sebelum mengklik Selesai, pastikan konsumen sudah menyerahkan uang kepada Anda.</small>
                             <button type="submit" class="btn btn-block btn-primary mt-2">Selesai</button>

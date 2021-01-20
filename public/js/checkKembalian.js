@@ -8,12 +8,13 @@ document.addEventListener('DOMContentLoaded', function (e) {
     function checkKembalian() {
         if (inputJumlahBayar.value != '') {
             kembalianInput.value = parseInt(inputJumlahBayar.value) - parseInt(totalBiayaInput.value);
-            kembalianText.textContent = `Rp.${formatRupiah(kembalianInput.value)}`;
             if (kembalianInput.value >= 0) {
+                kembalianText.textContent = `Rp.${formatRupiah(kembalianInput.value)}`;
                 statusSewaText.classList.replace('text-danger', 'text-success');
                 statusSewaText.textContent = "Lunas";
                 statusSewaText.nextElementSibling.value = "Lunas";
             } else {
+                kembalianText.textContent = `Rp.${formatRupiah(0)}`;
                 statusSewaText.classList.replace('text-success', 'text-danger');
                 statusSewaText.textContent = `Kurang Rp.${formatRupiah(kembalianInput.value.replace('-', ''))}`;
                 statusSewaText.nextElementSibling.value = statusSewaText.textContent;

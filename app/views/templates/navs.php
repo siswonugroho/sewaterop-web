@@ -35,7 +35,7 @@
                 </svg>
                 Paket Sewa
             </a>
-            <a class="nav-link text-secondary py-2" id="barang-link" href="#pills-contact">
+            <a class="nav-link text-secondary py-2" id="barang-link" href="<?= BASEURL ?>/datariwayat">
                 <svg class="bi mr-3" width="24" height="24" fill="currentColor">
                     <use xlink:href="<?= BASEURL; ?>/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#clock-history" />
                 </svg>
@@ -102,7 +102,7 @@
                     </a>
                 </div>
             </div>
-            <a class="nav-link text-secondary d-flex flex-column p-1 align-items-center">
+            <a class="nav-link text-secondary d-flex flex-column p-1 align-items-center" href="<?= BASEURL ?>/datariwayat">
                 <svg class="bi mx-auto" width="18" height="18" fill="currentColor">
                     <use xlink:href="<?= BASEURL; ?>/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#clock-history" />
                 </svg>
