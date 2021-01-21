@@ -43,7 +43,6 @@ class DataRiwayat extends Controller {
             }
 
             $this->view('templates/header', $data);
-            $this->view('templates/navs', $data);
             $this->view('datariwayat/viewreport', $data);
             $this->view('templates/footer');
         } else {
