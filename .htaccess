@@ -1,7 +1,0 @@
-RewriteEngine on
-
-RewriteCond %{HTTP_HOST} ^localhost$ [NC,OR]
-RewriteCond %{HTTP_HOST} ^localhost/$
-RewriteCond %{REQUEST_URI} !sewaterop/public/
-
-RewriteRule (.*) /sewaterop/public/$1 [L]
