@@ -53,7 +53,7 @@ class DataSewaan extends Controller
                 $data['formvalue']['barang_sewaan']['id_barang'][] = $value['id_barang'];
                 $data['formvalue']['barang_sewaan']['nama_barang'][] = $value['nama_barang'];
                 $data['formvalue']['barang_sewaan']['foto_barang'][] = $value['foto_barang'];
-                $data['formvalue']['barang_sewaan']['harga'][] = $this->model('Sewaan_model')->getHargaBarang($value['id_barang'])[$key];
+                $data['formvalue']['barang_sewaan']['harga'][] = $value['harga_barang'];
                 $data['formvalue']['barang_sewaan']['jumlah_barang'][] = $value['jumlah_barang'];
             }
 
@@ -196,7 +196,6 @@ class DataSewaan extends Controller
                     }
                 }
                 $submittedData['id_paket'] = $barangSewaan['id_paket'];
-                
             } else if ($_POST['tipe_sewaan'] === 'paket') {
                 // Jika kita beralih dari daftar custom ke paket sewa, maka hapus paket custom yang lama,
                 // kemudian isi id_paket di submittedData dengan id dari paket sewa
@@ -209,15 +208,15 @@ class DataSewaan extends Controller
                 }
                 $submittedData['id_paket'] = $_POST['id_paket'];
             }
-           
+
             $this->updateStokBarang($submittedData['id_paket'], 'kurangi');
-            
+
             if ($this->model('Sewaan_model')->editDataSewaan($submittedData) > 0) {
                 Flasher::setFlash('Sewaan berhasil diperbarui', 'success', 'check-circle');
                 header('location:' . filter_var(BASEURL . '/datasewaan', FILTER_VALIDATE_URL));
                 exit;
             } else {
-                Flasher::setFlash('Gagal memperbarui sewaan.' , 'danger', 'x-circle');
+                Flasher::setFlash('Gagal memperbarui sewaan.', 'danger', 'x-circle');
                 header('location:' . filter_var(BASEURL . '/datasewaan', FILTER_VALIDATE_URL));
                 exit;
             }
@@ -234,12 +233,12 @@ class DataSewaan extends Controller
                 if (Formatter::startsWith($id_paket, 'sw')) {
                     $this->model('Paket_model')->hapusDataPaket($id_paket);
                 }
-                Flasher::setFlash('Sewaan berhasil dihapus', 'success', 'check-circle');
-                header('location:' . filter_var(BASEURL . '/datasewaan', FILTER_VALIDATE_URL));
+                Flasher::setFlash('Item berhasil dihapus', 'success', 'check-circle');
+                header('location:' . filter_var($_SERVER['HTTP_REFERER'], FILTER_VALIDATE_URL));
                 exit;
             } else {
-                Flasher::setFlash('Tidak dapat menghapus sewaan.', 'danger', 'x-circle');
-                header('location:' . filter_var(BASEURL . '/datasewaan', FILTER_VALIDATE_URL));
+                Flasher::setFlash('Tidak dapat menghapus item ini.', 'danger', 'x-circle');
+                header('location:' . filter_var($_SERVER['HTTP_REFERER'], FILTER_VALIDATE_URL));
                 exit;
             }
         } else {
@@ -257,15 +256,14 @@ class DataSewaan extends Controller
                 $submittedData[$key] = $value;
             }
             $submittedData['status_sewa'] = 'selesai';
-            echo json_encode($submittedData);
-            die;
+            $this->updateStokBarang($submittedData['id_paket'], 'tambah');
 
             if ($this->model('Sewaan_model')->selesaikanSewa($submittedData) > 0) {
-                Flasher::setFlash('Sewaan dan transaksi selesai <a href="' . BASEURL . '/datariwayat/viewreport/' . $submittedData['id_sewaan'] . '"', 'success', 'check-circle');
+                Flasher::setFlash('Sewaan dan transaksi selesai. <a href="' . BASEURL . '/datariwayat/viewreport/' . $submittedData['id_sewaan'] . '" class="alert-link">Lihat bukti transaksi.</a>', 'success', 'check-circle');
                 header('location:' . filter_var(BASEURL . '/datasewaan', FILTER_VALIDATE_URL));
                 exit;
             } else {
-                Flasher::setFlash('Gagal melakukan transaksi.' , 'danger', 'x-circle');
+                Flasher::setFlash('Transaksi gagal diproses.', 'danger', 'x-circle');
                 header('location:' . filter_var(BASEURL . '/datasewaan', FILTER_VALIDATE_URL));
                 exit;
             }

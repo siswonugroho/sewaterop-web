@@ -10,12 +10,12 @@
         </div>
         <div class="form-group">
             <label for="username">Username</label>
-            <input type="text" required pattern="[A-Za-z].*[0-9]|[0-9].*[A-Za-z]" class="form-control form-control-sm" autocomplete="off" name="username" id="username">
+            <input type="text" required pattern="^(?=.*\d)(?=.*[a-z])(?!.*\s).*$" class="form-control form-control-sm" autocomplete="off" name="username" id="username">
             <div class="invalid-feedback"></div>
         </div>
         <div class="form-group">
             <label for="password">Password</label>
-            <input type="password" required pattern="[A-Za-z].*[0-9]|[0-9].*[A-Za-z]" minlength="8" class="form-control form-control-sm" name="password" id="password">
+            <input type="password" required pattern="^(?=.*\d)(?=.*[a-z])(?!.*\s).*$" minlength="8" class="form-control form-control-sm" name="password" id="password">
             <div class="invalid-feedback"></div>
         </div>
         <div class="form-group">

@@ -48,8 +48,8 @@ document.addEventListener('DOMContentLoaded', function (event) {
 
     function renderListSewaan(dataSewaan) {
         listGroupElement.innerHTML = "";
+        const dt = luxon.DateTime;
         dataSewaan.forEach(sewaan => {
-            const dt = luxon.DateTime;
             let barangSewaanText = ''
             if (sewaan.nama_paket.startsWith('sw')) {
                 let barang_sewaan = [];

@@ -1,5 +1,5 @@
-const tglText = document.querySelectorAll('p.tgl-text');
+const tglText = document.querySelectorAll('.tgl-text');
 const dt = luxon.DateTime;
 tglText.forEach(text => {
-    text.textContent = dt.fromSQL(text.textContent).setLocale('id').toLocaleString(dt.DATE_MED);
+    text.textContent = dt.fromISO(text.textContent).setLocale('id').toLocaleString(dt.DATE_MED);
 });

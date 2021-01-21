@@ -30,7 +30,7 @@ class Sewaan_model
 
     public function getBarangSewaan($id)
     {
-        $this->db->query("SELECT id_barang, nama_barang, jumlah_barang, foto_barang FROM daftar_paket WHERE id_paket = :id_paket");
+        $this->db->query("SELECT id_barang, nama_barang, jumlah_barang, foto_barang, harga_barang FROM daftar_paket WHERE id_paket = :id_paket");
         $this->db->bind('id_paket', $id);
         $this->db->execute();
         return $this->db->resultSet();
@@ -99,15 +99,16 @@ class Sewaan_model
     public function selesaikanSewa($data)
     {
         $this->db->query("UPDATE pesanan SET status = :status WHERE id_pesanan = :id_pesanan");
-        $this->db->bind('status', $data['status']);
+        $this->db->bind('status', $data['status_sewa']);
         $this->db->bind('id_pesanan', $data['id_sewaan']);
         $this->db->execute();
 
-        $this->db->query("INSERT INTO transaksi VALUES :id_pesanan, :total_biaya, :jumlah_bayar, :status");
+        $this->db->query("INSERT INTO transaksi VALUES (:id_pesanan, :total_biaya, :jumlah_bayar, :kembalian, :status_pembayaran)");
         $this->db->bind('id_pesanan', $data['id_sewaan']);
         $this->db->bind('total_biaya', $data['total_biaya']);
         $this->db->bind('jumlah_bayar', $data['jumlah_bayar']);
-        $this->db->bind('status', $data['status']);
+        $this->db->bind('kembalian', $data['kembalian']);
+        $this->db->bind('status_pembayaran', $data['status_pembayaran']);
         $this->db->execute();
 
         return $this->db->rowCount();
