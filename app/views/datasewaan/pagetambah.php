@@ -16,7 +16,7 @@
                         <label for="nama_penyewa">Pilih penyewa</label>
                         <div class="dropdown">
                             <input type="text" hidden name="id_penyewa" id="id_penyewa" autocomplete="off">
-                            <input type="text" required class="form-control" name="nama_penyewa" id="nama_penyewa" autocomplete="off" data-toggle="dropdown">
+                            <input type="text" required class="form-control" name="nama_penyewa" id="nama_penyewa" autocomplete="off" placeholder="Klik untuk memilih..." data-toggle="dropdown">
                             <div class="invalid-feedback">Harap isi kolom ini</div>
                             <div class="dropdown-menu dropdown-input shadow border-0" style="max-height: 50vh; overflow-y: auto;">
                                 <a href="<?= BASEURL ?>/datapenyewa/pagetambah" class="text-primary mx-4" type="button">Tambah penyewa</a>
@@ -29,11 +29,11 @@
                     </div>
                     <div class="form-group">
                         <label for="tgl_mulai">Tanggal mulai</label>
-                        <input type="date" class="form-control" name="tgl_mulai" id="tgl_mulai">
+                        <input type="date" required class="form-control" name="tgl_mulai" id="tgl_mulai">
                     </div>
                     <div class="form-group">
                         <label for="tgl_selesai">Tanggal selesai</label>
-                        <input type="date" class="form-control" name="tgl_selesai" id="tgl_selesai"> 
+                        <input type="date" required class="form-control" name="tgl_selesai" id="tgl_selesai"> 
                     </div>
                     <div class="form-group">
                         <label>Pilih barang dari</label>

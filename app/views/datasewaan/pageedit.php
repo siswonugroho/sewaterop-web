@@ -30,11 +30,11 @@
                     </div>
                     <div class="form-group">
                         <label for="tgl_mulai">Tanggal mulai</label>
-                        <input type="date" class="form-control" value="<?= $data['formvalue']['tgl_mulai'] ?>" name="tgl_mulai" id="tgl_mulai">
+                        <input type="date" required class="form-control" value="<?= $data['formvalue']['tgl_mulai'] ?>" name="tgl_mulai" id="tgl_mulai">
                     </div>
                     <div class="form-group">
                         <label for="tgl_selesai">Tanggal selesai</label>
-                        <input type="date" class="form-control" value="<?= $data['formvalue']['tgl_selesai'] ?>" name="tgl_selesai" id="tgl_selesai">
+                        <input type="date" required class="form-control" value="<?= $data['formvalue']['tgl_selesai'] ?>" name="tgl_selesai" id="tgl_selesai">
                     </div>
                     <div class="form-group">
                         <label>Pilih barang dari</label>
