@@ -8,7 +8,7 @@
         <h2 class="mx-3 my-0 text-truncate flex-grow-1">Struk Transaksi</h2>
 
     </header>
-    <a class="btn btn-lg btn-success d-block my-3 text-truncate mx-auto" style="width: fit-content;" id="downloadStruk" download="struk-sewa-<?= $data['formvalue']['id_pesanan'] ?>.png">
+    <a class="btn btn-lg btn-success d-block my-3 text-truncate mx-auto" style="width: fit-content;" id="downloadStruk" download="struk-sewa-<?= $data['formvalue']['id_pesanan'] ?>.jpg">
         <svg class="bi mr-2" width="18" height="18" fill="currentColor">
             <use xlink:href="<?= BASEURL; ?>/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#download" />
         </svg>
