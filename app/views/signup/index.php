@@ -2,7 +2,7 @@
 <img src="<?= BASEURL ?>/img/sewaterop-logo.svg" alt="Logo sewaterop" height="64">
     <h1 class="text-primary my-5">Buat Akun Baru</h1>
     <?php Flasher::showFlash(); ?>
-    <form action="<?= BASEURL ?>/signup" method="post" novalidate>
+    <form action="<?= BASEURL ?>/signup" method="post" class="w-25" novalidate>
         <div class="form-group">
             <label for="username">Nama Lengkap</label>
             <input type="text" required autofocus class="form-control form-control-sm" autocomplete="off" name="nama_admin" id="nama_admin">
