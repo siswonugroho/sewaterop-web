@@ -49,17 +49,19 @@ document.addEventListener('DOMContentLoaded', function (event) {
 
     function renderListRiwayat(dataRiwayat) {
         listGroupElement.innerHTML = "";
+        const dt = luxon.DateTime;
         dataRiwayat.forEach(riwayat => {
             listGroupElement.insertAdjacentHTML("beforeend", `
 <div class="list-group-item anim-fade">
 <div class="row">
     <div class="col-8">
     <h5>${riwayat.id_pesanan.toUpperCase()} - <span class="nama">${riwayat.nama_pemesan}</span></h5>
+    <p class="text-muted my-0 tgl">${dt.fromSQL(riwayat.tgl_mulai).setLocale('id').toLocaleString(dt.DATE_MED)} - ${dt.fromSQL(riwayat.tgl_selesai).setLocale('id').toLocaleString(dt.DATE_MED)}</p>
     <p class="my-0 status">${riwayat.status_pembayaran}</p>
     <p class="d-none last-added">${riwayat.id_pesanan}</p>
     </div>
     <div class="col-md my-2">
-    <a href="${BASEURL}/datariwayat/viewreport/${riwayat.id_pesanan}" class="btn btn-primary my-2 my-md-1 text-truncate view-report-btn">Lihat Struk</a>
+    <a href="${BASEURL}/datariwayat/viewreport/${riwayat.id_pesanan}" class="btn btn-dark my-2 my-md-1 text-truncate view-report-btn">Lihat Struk</a>
     <a data-toggle="modal" data-target="#dialogHapus" data-id-sewaan="${riwayat.id_pesanan}" data-id-paket="${riwayat.id_paket}" data-nama-penyewa="${riwayat.nama_pemesan}" class="btn btn-outline-danger my-2 my-md-1 text-truncate">Hapus</a>
     </div>
 </div>

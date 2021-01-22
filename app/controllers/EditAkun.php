@@ -8,7 +8,7 @@ class EditAkun extends Controller
         if (Session::isLoggedIn()) {
             $data['user_info'] = $this->model('User_model')->getUserInfo($_SESSION['user_id']);
             $data['judul'] = 'Edit Profil';
-            $data['nav-link'] = 'Edit Profil';
+            $data['nav-link'] = 'Pengguna';
 
             $this->view('templates/header', $data);
             $this->view('templates/navs', $data);

@@ -21,7 +21,8 @@
                         <label for="stok">Username</label>
                         <input type="hidden" disabled name="" id="username_lama" value="<?= $data['user_info']['username'] ?>">
                         <input type="text" required pattern="^(?=.*\d)(?=.*[a-z])(?!.*\s).*$" autocomplete="off" class="form-control" name="username" id="username" value="<?= $data['user_info']['username'] ?>">
-                        <div class="invalid-feedback">Harap isi kolom ini</div>
+                        <div class="invalid-feedback">Username harus terdiri dari huruf dan angka</div>
+                        <small class="form-text text-muted">Username harus terdiri dari huruf dan angka</small>
                     </div>
                 </div>
                 <div class="col-sm"></div>
