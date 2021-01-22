@@ -92,7 +92,7 @@ class DataPenyewa extends Controller
                 header('location:' . filter_var(BASEURL . '/datapenyewa', FILTER_VALIDATE_URL));
                 exit;
             } else {
-                Flasher::setFlash('Tidak dapat menghapus penyewa', 'danger', 'x-circle');
+                Flasher::setFlash('Tidak dapat menghapus penyewa.<br>Pastikan semua sewaan dan riwayat dari orang ini dihapus terlebih dahulu.</br>', 'danger', 'x-circle');
                 header('location:' . filter_var(BASEURL . '/datapenyewa', FILTER_VALIDATE_URL));
                 exit;
             }

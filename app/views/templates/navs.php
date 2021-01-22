@@ -1,4 +1,4 @@
-    <aside class="bg-light col-md-3 d-none d-md-block py-3 px-0 vh-100 border-right sticky-top" data-title="<?= $data['nav-link'] ?>" role="navigation">
+    <aside class="bg-light col-md-3 d-none d-md-block py-3 px-0 vh-100 shadow-sm sticky-top" data-title="<?= $data['nav-link'] ?>" role="navigation">
         <div class="row mb-3">
             <a href="<?= BASEURL ?>" class="mx-auto">
                 <img src="<?= BASEURL ?>/img/sewaterop-logo.svg" alt="Logo sewaterop" height="64">

@@ -1,6 +1,6 @@
 <section class="col-md mt-3">
     <header class="p-2 bg-white">
-        <h2 class="text-center">Riwayat Transaksi</h2>
+        <h2 class="text-center">Riwayat Sewaan</h2>
     </header>
     <main id="list-riwayat">
         <?php Flasher::showFlash(); ?>
@@ -41,7 +41,16 @@
                 </a>
             </span>
         </div>
-
+        <div class="form-inline mb-2">
+            <div class="custom-control custom-checkbox">
+                <?php if ($data['is-blm-lunas']) : ?>
+                    <input type="checkbox" checked class="custom-control-input" id="filter-blm-lunas">
+                <?php else : ?>
+                    <input type="checkbox" class="custom-control-input" id="filter-blm-lunas">
+                <?php endif ?>
+                <label class="custom-control-label" for="filter-blm-lunas">Hanya tampilkan yang belum lunas</label>
+            </div>
+        </div>
         <div id="list-riwayat-container">
 
             <span class="row my-5" id="loading-list">

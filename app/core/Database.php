@@ -60,6 +60,12 @@ class Database
         $this->stmt->execute();
     }
 
+    public function queryCount($query)
+    {
+        $stmt = $this->dbh->query($query);
+        return $stmt->fetch(PDO::FETCH_COLUMN);
+    }
+
     public function resultSet()
     {
         $this->execute();

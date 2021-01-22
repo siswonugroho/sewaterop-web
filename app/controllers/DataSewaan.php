@@ -234,11 +234,11 @@ class DataSewaan extends Controller
                     $this->model('Paket_model')->hapusDataPaket($id_paket);
                 }
                 Flasher::setFlash('Item berhasil dihapus', 'success', 'check-circle');
-                header('location:' . filter_var($_SERVER['HTTP_REFERER'], FILTER_VALIDATE_URL));
+                header('location:' . filter_var('javascript://history.go(-1)', FILTER_VALIDATE_URL));
                 exit;
             } else {
                 Flasher::setFlash('Tidak dapat menghapus item ini.', 'danger', 'x-circle');
-                header('location:' . filter_var($_SERVER['HTTP_REFERER'], FILTER_VALIDATE_URL));
+                header('location:' . filter_var('javascript://history.go(-1)', FILTER_VALIDATE_URL));
                 exit;
             }
         } else {
@@ -259,7 +259,7 @@ class DataSewaan extends Controller
             $this->updateStokBarang($submittedData['id_paket'], 'tambah');
 
             if ($this->model('Sewaan_model')->selesaikanSewa($submittedData) > 0) {
-                Flasher::setFlash('Sewaan dan transaksi selesai. <a href="' . BASEURL . '/datariwayat/viewreport/' . $submittedData['id_sewaan'] . '" class="alert-link">Lihat bukti transaksi.</a>', 'success', 'check-circle');
+                Flasher::setFlash('Sewaan telah selesai dan dihapus dari daftar ini. <a href="' . BASEURL . '/datariwayat/viewreport/' . $submittedData['id_sewaan'] . '" class="alert-link">Lihat bukti transaksi.</a>', 'success', 'check-circle');
                 header('location:' . filter_var(BASEURL . '/datasewaan', FILTER_VALIDATE_URL));
                 exit;
             } else {

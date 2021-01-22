@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
     const listRiwayatEmptyMessage = listRiwayatContainer.querySelector(".list-riwayat-empty-message");
     const listGroupElement = listRiwayatContainer.querySelector("div.list-group");
     const dialogDataElement = document.querySelectorAll(".selected-data");
+    const checkboxBlmLunas = document.querySelector('input#filter-blm-lunas');
 
     function countDataRiwayat(listParent) {
         const angkaText = document.querySelector("#total-riwayat");
@@ -23,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
             if (Object.keys(responseJson).length !== 0) {
                 toggleListEmpty('hide');
                 const listRiwayat = new List('list-riwayat', {
-                    valueNames: ['nama', 'last-added']
+                    valueNames: ['nama', 'last-added', 'status']
                 });
                 listRiwayat.sort('last-added', { order: "desc" });
                 listRiwayat.on('searchComplete', function () {
@@ -33,6 +34,8 @@ document.addEventListener('DOMContentLoaded', function (event) {
                         toggleListEmpty('hide');
                     }
                 });
+                checkBlmLunas(listRiwayat);
+
             } else {
                 toggleListEmpty('show', 'emoji-frown', 'Tidak ada riwayat disini', 'Semua transaksi sewaan yang sudah selesai akan tersimpan disini.');
             }
@@ -50,27 +53,28 @@ document.addEventListener('DOMContentLoaded', function (event) {
         dataRiwayat.forEach(riwayat => {
             listGroupElement.insertAdjacentHTML("beforeend", `
 <div class="list-group-item anim-fade">
-<div class="row">
-    <div class="col-9">
+<div class="row row-cols-1">
+    <div class="col">
     <h5>${riwayat.id_pesanan.toUpperCase()} - <span class="nama">${riwayat.nama_pemesan}</span></h5>
     <p class="text-muted my-0 tgl">${dt.fromSQL(riwayat.tgl_mulai).setLocale('id').toLocaleString(dt.DATE_MED)} s/d ${dt.fromSQL(riwayat.tgl_selesai).setLocale('id').toLocaleString(dt.DATE_MED)}</p>
     <p class="my-0 status">${riwayat.status_pembayaran}</p>
     <p class="d-none last-added">${riwayat.id_pesanan}</p>
     </div>
-    <div class="col-md">
-    <a href="${BASEURL}/datariwayat/viewreport/${riwayat.id_pesanan}" class="btn btn-primary my-2 my-md-1 text-truncate">Lihat Struk</a>
-    <a data-toggle="modal" data-target="#dialogHapus" data-id-sewaan="${riwayat.id_pesanan}" data-id-paket="${riwayat.id_paket}" data-nama-penyewa="${riwayat.nama_pemesan}" class="btn btn-danger my-2 my-md-1 text-truncate">Hapus</a>
+    <div class="col my-2">
+    <a href="${BASEURL}/datariwayat/viewreport/${riwayat.id_pesanan}" class="btn btn-primary my-2 my-md-1 text-truncate view-report-btn">Lihat Struk</a>
+    <a data-toggle="modal" data-target="#dialogHapus" data-id-sewaan="${riwayat.id_pesanan}" data-id-paket="${riwayat.id_paket}" data-nama-penyewa="${riwayat.nama_pemesan}" class="btn btn-outline-danger my-2 my-md-1 text-truncate">Hapus</a>
     </div>
 </div>
 </div>`);
 
         });
-        const statusPembayaranText = listGroupElement.querySelectorAll('p.status');
-        statusPembayaranText.forEach(status => {
-            if (status.textContent.startsWith('L')) {
-                status.classList.add('font-weight-bold', 'text-success');
-            } else if (status.textContent.startsWith('K')) {
-                status.classList.add('font-weight-bold', 'text-danger');
+        const listGroupItem = listGroupElement.querySelectorAll('.list-group-item');
+        listGroupItem.forEach(list => {
+            const statusPembayaranText = list.querySelector('p.status');
+            if (statusPembayaranText.textContent.startsWith('L')) {
+                statusPembayaranText.classList.add('font-weight-bold', 'text-success');
+            } else if (statusPembayaranText.textContent.startsWith('K')) {
+                statusPembayaranText.classList.add('font-weight-bold', 'text-danger');
             }
         })
 
@@ -78,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
         listGroupElement.querySelectorAll("a[data-toggle=modal]").forEach(btn => {
             btn.addEventListener('click', function () {
                 dialogDataElement.forEach(element => {
-                    if (element.tagName == "A") element.setAttribute("href", `${BASEURL}/datasewaan/hapus/${btn.getAttribute("data-id-sewaan")}/${btn.getAttribute("data-id-paket")}`);
+                    if (element.tagName == "A") element.setAttribute("href", `${BASEURL}/datariwayat/hapus/${btn.getAttribute("data-id-sewaan")}/${btn.getAttribute("data-id-paket")}`);
                     else element.textContent = btn.getAttribute("data-nama-penyewa");
                 });
             });
@@ -99,9 +103,24 @@ document.addEventListener('DOMContentLoaded', function (event) {
         }
     }
 
+    function checkBlmLunas(listObject) {
+        if (checkboxBlmLunas.checked) {
+            listObject.filter(function (items) {
+                if (items.values().status != "Lunas") return true;
+                else return false;
+            });
+        } else {
+            listObject.filter();
+        }
+    }
+
     document.querySelector("a#btn-refresh").addEventListener('click', function () {
         getListRiwayat();
     });
+
+    checkboxBlmLunas.addEventListener('click', function () {
+        getListRiwayat();
+    })
 
     getListRiwayat();
 
