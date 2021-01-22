@@ -2,7 +2,7 @@
     <header class="p-2 bg-white d-flex align-items-center">
         <a href="javascript:history.go(-1)" class="float-left" title="Kembali">
             <svg class="bi text-primary" width="24" height="24" fill="currentColor">
-                <use xlink:href="<?= BASEURL; ?>/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#arrow-left" />
+                <use href="<?= BASEURL; ?>/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#arrow-left" />
             </svg>
         </a>
         <!-- <h2 class="text-center mx-4 my-0 text-truncate">Detail</h2> -->
@@ -13,13 +13,13 @@
         <div class="d-flex">
             <a href="<?= BASEURL ?>/datapaketsewa/details/pageedit/<?= $data['formvalue']['id_paket'] ?>" class="btn btn-lg btn-primary m-1">
                 <svg class="bi mr-2" width="18" height="18" fill="currentColor">
-                    <use xlink:href="<?= BASEURL; ?>/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#pencil-fill" />
+                    <use href="<?= BASEURL; ?>/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#pencil-fill" />
                 </svg>
                 Edit
             </a>
             <a class="btn btn-lg btn-danger m-1" data-toggle="modal" data-target="#dialogHapus">
                 <svg class="bi mr-2" width="18" height="18" fill="currentColor">
-                    <use xlink:href="<?= BASEURL; ?>/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#trash-fill" />
+                    <use href="<?= BASEURL; ?>/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#trash-fill" />
                 </svg>
                 Hapus
             </a>

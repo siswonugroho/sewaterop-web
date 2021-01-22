@@ -9,7 +9,7 @@
                 <div class="input-group-prepend">
                     <div class="input-group-text bg-light border-right-0">
                         <svg class="bi text-secondary" width="16" height="16" fill="currentColor">
-                            <use xlink:href="<?= BASEURL; ?>/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#search" />
+                            <use href="<?= BASEURL; ?>/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#search" />
                         </svg>
                     </div>
                 </div>
@@ -24,7 +24,7 @@
                 <div class="btn-group">
                     <a type="button" class="btn btn-sm btn-outline-primary dropdown-toggle text-decoration-none" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
                         <svg class="bi" width="18" height="18" fill="currentColor">
-                            <use xlink:href="<?= BASEURL; ?>/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#filter" />
+                            <use href="<?= BASEURL; ?>/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#filter" />
                         </svg>
                         <p class="d-none d-sm-inline">Urutkan</p>
                     </a>
@@ -35,7 +35,7 @@
                 </div>
                 <a type="button" class="btn btn-sm btn-outline-primary" id="btn-refresh">
                     <svg class="bi" width="18" height="18" fill="currentColor">
-                        <use xlink:href="<?= BASEURL; ?>/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#arrow-clockwise" />
+                        <use href="<?= BASEURL; ?>/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#arrow-clockwise" />
                     </svg>
                     <p class="d-none d-sm-inline">Refresh</p>
                 </a>
@@ -60,7 +60,7 @@
             </span>
             <div class="d-flex flex-column text-secondary text-center align-items-center my-5 list-riwayat-empty-message" id="no-data">
                 <svg class="bi my-3" width="36" height="36" fill="currentColor">
-                    <use xlink:href="" />
+                    <use href="" />
                 </svg>
                 <p class="h4"></p>
                 <p class="font-weight-normal"></p>

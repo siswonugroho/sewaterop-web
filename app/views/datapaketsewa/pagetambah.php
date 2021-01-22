@@ -2,7 +2,7 @@
     <header class="p-2 bg-white d-flex align-items-center">
         <a href="javascript:history.go(-1)" class="float-left" title="Kembali">
             <svg class="bi text-primary" width="24" height="24" fill="currentColor">
-                <use xlink:href="<?= BASEURL; ?>/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#arrow-left" />
+                <use href="<?= BASEURL; ?>/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#arrow-left" />
             </svg>
         </a>
         <h2 class="text-center mx-4 my-0 text-truncate">Tambah Paket Sewa</h2>
@@ -35,7 +35,7 @@
 
             <button type="submit" class="btn btn-lg btn-primary my-3">
                 <svg class="bi mr-2" width="20" height="20" fill="currentColor">
-                    <use xlink:href="<?= BASEURL; ?>/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#check2" />
+                    <use href="<?= BASEURL; ?>/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#check2" />
                 </svg>
                 Simpan
             </button>
@@ -63,7 +63,7 @@
             <div class="modal-footer">
                 <div class="alert alert-danger alert-dismissible fade anim-fade d-none px-3" role="alert">
                     <svg class="bi text-danger mr-2" width="24" height="24" fill="currentColor">
-                        <use xlink:href="<?= BASEURL ?>/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#x-circle" />
+                        <use href="<?= BASEURL ?>/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#x-circle" />
                     </svg>
                     Jumlah barang yang dipilih tidak boleh melebihi stok.
                 </div>
