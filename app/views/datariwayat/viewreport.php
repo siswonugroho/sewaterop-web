@@ -96,6 +96,15 @@
                     <div class="col">Rp.<?= Formatter::formatRupiah($data['formvalue']['jumlah_bayar']) ?></div>
                 </div>
                 <div class="row m-0 justify-content-center font-weight-bold">
+                    <?php if (Formatter::startsWith($data['formvalue']['kembalian'], '-')): ?>
+                    <div class="col-5">Kurang</div>
+                    <?php else: ?>
+                    <div class="col-5">Kembalian</div>
+                    <?php endif ?>
+                    <div class="">:</div>
+                    <div class="col">Rp.<?= Formatter::formatRupiah(str_replace('-','',$data['formvalue']['kembalian'])) ?></div>
+                </div>
+                <div class="row m-0 justify-content-center font-weight-bold">
                     <div class="col-5">Status</div>
                     <div class="">:</div>
                     <div class="col"><?= $data['formvalue']['status_pembayaran'] ?></div>

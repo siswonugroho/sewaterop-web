@@ -1,6 +1,6 @@
 <section class="col-md mt-3">
     <header class="p-2 bg-white">
-        <h2 class="text-center">Daftar Sewaan</h2>
+        <h2 class="text-center">Sewaan Berlangsung</h2>
     </header>
     <main id="list-sewaan">
         <?php Flasher::showFlash(); ?>
@@ -9,7 +9,7 @@
                 <svg class="bi mr-2" width="24" height="24" fill="currentColor">
                     <use xlink:href="<?= BASEURL; ?>/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#plus" />
                 </svg>
-                Tambah
+                <span class="text-truncate">Sewa Baru</span>
             </a>
             <div class="input-group">
                 <div class="input-group-prepend">

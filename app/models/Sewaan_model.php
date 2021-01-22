@@ -52,6 +52,20 @@ class Sewaan_model
         return $this->db->single();
     }
 
+    public function getSewaAkanBerakhir()
+    {
+        $this->db->query("SELECT id_pesanan, nama_pemesan, tgl_selesai FROM `daftar_sewaan` WHERE tgl_selesai > CURRENT_DATE AND status = 'berlangsung' ORDER BY tgl_selesai LIMIT 0, 5");
+        $this->db->execute();
+        return $this->db->resultSet();
+    }
+
+    public function getSewaTerbaru()
+    {
+        $this->db->query("SELECT * FROM `daftar_sewaan` WHERE status = 'berlangsung' ORDER BY id_pesanan LIMIT 0, 5");
+        $this->db->execute();
+        return $this->db->resultSet();
+    }
+
     public function tambahDataSewaan($data)
     {
         $this->db->query("INSERT INTO pesanan VALUES (:id_pesanan, :id_pemesan, :tgl_mulai, :tgl_selesai, :id_paket, :status)");

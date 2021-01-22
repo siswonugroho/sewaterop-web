@@ -16,7 +16,7 @@
                         <label for="nama_penyewa">Pilih penyewa</label>
                         <div class="dropdown">
                             <input type="text" hidden name="id_penyewa" id="id_penyewa" autocomplete="off">
-                            <input type="text" required class="form-control" name="nama_penyewa" id="nama_penyewa" autocomplete="off" placeholder="Klik untuk memilih..." data-toggle="dropdown">
+                            <input type="text" required readonly class="form-control bg-white" name="nama_penyewa" id="nama_penyewa" autocomplete="off" placeholder="Klik untuk memilih..." data-toggle="dropdown">
                             <div class="invalid-feedback">Harap isi kolom ini</div>
                             <div class="dropdown-menu dropdown-input shadow border-0" style="max-height: 50vh; overflow-y: auto;">
                                 <a href="<?= BASEURL ?>/datapenyewa/pagetambah" class="text-primary mx-4" type="button">Tambah penyewa</a>
@@ -51,13 +51,13 @@
                         <label for="nama_barang">Barang yang disewa</label>
                         <a class="btn btn-outline-primary d-block mb-2" data-toggle="modal" data-target="#pilih-barang">Tambah barang</a>
                         <input type="text" hidden required id="isi-paket-flag">
-                        <div class="invalid-feedback">Harap tambahkan setidaknya 1 isi paket</div>
+                        <div class="invalid-feedback">Harap tambahkan setidaknya 1 barang</div>
                     </div>
                     <div class="form-group pilih-paket d-none">
                         <label for="nama_paket">Pilih paket sewa</label>
                         <div class="dropdown">
                             <input type="text" hidden name="id_paket" id="id_paket" autocomplete="off">
-                            <input type="text" required class="form-control" name="nama_paket" id="nama_paket" autocomplete="off" data-toggle="dropdown">
+                            <input type="text" required readonly class="form-control bg-white" name="nama_paket" id="nama_paket" autocomplete="off" placeholder="Klik untuk memilih..." data-toggle="dropdown">
                             <div class="invalid-feedback">Harap isi kolom ini</div>
                             <div class="dropdown-menu dropdown-paket-sewa shadow border-0" style="max-height: 50vh; overflow-y: auto;">
                                 <div class="daftar-paket-sewa">

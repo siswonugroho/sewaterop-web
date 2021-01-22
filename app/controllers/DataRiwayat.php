@@ -2,11 +2,12 @@
 
 class DataRiwayat extends Controller {
 
-    public function index()
+    public function index($blmLunas = false)
     {
         if (Session::isLoggedIn()) {
             $data['judul'] = 'Riwayat Transaksi';
             $data['nav-link'] = 'Riwayat';
+            $data['is-blm-lunas'] = $blmLunas;
             $this->view('templates/header', $data);
             $this->view('templates/navs', $data);
             $this->view('datariwayat/index', $data);
@@ -45,6 +46,26 @@ class DataRiwayat extends Controller {
             $this->view('templates/header', $data);
             $this->view('datariwayat/viewreport', $data);
             $this->view('templates/footer');
+        } else {
+            header('location: ' . filter_var(BASEURL . '/login', FILTER_VALIDATE_URL));
+        }
+    }
+
+    public function hapus($id, $id_paket)
+    {
+        if (Session::isLoggedIn()) {
+            if ($this->model('Sewaan_model')->hapusDataSewaan($id) > 0) {
+                if (Formatter::startsWith($id_paket, 'sw')) {
+                    $this->model('Paket_model')->hapusDataPaket($id_paket);
+                }
+                Flasher::setFlash('Riwayat berhasil dihapus', 'success', 'check-circle');
+                header('location:' . filter_var('javascript://history.go(-1)', FILTER_VALIDATE_URL));
+                exit;
+            } else {
+                Flasher::setFlash('Tidak dapat menghapus riwayat.', 'danger', 'x-circle');
+                header('location:' . filter_var('javascript://history.go(-1)', FILTER_VALIDATE_URL));
+                exit;
+            }
         } else {
             header('location: ' . filter_var(BASEURL . '/login', FILTER_VALIDATE_URL));
         }
