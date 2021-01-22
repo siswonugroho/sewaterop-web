@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
         <div class="dropdown p-0">
             <button class="btn text-primary p-1" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
                 <svg class="bi" width="24" height="24" fill="currentColor">
-                    <use xlink:href="${BASEURL}/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#three-dots" />
+                    <use href="${BASEURL}/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#three-dots" />
                 </svg>
             </button>
             <div class="dropdown-menu dropdown-menu-right anim-fade shadow">
@@ -99,7 +99,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
         switch (toggle) {
             case "show":
                 listSewaanEmptyMessage.classList.replace("d-none", "d-flex");
-                listSewaanEmptyMessage.children[0].querySelector("use").setAttribute("xlink:href", `${BASEURL}/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#${iconName}`);
+                listSewaanEmptyMessage.children[0].querySelector("use").setAttribute("href", `${BASEURL}/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#${iconName}`);
                 listSewaanEmptyMessage.children[1].textContent = messageTitle;
                 listSewaanEmptyMessage.children[2].textContent = messageDetail;
                 break;
