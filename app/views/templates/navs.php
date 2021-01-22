@@ -49,7 +49,7 @@
                         <strong><?= $_SESSION['nama_admin'] ?></strong>
                     </a>
                     <div class="dropdown-menu anim-fade shadow">
-                        <a href="<?= BASEURL; ?>/editakun" class="dropdown-item">Edit akun</a>
+                        <a href="<?= BASEURL; ?>/editakun/changeuserinfo" class="dropdown-item">Edit profil</a>
                         <a href="<?= BASEURL; ?>/logout" class="dropdown-item">Logout</a>
                     </div>
                 </div>
@@ -122,10 +122,12 @@
                     </svg>
                     <small class="text-center">Pengguna</small>
                 </a>
-                <div class="dropdown-menu dropdown-menu-right anim-fade p-3 shadow" style="width: 16em;">
-                    <p>Pengguna saat ini: <br>
+                <div class="dropdown-menu dropdown-menu-right anim-fade shadow" style="width: 16em;">
+                    <p class="m-3">Pengguna saat ini: <br>
                         <strong><?= $_SESSION['nama_admin'] ?></strong></p>
-                    <a href="<?= BASEURL; ?>/logout" class="btn btn-dark">Logout</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="<?= BASEURL; ?>/editakun/changeuserinfo" class="dropdown-item">Edit profil</a>
+                    <a href="<?= BASEURL; ?>/logout" class="dropdown-item">Logout</a>
                 </div>
             </div>
 
