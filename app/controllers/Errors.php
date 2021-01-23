@@ -2,11 +2,9 @@
 
 class Errors extends Controller{
 
-    public function nodb()
+    public function index()
     {
-        $data['judul'] = 'Tidak dapat terhubung ke database';
-            $this->view('templates/header', $data);
-            $this->view('errors/nodb', $data);
-            $this->view('templates/footer');
+        $data['judul'] = 'Kesalahan internal server';
+            $this->view('errors/index', $data);
     }
 }

@@ -20,12 +20,7 @@ class Database
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
         ];
         // Mulai koneksi database dengan PDO
-        try {
-            $this->dbh = new PDO($dsn, $this->user, $this->pass);
-        } catch (PDOException $e) {
-            $msg = $e->getMessage();
-            header('location: ' . filter_var(BASEURL . '/errors/nodb/' , FILTER_VALIDATE_URL));
-        }
+        $this->dbh = new PDO($dsn, $this->user, $this->pass, $option);
     }
 
     public function query($query)
