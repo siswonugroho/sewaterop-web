@@ -1,4 +1,5 @@
     <section class="col-md m-1 m-md-3">
+        <?php Flasher::showFlash() ?>
         <header class="p-2 my-3 my-md-1 bg-transparent">
             <h2 class="text-truncate font-weight-bold"><span id="welcome-text">Halo</span></h2>
             <p class="text-truncate m-0">Berikut statistik Anda hingga hari ini.</p>

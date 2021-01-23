@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
         <div class="dropdown p-0">
             <button class="btn text-primary p-1" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
                 <svg class="bi" width="24" height="24" fill="currentColor">
-                    <use xlink:href="${BASEURL}/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#three-dots" />
+                    <use href="${BASEURL}/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#three-dots" />
                 </svg>
             </button>
             <div class="dropdown-menu dropdown-menu-right anim-fade shadow">
@@ -78,9 +78,9 @@ document.addEventListener('DOMContentLoaded', function (event) {
         </div>
     </span>
     <p class="text-muted my-0 barang-sewaan">${barangSewaanText}</p>
-    <p class="text-muted my-0 tgl">${dt.fromSQL(sewaan.tgl_mulai).setLocale('id').toLocaleString(dt.DATE_MED)} s/d ${dt.fromSQL(sewaan.tgl_selesai).setLocale('id').toLocaleString(dt.DATE_MED)}</p>
+    <p class="text-muted my-0 tgl">${dt.fromSQL(sewaan.tgl_mulai).setLocale('id').toLocaleString(dt.DATE_MED)} - ${dt.fromSQL(sewaan.tgl_selesai).setLocale('id').toLocaleString(dt.DATE_MED)}</p>
     <p class="d-none last-added">${sewaan.id_pesanan}</p>
-    <a href="${BASEURL}/datasewaan/details/viewdetail/${sewaan.id_pesanan}" class="btn btn-outline-primary mt-2">Detail</a>
+    <a href="${BASEURL}/datasewaan/details/viewdetail/${sewaan.id_pesanan}" class="btn btn-dark mt-2">Detail</a>
 </div>`);
             
         });
@@ -99,7 +99,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
         switch (toggle) {
             case "show":
                 listSewaanEmptyMessage.classList.replace("d-none", "d-flex");
-                listSewaanEmptyMessage.children[0].querySelector("use").setAttribute("xlink:href", `${BASEURL}/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#${iconName}`);
+                listSewaanEmptyMessage.children[0].querySelector("use").setAttribute("href", `${BASEURL}/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#${iconName}`);
                 listSewaanEmptyMessage.children[1].textContent = messageTitle;
                 listSewaanEmptyMessage.children[2].textContent = messageDetail;
                 break;

@@ -1,8 +1,7 @@
 <?php
 
-// require_once 'core/App.php';
-// require_once 'core/Controller.php';
 require_once 'config/config.php';
+require_once 'core/Error_handler.php';
 
 spl_autoload_register(function ($class) {
     $dirs = array('helpers', 'core', 'models', 'controllers');

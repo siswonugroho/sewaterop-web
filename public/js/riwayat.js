@@ -53,15 +53,15 @@ document.addEventListener('DOMContentLoaded', function (event) {
         dataRiwayat.forEach(riwayat => {
             listGroupElement.insertAdjacentHTML("beforeend", `
 <div class="list-group-item anim-fade">
-<div class="row row-cols-1">
-    <div class="col">
+<div class="row">
+    <div class="col-8">
     <h5>${riwayat.id_pesanan.toUpperCase()} - <span class="nama">${riwayat.nama_pemesan}</span></h5>
-    <p class="text-muted my-0 tgl">${dt.fromSQL(riwayat.tgl_mulai).setLocale('id').toLocaleString(dt.DATE_MED)} s/d ${dt.fromSQL(riwayat.tgl_selesai).setLocale('id').toLocaleString(dt.DATE_MED)}</p>
+    <p class="text-muted my-0 tgl">${dt.fromSQL(riwayat.tgl_mulai).setLocale('id').toLocaleString(dt.DATE_MED)} - ${dt.fromSQL(riwayat.tgl_selesai).setLocale('id').toLocaleString(dt.DATE_MED)}</p>
     <p class="my-0 status">${riwayat.status_pembayaran}</p>
     <p class="d-none last-added">${riwayat.id_pesanan}</p>
     </div>
-    <div class="col my-2">
-    <a href="${BASEURL}/datariwayat/viewreport/${riwayat.id_pesanan}" class="btn btn-primary my-2 my-md-1 text-truncate view-report-btn">Lihat Struk</a>
+    <div class="col-md my-2">
+    <a href="${BASEURL}/datariwayat/viewreport/${riwayat.id_pesanan}" class="btn btn-dark my-2 my-md-1 text-truncate view-report-btn">Lihat Struk</a>
     <a data-toggle="modal" data-target="#dialogHapus" data-id-sewaan="${riwayat.id_pesanan}" data-id-paket="${riwayat.id_paket}" data-nama-penyewa="${riwayat.nama_pemesan}" class="btn btn-outline-danger my-2 my-md-1 text-truncate">Hapus</a>
     </div>
 </div>
@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
         switch (toggle) {
             case "show":
                 listRiwayatEmptyMessage.classList.replace("d-none", "d-flex");
-                listRiwayatEmptyMessage.children[0].querySelector("use").setAttribute("xlink:href", `${BASEURL}/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#${iconName}`);
+                listRiwayatEmptyMessage.children[0].querySelector("use").setAttribute("href", `${BASEURL}/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#${iconName}`);
                 listRiwayatEmptyMessage.children[1].textContent = messageTitle;
                 listRiwayatEmptyMessage.children[2].textContent = messageDetail;
                 break;

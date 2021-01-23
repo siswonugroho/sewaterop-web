@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
         switch (toggle) {
             case "show":
                 listPaketEmptyMessage.classList.replace("d-none", "d-flex");
-                listPaketEmptyMessage.children[0].querySelector("use").setAttribute("xlink:href", `${BASEURL}/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#${iconName}`);
+                listPaketEmptyMessage.children[0].querySelector("use").setAttribute("href", `${BASEURL}/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#${iconName}`);
                 listPaketEmptyMessage.children[1].textContent = messageTitle;
                 listPaketEmptyMessage.children[2].textContent = messageDetail;
                 break;
