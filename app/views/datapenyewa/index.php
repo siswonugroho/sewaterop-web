@@ -1,4 +1,4 @@
-<section class="col-md mt-3">
+<section class="col-md mt-3 mx-1 mx-md-3">
     <header class="p-2 bg-white">
         <h2 class="text-center">Daftar Penyewa</h2>
     </header>
