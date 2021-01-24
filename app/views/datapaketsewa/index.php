@@ -1,4 +1,4 @@
-<section class="col-md mt-3 mx-1 mx-md-3">
+<section class="col-md mt-3 mx-1 mx-md-4">
     <header class="p-2 bg-white">
         <h2 class="text-center">Daftar Paket Sewa</h2>
     </header>

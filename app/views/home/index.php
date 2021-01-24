@@ -1,6 +1,9 @@
-    <section class="col-md m-1 m-md-3">
+    <section class="col-md m-0 m-md-3">
         <?php Flasher::showFlash() ?>
-        <header class="p-2 my-3 my-md-1 bg-transparent">
+        <header class="p-2 my-2 my-md-1 bg-transparent">
+            <figure class="d-flex d-md-none">
+                <img src="<?= BASEURL ?>/img/sewaterop-logo.svg" alt="Logo sewaterop" style="height: 7vh;">
+            </figure>
             <h2 class="text-truncate font-weight-bold"><span id="welcome-text">Halo</span></h2>
             <p class="text-truncate m-0">Berikut statistik Anda hingga hari ini.</p>
         </header>
@@ -53,9 +56,9 @@
             </div>
         </main>
 
-        <section class="top-5-data row row-cols-1 row-cols-md-2 mt-5">
+        <section class="top-5-data row row-cols-1 row-cols-sm-2 mt-5">
             <div class="segera-berakhir col my-4">
-                <h2 class="mx-3 font-weight-bold">Sewa yang akan berakhir</h2>
+                <h2 class="mx-3 font-weight-bold">Segera berakhir</h2>
                 <div class="list-group list-group-flush">
                     <span class="text-secondary no-list text-center mt-5">Memuat...</span>
                 </div>

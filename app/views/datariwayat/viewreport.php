@@ -8,18 +8,18 @@
         <h2 class="mx-3 my-0 text-truncate flex-grow-1">Struk Transaksi</h2>
 
     </header>
-    <a class="btn btn-lg btn-success d-block my-3 text-truncate mx-auto" style="width: fit-content;" id="downloadStruk" download="struk-sewa-<?= $data['formvalue']['id_pesanan'] ?>.jpg">
+    <a class="btn btn-lg btn-success shadow-sm d-block my-3 text-truncate mx-auto" style="width: fit-content;" id="downloadStruk" download="struk-sewa-<?= $data['formvalue']['id_pesanan'] ?>.jpg">
         <svg class="bi mr-2" width="18" height="18" fill="currentColor">
             <use href="<?= BASEURL; ?>/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#download" />
         </svg>
         Download Struk
     </a>
-    <small class="text-white text-center d-flex d-sm-none justify-content-center mb-3">Jika tampilan struk terpotong, scroll struk ke kanan atau ke kiri.</small>
+    <small class="text-light text-center d-flex d-sm-none justify-content-center mb-3">Jika tampilan struk terpotong, scroll struk ke kanan atau ke kiri.</small>
     <main class="mt-3 mx-2 overflow-auto">
         <div class="gambar-struk bg-white mx-auto" style="width: 130mm; height: fit-content;">
-            <header class="text-center font-weight-bold pt-3">
+            <header class="text-center font-weight-bold pt-3 px-3">
                 <p class="text-uppercase m-0">Sewa Barang Pernikahan H. Nashir</p>
-                <small class="m-0">Jl. Tidak diketahui kec. tidak diketahui</small><br>
+                <small class="m-0">Gudang Persewaan Tenda Utara Perum Kodim Jubung Lor Kec.Sukorambi, Jember</small><br>
                 <small class="m-0">Telepon 03517598247</small>
             </header>
             <hr>
@@ -111,7 +111,7 @@
                 </div>
             </section>
             <hr>
-            <footer class="pb-4 text-center text-uppercase">
+            <footer class="pb-5 text-center text-uppercase">
                 TERIMAKASIH<br>KEMBALI LAGI YA, ATAO <strong>PECAH PALA KAO !</strong>
             </footer>
         </div>

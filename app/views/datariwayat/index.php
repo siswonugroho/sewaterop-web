@@ -1,11 +1,12 @@
-<section class="col-md mt-3 mx-1 mx-md-3">
+<section class="col-md mt-3 mx-1 mx-md-4">
     <header class="p-2 bg-white">
         <h2 class="text-center">Riwayat Sewaan</h2>
     </header>
     <main id="list-riwayat">
         <?php Flasher::showFlash(); ?>
         <span class="d-flex py-3 justify-content-center sticky-top bg-white">
-            <div class="input-group mx-0 mx-md-5">
+            <div class="w-25 d-none d-md-inline"></div>
+            <div class="input-group">
                 <div class="input-group-prepend">
                     <div class="input-group-text bg-light border-right-0">
                         <svg class="bi text-secondary" width="16" height="16" fill="currentColor">
@@ -15,7 +16,7 @@
                 </div>
                 <input type="search" class="search form-control border-left-0 bg-light" placeholder="Cari riwayat" aria-label="Riwayat">
             </div>
-
+            <div class="w-25 d-none d-md-inline"></div>
         </span>
 
         <div class="d-flex justify-content-between">
