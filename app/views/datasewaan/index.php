@@ -1,4 +1,4 @@
-<section class="col-md mt-3">
+<section class="col-md mt-3 mx-1 mx-md-4">
     <header class="p-2 bg-white">
         <h2 class="text-center">Sewaan Berlangsung</h2>
     </header>
@@ -37,6 +37,8 @@
                     <div class="dropdown-menu dropdown-menu-right anim-fade shadow border-0">
                         <button class="dropdown-item sort" data-sort="nama" type="button">Nama</button>
                         <button class="dropdown-item sort" data-sort="last-added" type="button">Terakhir ditambahkan</button>
+                        <button class="dropdown-item sort" data-sort="tgl-mulai" type="button">Tanggal mulai</button>
+                        <button class="dropdown-item sort" data-sort="tgl-selesai" type="button">Tanggal berakhir</button>
                     </div>
                 </div>
                 <a type="button" class="btn btn-sm btn-outline-primary" id="btn-refresh">

@@ -54,7 +54,7 @@ class Sewaan_model
 
     public function getSewaAkanBerakhir()
     {
-        $this->db->query("SELECT id_pesanan, nama_pemesan, tgl_selesai FROM `daftar_sewaan` WHERE tgl_selesai > CURRENT_DATE AND status = 'berlangsung' ORDER BY tgl_selesai LIMIT 0, 5");
+        $this->db->query("SELECT id_pesanan, nama_pemesan, tgl_selesai FROM `daftar_sewaan` WHERE tgl_selesai >= CURRENT_DATE AND status = 'berlangsung' ORDER BY tgl_selesai LIMIT 0, 5");
         $this->db->execute();
         return $this->db->resultSet();
     }

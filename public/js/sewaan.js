@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
     const listSewaanEmptyMessage = listSewaanContainer.querySelector(".list-sewaan-empty-message");
     const listGroupElement = listSewaanContainer.querySelector("div.list-group");
     const dialogDataElement = document.querySelectorAll(".selected-data");
+    const dt = luxon.DateTime;
 
     function countDataSewaan(listParent) {
         const angkaText = document.querySelector("#total-sewaan");
@@ -25,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
             if (Object.keys(responseJson).length !== 0) {
                 toggleListEmpty('hide');
                 const listSewaan = new List('list-sewaan', {
-                    valueNames: ['nama', 'barang-sewaan', 'tgl', 'last-added']
+                    valueNames: ['nama', 'barang-sewaan', 'tgl-mulai', 'tgl-selesai', 'last-added']
                 });
                 listSewaan.sort('last-added', { order: "desc" });
                 listSewaan.on('searchComplete', function () {
@@ -48,7 +49,6 @@ document.addEventListener('DOMContentLoaded', function (event) {
 
     function renderListSewaan(dataSewaan) {
         listGroupElement.innerHTML = "";
-        const dt = luxon.DateTime;
         dataSewaan.forEach(sewaan => {
             let barangSewaanText = ''
             if (sewaan.nama_paket.startsWith('sw')) {
@@ -78,7 +78,8 @@ document.addEventListener('DOMContentLoaded', function (event) {
         </div>
     </span>
     <p class="text-muted my-0 barang-sewaan">${barangSewaanText}</p>
-    <p class="text-muted my-0 tgl">${dt.fromSQL(sewaan.tgl_mulai).setLocale('id').toLocaleString(dt.DATE_MED)} - ${dt.fromSQL(sewaan.tgl_selesai).setLocale('id').toLocaleString(dt.DATE_MED)}</p>
+    <p class="text-muted my-0">${formatDate(sewaan.tgl_mulai, dt.DATE_MED)} - ${formatDate(sewaan.tgl_selesai, dt.DATE_MED)}</p>
+    <p class="d-none tgl-mulai">${sewaan.tgl_mulai}</p><p class="d-none tgl-selesai">${sewaan.tgl_selesai}</p>
     <p class="d-none last-added">${sewaan.id_pesanan}</p>
     <a href="${BASEURL}/datasewaan/details/viewdetail/${sewaan.id_pesanan}" class="btn btn-dark mt-2">Detail</a>
 </div>`);
@@ -107,6 +108,10 @@ document.addEventListener('DOMContentLoaded', function (event) {
                 listSewaanEmptyMessage.classList.replace("d-flex", "d-none");
                 break;
         }
+    }
+
+    function formatDate(dateString = '', format = '') {
+        return dt.fromSQL(dateString).setLocale('id').toLocaleString(format);
     }
 
     document.querySelector("a#btn-refresh").addEventListener('click', function () {
