@@ -35,15 +35,3 @@ $modal-transition      : transform 0.4s cubic-bezier(0.230, 1.000, 0.320, 1.000)
 
 @import "../../../bootstrap-4.5.3-master/scss/bootstrap";
 
-// Custom CSS outside Bootstrap
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
-
-body {
-    font-family: 'Roboto', sans-serif;
-}
-.btn{
-    letter-spacing: .75pt;
-    text-transform: uppercase;
-    font-weight: 500;
-    font-size: smaller;
-}

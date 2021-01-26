@@ -67,9 +67,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
         <h5 class="nama mb-0">${sewaan.id_pesanan.toUpperCase()} - ${sewaan.nama_pemesan}</h5>
         <div class="dropdown p-0">
             <button class="btn text-primary p-1" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
-                <svg class="bi" width="24" height="24" fill="currentColor">
-                    <use href="${BASEURL}/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#three-dots" />
-                </svg>
+                <svg class="bi" width="24" height="24" fill="currentColor"><use href="${BASEURL}/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#three-dots" /></svg>
             </button>
             <div class="dropdown-menu dropdown-menu-right anim-fade shadow">
                 <a href="${BASEURL}/datasewaan/details/pageedit/${sewaan.id_pesanan}" class="dropdown-item">Edit</a>
@@ -79,7 +77,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
     </span>
     <p class="text-muted my-0 barang-sewaan">${barangSewaanText}</p>
     <p class="text-muted my-0">${formatDate(sewaan.tgl_mulai, dt.DATE_MED)} - ${formatDate(sewaan.tgl_selesai, dt.DATE_MED)}</p>
-    <p class="d-none tgl-mulai">${sewaan.tgl_mulai}</p><p class="d-none tgl-selesai">${sewaan.tgl_selesai}</p>
+    <p class="d-none tgl-mulai waktu-sewa">${sewaan.tgl_mulai}</p><p class="d-none tgl-selesai">${sewaan.tgl_selesai}</p>
     <p class="d-none last-added">${sewaan.id_pesanan}</p>
     <a href="${BASEURL}/datasewaan/details/viewdetail/${sewaan.id_pesanan}" class="btn btn-dark mt-2">Detail</a>
 </div>`);
@@ -94,6 +92,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
                 });
             });
         });
+
     }
 
     function toggleListEmpty(toggle, iconName = "", messageTitle = "", messageDetail = "") {
