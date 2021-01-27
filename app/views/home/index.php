@@ -70,8 +70,8 @@
                 </div>
             </div>
         </section>
-    </section>
     <div class="white-space" style="height: 10vh;"></div>
+    </section>
     <script src="<?= BASEURL ?>/js/greetings.js"></script>
     <script src="<?= BASEURL ?>/js/luxon.min.js"></script>
     <script src="<?= BASEURL ?>/js/date-formatter.js"></script>
