@@ -4,7 +4,6 @@ document.addEventListener('DOMContentLoaded', function (event) {
     const listSewaanEmptyMessage = listSewaanContainer.querySelector(".list-sewaan-empty-message");
     const listGroupElement = listSewaanContainer.querySelector("div.list-group");
     const dialogDataElement = document.querySelectorAll(".selected-data");
-    const dt = luxon.DateTime;
 
     function countDataSewaan(listParent) {
         const angkaText = document.querySelector("#total-sewaan");
@@ -77,12 +76,15 @@ document.addEventListener('DOMContentLoaded', function (event) {
     </span>
     <p class="text-muted my-0 barang-sewaan">${barangSewaanText}</p>
     <p class="text-muted my-0">${formatDate(sewaan.tgl_mulai, dt.DATE_MED)} - ${formatDate(sewaan.tgl_selesai, dt.DATE_MED)}</p>
-    <p class="d-none tgl-mulai waktu-sewa">${sewaan.tgl_mulai}</p><p class="d-none tgl-selesai">${sewaan.tgl_selesai}</p>
+    <span class="d-none tgl-mulai">${sewaan.tgl_mulai}</span><span class="d-none tgl-selesai">${sewaan.tgl_selesai}</span>
     <p class="d-none last-added">${sewaan.id_pesanan}</p>
     <a href="${BASEURL}/datasewaan/details/viewdetail/${sewaan.id_pesanan}" class="btn btn-dark mt-2">Detail</a>
 </div>`);
             
         });
+
+        const tglSelesaiText = listGroupElement.querySelectorAll('span.tgl-selesai');
+
 
         listGroupElement.querySelectorAll("a[data-toggle=modal]").forEach(btn => {
             btn.addEventListener('click', function () {
@@ -107,10 +109,6 @@ document.addEventListener('DOMContentLoaded', function (event) {
                 listSewaanEmptyMessage.classList.replace("d-flex", "d-none");
                 break;
         }
-    }
-
-    function formatDate(dateString = '', format = '') {
-        return dt.fromSQL(dateString).setLocale('id').toLocaleString(format);
     }
 
     document.querySelector("a#btn-refresh").addEventListener('click', function () {

@@ -96,4 +96,5 @@
 
 <script src="<?= BASEURL ?>/js/list.min.js"></script>
 <script src="<?= BASEURL ?>/js/luxon.min.js"></script>
+<script src="<?= BASEURL ?>/js/date-formatter.js"></script>
 <script src="<?= BASEURL ?>/js/riwayat.min.js"></script>

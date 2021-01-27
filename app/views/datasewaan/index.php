@@ -100,5 +100,6 @@
 
 <script src="<?= BASEURL ?>/js/list.min.js"></script>
 <script src="<?= BASEURL ?>/js/luxon.min.js"></script>
+<script src="<?= BASEURL ?>/js/date-formatter.js"></script>
 <script src="<?= BASEURL ?>/js/sewaan.min.js"></script>
 <script src="<?= BASEURL ?>/js/formatRupiah.min.js"></script>

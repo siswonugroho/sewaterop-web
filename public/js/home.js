@@ -59,10 +59,6 @@ document.addEventListener('DOMContentLoaded', function (event) {
         });
     }
 
-    function formatDate(dateString = '', format = '') {
-        return dt.fromSQL(dateString).setLocale('id').toLocaleString(format);
-    }
-
     function dateRangeToToday(dateString) {
         const end = dt.fromSQL(dateString);
         const diffInDays = end.diffNow('days');
