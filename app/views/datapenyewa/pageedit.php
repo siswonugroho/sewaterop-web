@@ -8,31 +8,37 @@
         <h2 class="text-center mx-4 my-0 text-truncate">Edit Penyewa</h2>
     </header>
     <main class="mt-3 mx-2 mx-sm-5">
-        <form action="<?= BASEURL ?>/datapenyewa/edit" method="post" enctype="multipart/form-data" novalidate>
-            <input type="text" hidden readonly class="form-control" name="id_penyewa" id="id_penyewa" value="<?= $data['formvalue']['id_pemesan'] ?>">
-            <div class="form-group">
-                <label for="nama_penyewa">Nama Penyewa</label>
-                <input type="text" required class="form-control" name="nama_penyewa" id="nama_penyewa" value="<?= $data['formvalue']['nama_pemesan'] ?>">
-                <div class="invalid-feedback">Harap isi kolom ini</div>
-            </div>
-            <div class="form-group">
-                <label for="stok">No. Telepon</label>
-                <input type="number" required class="form-control" name="telepon" id="telepon" value="<?= $data['formvalue']['telepon'] ?>">
-                <div class="invalid-feedback">Harap isi kolom ini</div>
-            </div>
-            <div class="form-group">
-                <label for="harga">Alamat</label>
-                <textarea rows="4" required class="form-control" name="alamat" id="alamat"><?= $data['formvalue']['alamat'] ?></textarea>
-                <div class="invalid-feedback">Harap isi kolom ini</div>
-            </div>
+        <div class="row">
+            <div class="col-sm">
+                <form action="<?= BASEURL ?>/datapenyewa/edit" method="post" enctype="multipart/form-data" novalidate>
+                    <input type="text" hidden readonly class="form-control" name="id_penyewa" id="id_penyewa" value="<?= $data['formvalue']['id_pemesan'] ?>">
+                    <div class="form-group">
+                        <label for="nama_penyewa">Nama Penyewa</label>
+                        <input type="text" required class="form-control" name="nama_penyewa" id="nama_penyewa" value="<?= $data['formvalue']['nama_pemesan'] ?>">
+                        <div class="invalid-feedback">Harap isi kolom ini</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="stok">No. Telepon</label>
+                        <input type="tel" required class="form-control" name="telepon" id="telepon" value="<?= $data['formvalue']['telepon'] ?>">
+                        <div class="invalid-feedback">Harap isi kolom ini</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="harga">Alamat</label>
+                        <textarea rows="4" required class="form-control" name="alamat" id="alamat"><?= $data['formvalue']['alamat'] ?></textarea>
+                        <div class="invalid-feedback">Harap isi kolom ini</div>
+                    </div>
 
-            <button type="submit" class="btn btn-lg btn-primary my-3">
-                <svg class="bi mr-2" width="20" height="20" fill="currentColor">
-                    <use href="<?= BASEURL; ?>/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#check2" />
-                </svg>
-                Simpan
-            </button>
-        </form>
+                    <button type="submit" class="btn btn-lg btn-primary my-3">
+                        <svg class="bi mr-2" width="20" height="20" fill="currentColor">
+                            <use href="<?= BASEURL; ?>/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#check2" />
+                        </svg>
+                        Simpan
+                    </button>
+                </form>
+            </div>
+            <div class="col-sm"></div>
+        </div>
+
     </main>
     <div style="height: 15vh;"></div>
 </section>

@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
             }
 
             listGroupElement.insertAdjacentHTML("beforeend", `
-<div class="list-group-item anim-fade">
+<div class="list-group-item py-4 anim-fade">
     <span class="d-flex w-100 justify-content-between">
         <h5 class="nama mb-0">${sewaan.id_pesanan.toUpperCase()} - ${sewaan.nama_pemesan}</h5>
         <div class="dropdown p-0">
@@ -79,6 +79,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
     <span class="d-none tgl-mulai">${sewaan.tgl_mulai}</span><span class="d-none tgl-selesai">${sewaan.tgl_selesai}</span>
     <p class="d-none last-added">${sewaan.id_pesanan}</p>
     <a href="${BASEURL}/datasewaan/details/viewdetail/${sewaan.id_pesanan}" class="btn btn-dark mt-2">Detail</a>
+    <a href="${BASEURL}/datasewaan/details/checkout/${sewaan.id_pesanan}" class="btn btn-success mt-2">Bayar</a>
 </div>`);
             
         });

@@ -17,7 +17,7 @@
                         </div>
                         <div class="row row-cols-1 row-cols-sm-2">
                             <span class="col">ID Sewaan</span>
-                            <p class="col font-weight-bold"><?= $data['formvalue']['id_pesanan'] ?></p>
+                            <p class="col font-weight-bold"><?= strtoupper($data['formvalue']['id_pesanan']) ?></p>
                         </div>
                         <div class="row row-cols-1 row-cols-sm-2">
                             <span class="col">Nama Penyewa</span>
@@ -80,7 +80,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="total-jumlah_bayar">Jumlah Bayar (Rp)</label>
-                                <input type="number" required class="form-control" placeholder="mis. 1000000" name="jumlah_bayar" id="jumlah_bayar">
+                                <input type="number" required autofocus class="form-control" placeholder="mis. 1000000" name="jumlah_bayar" id="jumlah_bayar">
                                 <div class="invalid-feedback">Harap isi kolom ini</div>
                             </div>
                             <small class="text-secondary"">Sebelum mengklik Selesai, pastikan konsumen sudah menyerahkan uang kepada Anda.</small>

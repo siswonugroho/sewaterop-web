@@ -14,7 +14,7 @@
                     <div class="card-body">
                         <div class="row row-cols-1 row-cols-sm-2">
                             <span class="col">ID Sewaan</span>
-                            <p class="col font-weight-bold"><?= $data['formvalue']['id_pesanan'] ?></p>
+                            <p class="col font-weight-bold"><?= strtoupper($data['formvalue']['id_pesanan']) ?></p>
                         </div>
                         <div class="row row-cols-1 row-cols-sm-2">
                             <span class="col">Tanggal mulai sewa</span>
@@ -37,7 +37,7 @@
                             <p class="col font-weight-bold"><?= $data['formvalue']['telepon'] ?></p>
                         </div>
                         <div class="m-1">
-                            <a href="<?= BASEURL ?>/datasewaan/details/pageedit/<?= $data['formvalue']['id_pesanan'] ?>" class="btn btn-outline-primary" title="Edit">
+                            <a href="<?= BASEURL ?>/datasewaan/details/pageedit/<?= $data['formvalue']['id_pesanan'] ?>" class="btn btn-primary" title="Edit">
                                 <svg class="bi mr-2" width="18" height="18" fill="currentColor">
                                     <use href="<?= BASEURL; ?>/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#pencil" />
                                 </svg>

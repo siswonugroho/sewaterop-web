@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
         listGroupElement.innerHTML = "";
         dataRiwayat.forEach(riwayat => {
             listGroupElement.insertAdjacentHTML("beforeend", `
-<div class="list-group-item anim-fade">
+<div class="list-group-item py-4 anim-fade">
 <div class="row">
     <div class="col-8">
     <h5>${riwayat.id_pesanan.toUpperCase()} - <span class="nama">${riwayat.nama_pemesan}</span></h5>
