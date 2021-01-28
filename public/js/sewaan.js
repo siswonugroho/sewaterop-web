@@ -4,7 +4,6 @@ document.addEventListener('DOMContentLoaded', function (event) {
     const listSewaanEmptyMessage = listSewaanContainer.querySelector(".list-sewaan-empty-message");
     const listGroupElement = listSewaanContainer.querySelector("div.list-group");
     const dialogDataElement = document.querySelectorAll(".selected-data");
-    const dt = luxon.DateTime;
 
     function countDataSewaan(listParent) {
         const angkaText = document.querySelector("#total-sewaan");
@@ -62,14 +61,12 @@ document.addEventListener('DOMContentLoaded', function (event) {
             }
 
             listGroupElement.insertAdjacentHTML("beforeend", `
-<div class="list-group-item anim-fade">
+<div class="list-group-item py-4 anim-fade">
     <span class="d-flex w-100 justify-content-between">
         <h5 class="nama mb-0">${sewaan.id_pesanan.toUpperCase()} - ${sewaan.nama_pemesan}</h5>
         <div class="dropdown p-0">
             <button class="btn text-primary p-1" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
-                <svg class="bi" width="24" height="24" fill="currentColor">
-                    <use href="${BASEURL}/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#three-dots" />
-                </svg>
+                <svg class="bi" width="24" height="24" fill="currentColor"><use href="${BASEURL}/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#three-dots" /></svg>
             </button>
             <div class="dropdown-menu dropdown-menu-right anim-fade shadow">
                 <a href="${BASEURL}/datasewaan/details/pageedit/${sewaan.id_pesanan}" class="dropdown-item">Edit</a>
@@ -79,12 +76,16 @@ document.addEventListener('DOMContentLoaded', function (event) {
     </span>
     <p class="text-muted my-0 barang-sewaan">${barangSewaanText}</p>
     <p class="text-muted my-0">${formatDate(sewaan.tgl_mulai, dt.DATE_MED)} - ${formatDate(sewaan.tgl_selesai, dt.DATE_MED)}</p>
-    <p class="d-none tgl-mulai">${sewaan.tgl_mulai}</p><p class="d-none tgl-selesai">${sewaan.tgl_selesai}</p>
+    <span class="d-none tgl-mulai">${sewaan.tgl_mulai}</span><span class="d-none tgl-selesai">${sewaan.tgl_selesai}</span>
     <p class="d-none last-added">${sewaan.id_pesanan}</p>
     <a href="${BASEURL}/datasewaan/details/viewdetail/${sewaan.id_pesanan}" class="btn btn-dark mt-2">Detail</a>
+    <a href="${BASEURL}/datasewaan/details/checkout/${sewaan.id_pesanan}" class="btn btn-success mt-2">Bayar</a>
 </div>`);
             
         });
+
+        const tglSelesaiText = listGroupElement.querySelectorAll('span.tgl-selesai');
+
 
         listGroupElement.querySelectorAll("a[data-toggle=modal]").forEach(btn => {
             btn.addEventListener('click', function () {
@@ -94,6 +95,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
                 });
             });
         });
+
     }
 
     function toggleListEmpty(toggle, iconName = "", messageTitle = "", messageDetail = "") {
@@ -108,10 +110,6 @@ document.addEventListener('DOMContentLoaded', function (event) {
                 listSewaanEmptyMessage.classList.replace("d-flex", "d-none");
                 break;
         }
-    }
-
-    function formatDate(dateString = '', format = '') {
-        return dt.fromSQL(dateString).setLocale('id').toLocaleString(format);
     }
 
     document.querySelector("a#btn-refresh").addEventListener('click', function () {

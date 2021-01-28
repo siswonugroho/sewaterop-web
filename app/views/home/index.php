@@ -57,21 +57,22 @@
         </main>
 
         <section class="top-5-data row row-cols-1 row-cols-sm-2 mt-5">
-            <div class="segera-berakhir col my-4">
-                <h2 class="mx-3 font-weight-bold">Segera berakhir</h2>
-                <div class="list-group list-group-flush">
-                    <span class="text-secondary no-list text-center mt-5">Memuat...</span>
-                </div>
-            </div>
             <div class="sewa-terbaru col my-4">
                 <h2 class="mx-3 font-weight-bold">Sewa terbaru</h2>
                 <div class="list-group list-group-flush">
                     <span class="text-secondary no-list text-center mt-5">Memuat...</span>
                 </div>
             </div>
+            <div class="segera-berakhir col my-4">
+                <h2 class="mx-3 font-weight-bold">Segera berakhir</h2>
+                <div class="list-group list-group-flush">
+                    <span class="text-secondary no-list text-center mt-5">Memuat...</span>
+                </div>
+            </div>
         </section>
-    </section>
     <div class="white-space" style="height: 10vh;"></div>
+    </section>
     <script src="<?= BASEURL ?>/js/greetings.js"></script>
     <script src="<?= BASEURL ?>/js/luxon.min.js"></script>
+    <script src="<?= BASEURL ?>/js/date-formatter.js"></script>
     <script src="<?= BASEURL ?>/js/home.min.js"></script>
