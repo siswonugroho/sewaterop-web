@@ -64,8 +64,8 @@ function minifier($code)
     <div class="container">
         <img src="<?= BASEURL ?>/img/undraw_server_down.svg" alt="server down" class="text-center">
         <h1 class="text-center">Terjadi Kesalahan pada Server</h1>
-        <p class="my-0 text-center">Coba lagi nanti. Jika masih bermasalah, hubungi developer.</p>
-        <a href="<?= BASEURL; ?>" class="btn">Kembali</a>
+        <p class="my-0 text-center">Coba lagi nanti. Jika masih bermasalah, <a href="mailto:support-sewaterop@gmail.com" style="color: #2249CE; text-decoration: none;">hubungi kami</a>.</p>
+        <a href="javascript:history.back()" class="btn">Kembali</a>
     </div>
 </body>
 </html>
