@@ -8,7 +8,6 @@ class Database
     private $db_name = DB_NAME;
 
     private $dbh;
-    private $dsn;
 
     public function __construct()
     {
@@ -16,7 +15,7 @@ class Database
         $dsn = "mysql:host=$this->host;dbname=$this->db_name";
 
         $option = [
-            PDO::ATTR_PERSISTENT => true,
+            PDO::ATTR_EMULATE_PREPARES => false,
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
         ];
         // Mulai koneksi database dengan PDO
