@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
     const listRiwayatEmptyMessage = listRiwayatContainer.querySelector(".list-riwayat-empty-message");
     const listGroupElement = listRiwayatContainer.querySelector("div.list-group");
     const dialogDataElement = document.querySelectorAll(".selected-data");
-    const checkboxBlmLunas = document.querySelector('input#filter-blm-lunas');
+    const checkboxBlmLunas = document.querySelectorAll('input.filter-blm-lunas');
 
     function countDataRiwayat(listParent) {
         const angkaText = document.querySelector("#total-riwayat");
@@ -103,23 +103,25 @@ document.addEventListener('DOMContentLoaded', function (event) {
     }
 
     function checkBlmLunas(listObject) {
-        if (checkboxBlmLunas.checked) {
-            listObject.filter(function (items) {
-                if (items.values().status != "Lunas") return true;
-                else return false;
-            });
-        } else {
-            listObject.filter();
-        }
+            if (checkboxBlmLunas[1].checked) {
+                listObject.filter(function (items) {
+                    if (items.values().status != "Lunas") return true;
+                    else return false;
+                });
+            } else {
+                listObject.filter();
+            }
     }
 
     document.querySelector("a#btn-refresh").addEventListener('click', function () {
         getListRiwayat();
     });
 
-    checkboxBlmLunas.addEventListener('click', function () {
-        getListRiwayat();
-    })
+    checkboxBlmLunas.forEach(checkbox => {
+        checkbox.addEventListener('click', function () {
+            getListRiwayat();
+        });
+    });
 
     getListRiwayat();
 

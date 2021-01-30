@@ -1,12 +1,31 @@
 <section class="col-md mt-3 mx-1 mx-md-4">
-    <header class="p-2 bg-white">
-        <h2 class="text-center">Riwayat Sewaan</h2>
+    <header class="p-2 bg-white d-flex flex-column align-items-center justify-content-center">
+        <h2>Riwayat Sewaan</h2>
+        <div class="row w-100 justify-content-center">
+            <div class="col-sm-7 btn-group btn-group-toggle my-2" data-toggle="buttons">
+                <?php if ($data['is-blm-lunas']) : ?>
+                    <label class="btn btn-outline-primary w-100">
+                        <input type="radio" name="options" class="filter-blm-lunas"> Semua
+                    </label>
+                    <label class="btn btn-outline-primary w-100 active">
+                        <input type="radio" name="options" class="filter-blm-lunas" checked> Belum Lunas
+                    </label>
+                <?php else : ?>
+                    <label class="btn btn-outline-primary w-100 active">
+                        <input type="radio" name="options" class="filter-blm-lunas" checked> Semua
+                    </label>
+                    <label class="btn btn-outline-primary w-100">
+                        <input type="radio" name="options" class="filter-blm-lunas"> Belum Lunas
+                    </label>
+                <?php endif ?>
+            </div>
+        </div>
+
     </header>
     <main id="list-riwayat">
         <?php Flasher::showFlash(); ?>
-        <span class="d-flex py-3 justify-content-center sticky-top bg-white">
-            <div class="w-25 d-none d-md-inline"></div>
-            <div class="input-group">
+        <div class="row py-3 justify-content-center sticky-top bg-white">
+            <div class="input-group col-md-8">
                 <div class="input-group-prepend">
                     <div class="input-group-text bg-light border-right-0">
                         <svg class="bi text-secondary" width="16" height="16" fill="currentColor">
@@ -16,8 +35,7 @@
                 </div>
                 <input type="search" class="search form-control border-left-0 bg-light" placeholder="Cari riwayat" aria-label="Riwayat">
             </div>
-            <div class="w-25 d-none d-md-inline"></div>
-        </span>
+        </div>
 
         <div class="d-flex justify-content-between">
             <p>Total <strong id="total-riwayat">0</strong> riwayat</p>
@@ -41,16 +59,6 @@
                     <p class="d-none d-sm-inline">Refresh</p>
                 </a>
             </span>
-        </div>
-        <div class="form-inline mb-2">
-            <div class="custom-control custom-checkbox">
-                <?php if ($data['is-blm-lunas']) : ?>
-                    <input type="checkbox" checked class="custom-control-input" id="filter-blm-lunas">
-                <?php else : ?>
-                    <input type="checkbox" class="custom-control-input" id="filter-blm-lunas">
-                <?php endif ?>
-                <label class="custom-control-label" for="filter-blm-lunas">Hanya tampilkan yang belum lunas</label>
-            </div>
         </div>
         <div id="list-riwayat-container">
 
