@@ -1,7 +1,23 @@
 <section class="col-md mt-3 mx-1 mx-md-4">
-    <header class="p-2 bg-white d-flex flex-column align-items-center justify-content-center">
+    <header class="p-2 bg-white text-center">
         <h2>Riwayat Sewaan</h2>
-        <div class="row w-100 justify-content-center">
+    </header>
+    <main id="list-riwayat">
+        <?php Flasher::showFlash(); ?>
+
+        <div class="row py-3 justify-content-center sticky-top bg-white">
+            <div class="input-group col">
+                <div class="input-group-prepend">
+                    <div class="input-group-text bg-light border-right-0">
+                        <svg class="bi text-secondary" width="16" height="16" fill="currentColor">
+                            <use href="<?= BASEURL; ?>/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#search" />
+                        </svg>
+                    </div>
+                </div>
+                <input type="search" class="search form-control border-left-0 bg-light" placeholder="Cari riwayat" aria-label="Riwayat">
+            </div>
+        </div>
+        <div class="row pb-3 justify-content-center">
             <div class="col-sm-7 btn-group btn-group-toggle my-2" data-toggle="buttons">
                 <?php if ($data['is-blm-lunas']) : ?>
                     <label class="btn btn-outline-primary w-100">
@@ -20,23 +36,6 @@
                 <?php endif ?>
             </div>
         </div>
-
-    </header>
-    <main id="list-riwayat">
-        <?php Flasher::showFlash(); ?>
-        <div class="row py-3 justify-content-center sticky-top bg-white">
-            <div class="input-group col-md-8">
-                <div class="input-group-prepend">
-                    <div class="input-group-text bg-light border-right-0">
-                        <svg class="bi text-secondary" width="16" height="16" fill="currentColor">
-                            <use href="<?= BASEURL; ?>/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#search" />
-                        </svg>
-                    </div>
-                </div>
-                <input type="search" class="search form-control border-left-0 bg-light" placeholder="Cari riwayat" aria-label="Riwayat">
-            </div>
-        </div>
-
         <div class="d-flex justify-content-between">
             <p>Total <strong id="total-riwayat">0</strong> riwayat</p>
             <span class="btn-group mb-2">
