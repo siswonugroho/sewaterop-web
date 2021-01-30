@@ -95,10 +95,9 @@ class Sewaan_model
         $this->db->bind('status', $data['status']);
         $this->db->execute();
 
-        $this->db->query("SELECT COUNT(*) FROM isi_paket");
-        $this->db->execute();
+        $countIsiPaket = $this->db->queryCount("SELECT COUNT(*) FROM isi_paket");
 
-        return intval($this->db->rowCount() + $this->db->single[0]);
+        return intval($this->db->rowCount() + $countIsiPaket);
     }
 
     public function hapusDataSewaan($id)

@@ -70,12 +70,6 @@
                 </svg>
                 <small class="text-center">Sewaan</small>
             </a>
-            <a class="nav-link text-secondary d-flex flex-column p-1 align-items-center" href="<?= BASEURL ?>/databarang">
-                <svg class="bi mx-auto" width="18" height="18" fill="currentColor">
-                    <use href="<?= BASEURL; ?>/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#archive" />
-                </svg>
-                <small class="text-center">Barang</small>
-            </a>
             <a class="nav-link text-secondary d-flex flex-column p-1 align-items-center" href="<?= BASEURL ?>/datariwayat">
                 <svg class="bi mx-auto" width="18" height="18" fill="currentColor">
                     <use href="<?= BASEURL; ?>/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#clock-history" />
@@ -85,25 +79,12 @@
             <div class="dropup">
                 <a class="nav-link text-secondary d-flex flex-column p-1 align-items-center" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
                     <svg class="bi mx-auto" width="18" height="18" fill="currentColor">
-                        <use href="<?= BASEURL; ?>/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#list" />
+                        <use href="<?= BASEURL; ?>/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#person-circle" />
                     </svg>
-                    <small class="text-center">Lainnya</small>
+                    <small class="text-center">Pengguna</small>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right anim-fade shadow" style="width: 16em;">
-                    <a class="dropdown-item" href="<?= BASEURL ?>/datapenyewa">
-                        <svg class="bi mr-2" width="18" height="18" fill="currentColor">
-                            <use href="<?= BASEURL; ?>/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#person-check" />
-                        </svg>
-                        Penyewa
-                    </a>
-                    <a class="dropdown-item" href="<?= BASEURL ?>/datapaketsewa">
-                        <svg class="bi mr-2" width="18" height="18" fill="currentColor">
-                            <use href="<?= BASEURL; ?>/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#gift" />
-                        </svg>
-                        Paket Sewa
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <div class="mx-3">
+                    <div class="mx-3 my-2">
                         <span class="d-flex">
                             <svg class="bi mr-2 text-muted" width="24" height="24" fill="currentColor">
                                 <use href="<?= BASEURL; ?>/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#person-circle" />
