@@ -112,7 +112,7 @@
             </section>
             <hr>
             <footer class="pb-5 text-center text-uppercase">
-                TERIMAKASIH<br>KEMBALI LAGI YA, ATAO <strong>PECAH PALA KAO !</strong>
+                TERIMAKASIH<br>KEMBALI LAGI YA.
             </footer>
         </div>
     </main>
