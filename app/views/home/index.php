@@ -68,7 +68,7 @@
                                     <use href="<?= BASEURL; ?>/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#archive" />
                                 </svg>
                             </figure>
-                            <span class="mt-2">Barang</span>
+                            <span class="mt-2 text-center text-truncate">Barang</span>
                         </a>
                         <a class="col text-dark d-flex flex-column justify-content-center align-items-center" href="<?= BASEURL ?>/datapenyewa">
                             <figure class="rounded-circle bg-primary m-0 d-flex justify-content-center align-items-center" style="height: 3em; width: 3em;">
@@ -76,7 +76,7 @@
                                     <use href="<?= BASEURL; ?>/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#person-check" />
                                 </svg>
                             </figure>
-                            <span class="mt-2">Penyewa</span>
+                            <span class="mt-2 text-center text-truncate">Penyewa</span>
                         </a>
                         <a class="col text-dark d-flex flex-column justify-content-center align-items-center" href="<?= BASEURL ?>/datapaketsewa">
                             <figure class="rounded-circle bg-info m-0 d-flex justify-content-center align-items-center" style="height: 3em; width: 3em;">
@@ -84,7 +84,7 @@
                                     <use href="<?= BASEURL; ?>/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#gift" />
                                 </svg>
                             </figure>
-                            <span class="mt-2">Paket Sewa</span>
+                            <span class="mt-2 text-center text-truncate">Paket Sewa</span>
                         </a>
                     </div>
                 </div>
@@ -96,12 +96,14 @@
                 <h2 class="mx-3 font-weight-bold">Sewa terbaru</h2>
                 <div class="list-group list-group-flush">
                     <span class="text-secondary no-list text-center mt-5">Memuat...</span>
+                    <button class="btn text-primary text-center my-4 mx-2 try-again sewa-terbaru d-none">Coba Lagi</button>
                 </div>
             </div>
             <div class="segera-berakhir col my-4">
                 <h2 class="mx-3 font-weight-bold">Segera berakhir</h2>
                 <div class="list-group list-group-flush">
                     <span class="text-secondary no-list text-center mt-5">Memuat...</span>
+                    <button class="btn text-primary text-center my-4 mx-2 try-again segera-berakhir d-none">Coba Lagi</button>
                 </div>
             </div>
         </section>

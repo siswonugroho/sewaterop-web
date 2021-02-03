@@ -1,33 +1,36 @@
 document.addEventListener('DOMContentLoaded', function (event) {
     const segeraBerakhirList = document.querySelector('.segera-berakhir').querySelector('.list-group');
     const sewaTerbaruList = document.querySelector('.sewa-terbaru').querySelector('.list-group');
+    const btnTryAgain = document.querySelectorAll('button.try-again');
     const dt = luxon.DateTime;
 
-    async function getListTop5(listElement, url) {
+    async function getListTop5(listElement, url = '', btnTryAgainIndex = 0) {
         const noListElement = listElement.querySelector('.no-list');
         try {
             noListElement.classList.remove('.d-none');
+            noListElement.textContent = 'Memuat...';
             const response = await fetch(`${BASEURL}/home/${url}`);
-            noListElement.classList.add("d-none");
             if (!response.ok) throw Error();
             const responseJson = await response.json();
             if (!responseJson) throw Error();
 
-            if (listElement == segeraBerakhirList) {
-                renderListSegeraBerakhir(responseJson);
-            } else if (listElement == sewaTerbaruList) {
-                renderListSewaTerbaru(responseJson);
-            }
             if (Object.keys(responseJson).length === 0) {
-                noListElement.textContent = 'Tidak ada data.';
                 noListElement.classList.remove('d-none');
+                noListElement.textContent = 'Tidak ada data';
             } else {
                 noListElement.classList.add('d-none');
+                btnTryAgain[btnTryAgainIndex].classList.add('d-none');
+                if (listElement == segeraBerakhirList) {
+                    renderListSegeraBerakhir(responseJson);
+                } else if (listElement == sewaTerbaruList) {
+                    renderListSewaTerbaru(responseJson);
+                }
             }
 
         } catch (error) {
             noListElement.textContent = 'Error: Tidak dapat memuat daftar.';
             noListElement.classList.remove('d-none');
+            btnTryAgain[btnTryAgainIndex].classList.remove('d-none');
         }
     }
 
@@ -66,6 +69,19 @@ document.addEventListener('DOMContentLoaded', function (event) {
         return Math.floor(diffObj.days + 1);
     }
 
-    getListTop5(segeraBerakhirList, 'getsewaakanberakhir');
-    getListTop5(sewaTerbaruList, 'getsewaterbaru');
+    btnTryAgain.forEach(btn => {
+        if (btn.classList.contains('sewa-terbaru')) {
+            btn.addEventListener('click', function () {
+                getListTop5(sewaTerbaruList, 'getsewaterbaru', 0);
+            });
+        }
+        else if (btn.classList.contains('segera-berakhir')) {
+            btn.addEventListener('click', function () {
+                getListTop5(segeraBerakhirList, 'getsewaakanberakhir', 1);
+            })
+        }
+    });
+
+    getListTop5(segeraBerakhirList, 'getsewaakanberakhir', 1);
+    getListTop5(sewaTerbaruList, 'getsewaterbaru', 0);
 });
