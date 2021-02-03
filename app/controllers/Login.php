@@ -31,8 +31,12 @@ class Login extends Controller
             // Jika tidak ada error, login
                 $userLoggedIn = $this->userModel->goLogin($data['username'], $data['password']);
                 if ($userLoggedIn) {
-                    $this->createUserSession($userLoggedIn);                    
-                    header('location:' . filter_var(BASEURL , FILTER_VALIDATE_URL));
+                    if ($userLoggedIn['status_user'] === 'pending') {
+                        header('location:' . filter_var(BASEURL . '/login/pendingpage' , FILTER_VALIDATE_URL));
+                    } else {
+                        $this->createUserSession($userLoggedIn);
+                        header('location:' . filter_var(BASEURL , FILTER_VALIDATE_URL));
+                    }
                 } else {
                     $data['passwordError'] = 'Username atau password salah';
                     Flasher::setFlash($data['passwordError'], 'danger', 'x-circle');
@@ -41,10 +45,17 @@ class Login extends Controller
             unset($data['username'], $data['password']);
         }
 
-
             $this->view('templates/header', $data);
             $this->view('login/index', $data);
             $this->view('templates/footer');
+    }
+
+    public function pendingPage()
+    {
+        $data['judul'] = 'Menunggu Persetujuan';
+        $this->view('templates/header', $data);
+        $this->view('login/pendingpage');
+        $this->view('templates/footer');
     }
 
     public function createUserSession($user)
@@ -52,5 +63,6 @@ class Login extends Controller
         $_SESSION['user_id'] = $user['id_admin'];
         $_SESSION['username'] = $user['username'];
         $_SESSION['nama_admin'] = $user['nama_admin'];
+        $_SESSION['status_user'] = $user['status_user'];
     }
 }

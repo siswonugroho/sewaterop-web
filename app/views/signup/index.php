@@ -1,7 +1,6 @@
 <div class="container d-flex flex-column align-items-center justify-content-around">
     <img src="<?= BASEURL ?>/img/sewaterop-logo.svg" alt="Logo sewaterop" height="64">
     <h1 class="text-primary my-5">Buat Akun Baru</h1>
-    <?php Flasher::showFlash(); ?>
     <div class="row w-100 justify-content-center">
         <form action="<?= BASEURL ?>/signup" class="col-md-4" method="post" novalidate>
             <div class="form-group">

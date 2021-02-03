@@ -26,6 +26,7 @@ class Signup extends Controller
                 'username' => strip_tags($_POST['username']),
                 'password' => strip_tags($_POST['password']),
                 'repassword' => strip_tags($_POST['repassword']),
+                'status_user' => 'pending'
             ];
             // Hash password
             $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
@@ -33,7 +34,8 @@ class Signup extends Controller
             //  Buat akun
             $this->userModel->register($data);
             // Arahkan ke login
-            header('location:' . filter_var(BASEURL . '/signup/success', FILTER_VALIDATE_URL));
+            Flasher::setFlash('Akun berhasil dibuat', 'success', 'check-circle');
+            header('location:' . filter_var(BASEURL . '/login', FILTER_VALIDATE_URL));
             unset($data['username'], $data['password'], $data['repassword']);
         }
 

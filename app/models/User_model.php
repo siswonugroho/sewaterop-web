@@ -12,9 +12,10 @@ class User_model
 
     public function register($data)
     {
-        $this->db->query("INSERT INTO $this->table (nama_admin, username, password) VALUES (:nama_admin, :username, :password)");
+        $this->db->query("INSERT INTO $this->table (nama_admin, username, status_user, password) VALUES (:nama_admin, :username, :status_user, :password)");
         $this->db->bind(':nama_admin', $data['nama_admin']);
         $this->db->bind(':username', $data['username']);
+        $this->db->bind(':status_user', $data['status_user']);
         $this->db->bind(':password', $data['password']);
 
         if ($this->db->execute()) return true;

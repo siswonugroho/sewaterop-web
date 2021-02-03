@@ -42,14 +42,18 @@
                 Riwayat
             </a>
             <hr>
-            <div class="dropdown px-2 w-100">
-                <a href="javascript:void(0)" hreflang="Open menu" class="dropdown-toggle d-flex align-items-center" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
-                    <svg class="bi mr-2 text-muted" width="24" height="24" fill="currentColor">
-                        <use href="<?= BASEURL; ?>/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#person-circle" />
-                    </svg>
-                    <span class="text-dark text-truncate font-weight-bold"><?= $_SESSION['nama_admin'] ?></span>
+            <div class="dropdown mx-auto row w-100">
+                <svg class="bi m-2 text-muted" width="24" height="24" fill="currentColor">
+                    <use href="<?= BASEURL; ?>/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#person-circle" />
+                </svg>
+                <a href="javascript:void(0)" hreflang="Open menu" class="col-md p-2 dropdown-toggle text-decoration-none" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
+                    <span class="text-dark text-truncate font-weight-bold"><?= $_SESSION['nama_admin'] ?></span><br>
+                    <span class="text-secondary"><?= $_SESSION['status_user'] ?></span>
                 </a>
                 <div class="dropdown-menu anim-fade shadow">
+                    <?php if ($_SESSION['status_user'] === 'owner') : ?>
+                    <a href="<?= BASEURL; ?>/dataadmin" class="dropdown-item">Kelola Admin</a>
+                    <?php endif ?>
                     <a href="<?= BASEURL; ?>/editakun/changeuserinfo" class="dropdown-item">Edit profil</a>
                     <a href="<?= BASEURL; ?>/logout" class="dropdown-item">Logout</a>
                 </div>
@@ -85,13 +89,17 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-right anim-fade shadow" style="width: 16em;">
                     <div class="mx-3 my-2">
-                        <span class="d-flex">
-                            <svg class="bi mr-2 text-muted" width="24" height="24" fill="currentColor">
+                        <span class="d-flex align-items-center">
+                            <svg class="bi mr-3 text-muted" width="24" height="24" fill="currentColor">
                                 <use href="<?= BASEURL; ?>/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#person-circle" />
                             </svg>
-                            <p class="font-weight-bold"><?= $_SESSION['nama_admin'] ?></p>
+                            <p class="font-weight-bold"><?= $_SESSION['nama_admin'] ?></p><br>
+                            <small class="text-secondary"><?= $_SESSION['status_user'] ?></small>
                         </span>
                     </div>
+                    <?php if ($_SESSION['status_user'] === 'owner') : ?>
+                    <a href="<?= BASEURL; ?>/dataadmin" class="dropdown-item">Kelola Admin</a>
+                    <?php endif ?>
                     <a href="<?= BASEURL; ?>/editakun/changeuserinfo" class="dropdown-item">Edit profil</a>
                     <a href="<?= BASEURL; ?>/logout" class="dropdown-item">Logout</a>
                 </div>
