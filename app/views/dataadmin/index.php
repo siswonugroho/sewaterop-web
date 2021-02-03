@@ -14,13 +14,13 @@
                         </svg>
                     </div>
                 </div>
-                <input type="search" class="search form-control border-left-0 bg-light" placeholder="Cari admin" aria-label="Barang">
+                <input type="search" class="search form-control border-left-0 bg-light" placeholder="Cari admin/akun" aria-label="Barang">
             </div>
 
         </span>
 
         <div class="d-flex justify-content-between">
-            <p>Total <strong id="total-admin">0</strong> admin</p>
+            <p>Total <strong id="total-admin">0</strong> akun</p>
             <span class="btn-group mb-2">
                 <div class="btn-group">
                     <a type="button" class="btn btn-sm btn-outline-primary dropdown-toggle text-decoration-none" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
@@ -65,12 +65,6 @@
 
             <div class="white-space" style="height: 20vh;"></div>
         </div>
-
-        <button class="btn btn-primary position-fixed rounded-pill shadow-sm p-2 d-block d-md-none" style="right: 3vw; bottom: 60px; z-index: 1;" onclick="window.location.href = `${BASEURL}/dataadmin/pagetambah`">
-            <svg class="bi" width="36" height="36" fill="currentColor">
-                <use href="<?= BASEURL; ?>/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#plus" />
-            </svg>
-        </button>
 
     </main>
 </section>

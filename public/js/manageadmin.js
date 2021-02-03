@@ -53,22 +53,22 @@ document.addEventListener('DOMContentLoaded', function (event) {
             let badgeStatus = '';
             let btnApproveDisplay = '';
             if (admin.status_user === 'pending') {
-                badgeStatus = `<span class="badge badge-warning p-1 my-1 status">${admin.status_user}</span>`;
-                btnApproveDisplay = `<a href="${BASEURL}/dataadmin/approveadmin/${admin.id_admin}" class="btn btn-primary approve-admin" data-id-admin="${admin.id_admin}" data-nama-admin="${admin.nama_admin}">Setujui</a>`;
+                badgeStatus = `<p class="badge badge-warning p-1 my-1 status">${admin.status_user}</p>`;
+                btnApproveDisplay = `<a href="${BASEURL}/dataadmin/approveadmin/${admin.id_admin}" class="btn btn-primary my-1 approve-admin" data-id-admin="${admin.id_admin}" data-nama-admin="${admin.nama_admin}">Setujui</a>`;
             } else if (admin.status_user === 'admin') {
-                badgeStatus = `<span class="badge badge-success p-1 my-1 status">${admin.status_user}</span>`;
+                badgeStatus = `<p class="badge badge-success p-1 my-1 status">${admin.status_user}</p>`;
             }
             listGroupElement.insertAdjacentHTML("beforeend", `
 <div class="list-group-item anim-fade">
     <div class="row">
-    <div class="col-8">
+    <div class="col-12 col-lg-8">
     <h5 class="nama">${admin.nama_admin}</h5>
-    <p class="text-muted my-0">${badgeStatus} ${admin.username}</p>
+    ${badgeStatus}
     <p class="d-none last-added">${admin.id_admin}</p>
     </div>
     <div class="col-md my-2">
     ${btnApproveDisplay}
-    <button class="btn btn-danger" data-toggle="modal" data-target="#dialogHapus" data-id-admin="${admin.id_admin}" data-nama-admin="${admin.nama_admin}">Hapus</button><br>
+    <button class="btn btn-danger my-1" data-toggle="modal" data-target="#dialogHapus" data-id-admin="${admin.id_admin}" data-nama-admin="${admin.nama_admin}">Hapus</button><br>
     </div>
     </div>
 </div>`);
