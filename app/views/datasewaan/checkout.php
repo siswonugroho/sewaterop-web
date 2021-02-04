@@ -49,7 +49,7 @@
                                     <p class="font-weight-bold">Paket <?= $data['formvalue']['nama_paket'] ?>:</p>
                             <?php endif ?>
                                 <?php foreach ($data['formvalue']['barang_sewaan']['id_barang'] as $key => $value) : ?>
-                                    <li class="font-weight-bold"><?= $data['formvalue']['barang_sewaan']['jumlah_barang'][$key] . ' ' . $data['formvalue']['barang_sewaan']['nama_barang'][$key] . ' @ Rp.' . Formatter::formatRupiah($data['formvalue']['barang_sewaan']['harga'][$key]) ?></li>
+                                    <li class="font-weight-bold ml-3"><?= $data['formvalue']['barang_sewaan']['jumlah_barang'][$key] . ' ' . $data['formvalue']['barang_sewaan']['nama_barang'][$key] . ' @ Rp.' . Formatter::formatRupiah($data['formvalue']['barang_sewaan']['harga'][$key]) ?></li>
                                 <?php endforeach ?>
                             </ul>
                         </div>

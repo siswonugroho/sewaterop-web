@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
     </div>
     <div class="col-md my-2">
     ${btnApproveDisplay}
-    <button class="btn btn-danger my-1" data-toggle="modal" data-target="#dialogHapus" data-id-admin="${admin.id_admin}" data-nama-admin="${admin.nama_admin}">Hapus</button><br>
+    <button class="btn btn-outline-danger my-1" data-toggle="modal" data-target="#dialogHapus" data-id-admin="${admin.id_admin}" data-nama-admin="${admin.nama_admin}">Hapus</button><br>
     </div>
     </div>
 </div>`);

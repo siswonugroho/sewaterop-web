@@ -12,31 +12,23 @@
             <div class="col p-0">
                 <div class="card m-2 border-0 shadow-sm">
                     <div class="card-body">
-                        <div class="row row-cols-1 row-cols-sm-2">
-                            <span class="col">ID Sewaan</span>
-                            <p class="col font-weight-bold"><?= strtoupper($data['formvalue']['id_pesanan']) ?></p>
+                        <p class="h2"><?= $data['formvalue']['nama_pemesan'] ?></p>
+                        <p class="text-muted mb-1">ID Sewaan <strong><?= strtoupper($data['formvalue']['id_pesanan']) ?></strong></p>
+                        <p><span class="tgl-text"><?= $data['formvalue']['tgl_mulai'] ?></span> - <span class="tgl-text"><?= $data['formvalue']['tgl_selesai'] ?></span></p>
+                        <hr>
+                        <div class="row align-items-center mx-1 my-2">
+                            <svg class="bi mr-2 text-primary" width="18" height="18" fill="currentColor">
+                                <use href="<?= BASEURL; ?>/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#geo-alt" />
+                            </svg>
+                            <span class="col"><?= $data['formvalue']['alamat'] ?></span>
                         </div>
-                        <div class="row row-cols-1 row-cols-sm-2">
-                            <span class="col">Tanggal mulai sewa</span>
-                            <p class="col font-weight-bold tgl-text"><?= $data['formvalue']['tgl_mulai'] ?></p>
+                        <div class="row align-items-center mx-1 my-2">
+                            <svg class="bi mr-2 text-primary" width="18" height="18" fill="currentColor">
+                                <use href="<?= BASEURL; ?>/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#telephone" />
+                            </svg>
+                            <span class="col"><?= $data['formvalue']['telepon'] ?></span>
                         </div>
-                        <div class="row row-cols-1 row-cols-sm-2">
-                            <span class="col">Tanggal berakhir</span>
-                            <p class="col font-weight-bold tgl-text"><?= $data['formvalue']['tgl_selesai'] ?></p>
-                        </div>
-                        <div class="row row-cols-1 row-cols-sm-2">
-                            <span class="col">Nama Penyewa</span>
-                            <p class="col font-weight-bold"><?= $data['formvalue']['nama_pemesan'] ?></p>
-                        </div>
-                        <div class="row row-cols-1 row-cols-sm-2">
-                            <span class="col">Alamat Penyewa</span>
-                            <p class="col font-weight-bold"><?= $data['formvalue']['alamat'] ?></p>
-                        </div>
-                        <div class="row row-cols-1 row-cols-sm-2">
-                            <span class="col">Telepon</span>
-                            <p class="col font-weight-bold"><?= $data['formvalue']['telepon'] ?></p>
-                        </div>
-                        <div class="m-1">
+                        <div class="mx-1 mt-4">
                             <a href="<?= BASEURL ?>/datasewaan/details/pageedit/<?= $data['formvalue']['id_pesanan'] ?>" class="btn btn-primary" title="Edit">
                                 <svg class="bi mr-2" width="18" height="18" fill="currentColor">
                                     <use href="<?= BASEURL; ?>/img/bootstrap-icons-1.2.1/bootstrap-icons.svg#pencil" />
@@ -50,6 +42,7 @@
                                 <span>Hapus</span>
                             </a>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -78,7 +71,7 @@
                         <li class="list-group-item d-flex">
                             <div class="flex-grow-1">
                                 <span>Total biaya:</span>
-                                <p class="lead font-weight-normal m-0">Rp. <?= Formatter::formatRupiah($data['formvalue']['harga']) ?></p>
+                                <p class="lead font-weight-bold m-0">Rp. <?= Formatter::formatRupiah($data['formvalue']['harga']) ?></p>
                             </div>
                             <a href="<?= BASEURL ?>/datasewaan/details/checkout/<?= $data['formvalue']['id_pesanan'] ?>" class="btn btn-success my-3">
                                 <svg class="bi mr-2 d-none d-sm-inline" width="18" height="18" fill="currentColor">
