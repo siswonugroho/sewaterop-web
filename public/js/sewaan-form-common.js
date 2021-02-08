@@ -4,7 +4,8 @@ document.addEventListener('DOMContentLoaded', function (event) {
     const formPilihBarang = document.querySelector('.list-barang');
     const togglePilihBarangDari = document.querySelectorAll('input[type=radio][name=tipe_sewaan]');
     const dropdownPenyewa = document.querySelector('.daftar-penyewa');
-    const dropdownPaketSewa = document.querySelector('.daftar-paket-sewa');
+    const daftarPaketSewa = document.querySelector('.daftar-paket-sewa');
+    const dataIdPaket = daftarPaketSewa.getAttribute('data-id-paket');
 
     const listIsiPaket = document.querySelector('.list-barang');
     const inputPaketFlag = listIsiPaket.querySelector('#isi-paket-flag');
@@ -53,14 +54,31 @@ document.addEventListener('DOMContentLoaded', function (event) {
             if (!responseJson) throw Error();
             renderListPaketSewa(responseJson);
         } catch (error) {
-            dropdownPaketSewa.insertAdjacentHTML('beforeend', `<p class="m-3 text-muted">Tidak dapat mengambil daftar paket sewa</p>`);
+            daftarPaketSewa.insertAdjacentHTML('beforeend', `<p class="m-3 text-muted">Tidak dapat mengambil daftar paket sewa</p>`);
         }
+    }
+
+    function renderListPaketSewa(data) {
+        daftarPaketSewa.innerHTML = '';
+        Object.keys(data).forEach(key => {
+            daftarPaketSewa.insertAdjacentHTML('beforeend', `<div class="col p-1 btn-group-toggle"><label class="btn btn-outline-dark w-100 text-left text-truncate">
+      <input type="radio" name="id_paket" value="${data[key].id_paket}"> <small>${data[key].nama_paket}</small><br>Rp.${formatRupiah(data[key].harga)}
+      </label></div>`);
+        });
+
+        const radioPaketSewa = document.querySelectorAll('input[name=id_paket]');
+        radioPaketSewa.forEach(radio => {
+            if (radio.value === dataIdPaket) radio.checked = true;
+
+            if (radio.checked) radio.parentElement.classList.add('active');
+            else radio.parentElement.classList.remove('active');
+        });
     }
 
     function renderListBarang(data) {
         modalBody.innerHTML = "";
         data.forEach(barang => {
-            modalBody.insertAdjacentHTML('beforeend',`<div class="custom-control custom-radio">
+            modalBody.insertAdjacentHTML('beforeend', `<div class="custom-control custom-radio">
     <input type="radio" id="${barang.id_barang}" name="item" value="${barang.nama_barang}" class="custom-control-input">
     <label class="custom-control-label" for="${barang.id_barang}">
         <h5 class="mb-1">${barang.nama_barang}</h5>
@@ -86,24 +104,6 @@ document.addEventListener('DOMContentLoaded', function (event) {
                 idPenyewaElement.value = list.getAttribute('data-id-penyewa');
             });
         });
-    }
-
-    function renderListPaketSewa(data) {
-        dropdownPaketSewa.innerHTML = '';
-        Object.keys(data).forEach(key => {
-            dropdownPaketSewa.insertAdjacentHTML('beforeend', `<a class="dropdown-item list-paket-sewa" data-id="${data[key].id_paket}">${data[key].nama_paket}</a>`);
-        });
-
-        const inputPaketSewaElement = document.querySelector('input#nama_paket');
-        const idPaketElement = document.querySelector('input#id_paket');
-        const listPaketSewa = document.querySelectorAll('a.list-paket-sewa');
-        listPaketSewa.forEach(list => {
-            list.addEventListener('click', function () {
-                inputPaketSewaElement.value = list.textContent;
-                idPaketElement.value = list.getAttribute('data-id');
-            });
-        });
-
     }
 
     modalFooter.querySelector('#tambahItem').addEventListener('click', function (e) {
@@ -143,7 +143,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
             });
         });
     }
-    
+
     function validateListIsiPaket() {
         if (listIsiPaket.querySelectorAll('.list-item').length === 0) {
             inputPaketFlag.value = '';

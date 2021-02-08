@@ -54,17 +54,11 @@
                         <div class="invalid-feedback">Harap tambahkan setidaknya 1 barang</div>
                     </div>
                     <div class="form-group pilih-paket d-none">
-                        <label for="nama_paket">Pilih paket sewa</label>
-                        <div class="dropdown">
-                            <input type="text" hidden name="id_paket" id="id_paket" autocomplete="off">
-                            <input type="text" required readonly class="form-control bg-white" name="nama_paket" id="nama_paket" autocomplete="off" placeholder="Klik untuk memilih..." data-toggle="dropdown">
-                            <div class="invalid-feedback">Harap isi kolom ini</div>
-                            <div class="dropdown-menu dropdown-paket-sewa shadow border-0" style="max-height: 50vh; overflow-y: auto;">
-                                <div class="daftar-paket-sewa">
-
-                                </div>
-                            </div>
+                        <label>Pilih paket sewa</label>
+                        <div class="row row-cols-2 mx-0 daftar-paket-sewa" data-toggle="buttons">
+                            
                         </div>
+                        <div class="invalid-feedback">Harap isi kolom ini</div>
                     </div>
                 </div>
                 <div class="col-sm">
@@ -116,5 +110,6 @@
     </div>
 </div>
 
-<script src="<?= BASEURL ?>/js/sewaan-pagetambah.min.js"></script>
+<script src="<?= BASEURL ?>/js/formatRupiah.min.js"></script>
+<script src="<?= BASEURL ?>/js/sewaan-form-common.min.js"></script>
 <script src="<?= BASEURL ?>/js/formvalidate.min.js"></script>
