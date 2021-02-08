@@ -48,12 +48,10 @@ class Paket_model
     public function tambahDataPaket($data)
     {
         $this->db->query("INSERT INTO paket VALUES (:id_paket, :nama_paket, :harga)");
-        foreach ($data['nama_barang'] as $key => $value) {
-            $this->db->bind('id_paket', $data['id_paket']);
-            $this->db->bind('nama_paket', $data['nama_paket']);
-            $this->db->bind('harga', $data['harga']);
-            $this->db->execute();
-        }
+        $this->db->bind('id_paket', $data['id_paket']);
+        $this->db->bind('nama_paket', $data['nama_paket']);
+        $this->db->bind('harga', $data['harga']);
+        $this->db->execute();
 
         $this->db->query("INSERT INTO isi_paket VALUES (:id_paket, :id_barang, :jumlah_barang)");
         foreach ($data['nama_barang'] as $key => $value) {
@@ -94,6 +92,9 @@ class Paket_model
 
     public function hapusDataPaket($id)
     {
+        $this->db->query("SET FOREIGN_KEY_CHECKS=0");
+        $this->db->execute();
+
         $query = "DELETE FROM paket WHERE id_paket = :id_paket";
         $this->db->query($query);
         $this->db->bind('id_paket', $id);
@@ -102,6 +103,9 @@ class Paket_model
         $query = "DELETE FROM isi_paket WHERE id_paket = :id_paket";
         $this->db->query($query);
         $this->db->bind('id_paket', $id);
+        $this->db->execute();
+
+        $this->db->query("SET FOREIGN_KEY_CHECKS=0");
         $this->db->execute();
 
         $this->db->query("SELECT COUNT(*) FROM $this->table");

@@ -162,6 +162,8 @@ class DataSewaan extends Controller
             $submittedData['tgl_mulai'] = $_POST['tgl_mulai'];
             $submittedData['tgl_selesai'] = $_POST['tgl_selesai'];
             $submittedData['status'] = "berlangsung";
+
+            // echo json_encode($_POST); die;
             $this->updateStokBarang($_POST['id_paket_lama'], 'tambah');
 
             // Jika sewaan berisi barang yang dipilih sendiri, buatkan sebuah paket khusus
@@ -233,12 +235,12 @@ class DataSewaan extends Controller
                 if (Formatter::startsWith($id_paket, 'sw')) {
                     $this->model('Paket_model')->hapusDataPaket($id_paket);
                 }
-                Flasher::setFlash('Item berhasil dihapus', 'success', 'check-circle');
-                header('location:' . filter_var('javascript://history.go(-1)', FILTER_VALIDATE_URL));
+                Flasher::setFlash('Sewaan berhasil dihapus', 'success', 'check-circle');
+                header('location:' . filter_var(BASEURL . '/datasewaan', FILTER_VALIDATE_URL));
                 exit;
             } else {
                 Flasher::setFlash('Tidak dapat menghapus item ini.', 'danger', 'x-circle');
-                header('location:' . filter_var('javascript://history.go(-1)', FILTER_VALIDATE_URL));
+                header('location:' . filter_var(BASEURL . '/datasewaan', FILTER_VALIDATE_URL));
                 exit;
             }
         } else {
