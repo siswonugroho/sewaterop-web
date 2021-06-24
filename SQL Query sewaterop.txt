@@ -1,0 +1,31 @@
+1. Menampilkan daftar sewaan yang menyewa paket
+SELECT pesanan.id_pesanan, pemesan.nama_pemesan, pesanan.tgl_mulai, pesanan.tgl_selesai,  paket.nama_paket 
+FROM pesanan
+JOIN pemesan ON pemesan.id_pemesan = pesanan.id_pemesan 
+JOIN paket_pesanan ON paket_pesanan.id_pesanan = pesanan.id_pesanan 
+JOIN paket ON paket.id_paket = paket_pesanan.id_paket
+
+2. Menampilkan daftar sewaan yang menyewa beberapa barang (non-paket)
+SELECT pesanan.id_pesanan, pemesan.nama_pemesan, pesanan.tgl_mulai, pesanan.tgl_selesai, barang_pesanan.jumlah_barang, barang.nama_barang 
+FROM pesanan
+JOIN pemesan ON pemesan.id_pemesan = pesanan.id_pemesan 
+JOIN barang_pesanan ON barang_pesanan.id_pesanan = pesanan.id_pesanan 
+JOIN barang ON barang.id_barang = barang_pesanan.id_barang
+
+3. Menampilkan detail sewaan yang non-paket
+Tinggal menambahkan where setelah query ke-2
+
+4. Menampilkan detail sewaan yang paket beserta isi paket
+SELECT pesanan.id_pesanan, pemesan.nama_pemesan, pesanan.tgl_mulai, pesanan.tgl_selesai, paket.nama_paket, isi_paket.jumlah_barang, barang.nama_barang FROM pesanan JOIN pemesan ON pemesan.id_pemesan = pesanan.id_pemesan JOIN paket_pesanan ON paket_pesanan.id_pesanan = pesanan.id_pesanan JOIN paket ON paket.id_paket = paket_pesanan.id_paket JOIN isi_paket ON isi_paket.id_paket = paket.id_paket JOIN barang ON barang.id_barang = isi_paket.id_barang
+
+5. Menampilkan detail penyewa dari suatu sewaan
+SELECT pemesan.nama_pemesan, pemesan.alamat, pemesan.telepon, pesanan.id_pesanan FROM pemesan JOIN pesanan ON pemesan.id_pemesan = pesanan.id_pemesan WHERE pesanan.id_pesanan = 'sw01'
+
+6. Menampilkan paket yang tersedia
+SELECT paket.id_paket, paket.nama_paket, isi_paket.jumlah_barang, barang.nama_barang FROM paket JOIN isi_paket ON isi_paket.id_paket = paket.id_paket JOIN barang ON barang.id_barang = isi_paket.id_barang
+
+7. Menampilkan riwayat transaksi
+SELECT transaksi.id_pesanan, pemesan.nama_pemesan,pesanan.tgl_mulai, pesanan.tgl_selesai, transaksi.total_biaya, transaksi.status
+FROM transaksi
+JOIN pesanan ON pesanan.id_pesanan = transaksi.id_pesanan
+JOIN pemesan ON pemesan.id_pemesan = pesanan.id_pemesan
